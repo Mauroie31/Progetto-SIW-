@@ -6,7 +6,7 @@ public class Esame {
 	private Long id;
 	private String nome, descrizione;
 	private TipologiaEsame tipologiaEsame;
-	private Map<String,String> risultati;
+	private Map<String, String> risultati;
 	private Date dataPrenotazione, dataVisita;
 	private Paziente paziente;
 	private Medico medico;

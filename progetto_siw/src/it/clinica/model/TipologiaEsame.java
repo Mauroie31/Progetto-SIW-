@@ -3,23 +3,44 @@ package it.clinica.model;
 import java.util.*;
 
 public class TipologiaEsame {
-	private String dettagli, codiceEsame;
+	private Long id;
+	private String nome, descrizione;
+	private double costo;
 	private Set<String> indicatoriEsami;
 	private Map<String, String> prerequisiti;
+	private Map<Long, Esame> esami;
 
 
 
-	public String getDettagli() {
-		return dettagli;
+	public Map<Long, Esame> getEsami() {
+		return esami;
 	}
-	public void setDettagli(String dettagli) {
-		this.dettagli = dettagli;
+	public void setEsami(Map<Long, Esame> esami) {
+		this.esami = esami;
 	}
-	public String getCodiceEsame() {
-		return codiceEsame;
+	public Long getId() {
+		return id;
 	}
-	public void setCodiceEsame(String codiceEsame) {
-		this.codiceEsame = codiceEsame;
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public double getCosto() {
+		return costo;
+	}
+	public void setCosto(double costo) {
+		this.costo = costo;
+	}
+	public String getDescrizione() {
+		return descrizione;
+	}
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 	public Set<String> getIndicatoriEsami() {
 		return indicatoriEsami;

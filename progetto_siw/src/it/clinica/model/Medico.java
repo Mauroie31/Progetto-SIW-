@@ -6,7 +6,7 @@ public class Medico {
 	private Long id;
 	private String nome, cognome;
 	private TipologiaEsame specializzazione;
-	private Map<String, Esame> esami;
+	private Map<Long, Esame> esami;
 
 
 
@@ -34,10 +34,10 @@ public class Medico {
 	public void setSpecializzazione(TipologiaEsame specializzazione) {
 		this.specializzazione = specializzazione;
 	}
-	public Map<String, Esame> getEsami() {
+	public Map<Long, Esame> getEsami() {
 		return esami;
 	}
-	public void setEsami(Map<String, Esame> esami) {
+	public void setEsami(Map<Long, Esame> esami) {
 		this.esami = esami;
 	}
 }
