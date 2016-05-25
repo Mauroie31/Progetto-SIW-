@@ -6,7 +6,7 @@ public class Clinica {
 	private Map<String, Medico> medici;
 	private Map<String, TipologiaEsame> tipologieEsami;
 	private Map<String, Paziente> pazienti;
-	private Map<String, Admin> admins;
+	private Map<String, Amministratore> amministratori;
 	
 	
 	
@@ -28,10 +28,10 @@ public class Clinica {
 	public void setPazienti(Map<String, Paziente> pazienti) {
 		this.pazienti = pazienti;
 	}
-	public Map<String, Admin> getAdmins() {
-		return admins;
+	public Map<String, Amministratore> getAmministratori() {
+		return amministratori;
 	}
-	public void setAdmins(Map<String, Admin> admins) {
-		this.admins = admins;
+	public void setAmministratori(Map<String, Amministratore> amministratori) {
+		this.amministratori = amministratori;
 	}
 }

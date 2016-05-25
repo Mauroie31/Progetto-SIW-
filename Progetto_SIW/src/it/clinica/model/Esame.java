@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Esame {
 	private String codice, nome, descrizione;
-	private TipologiaEsame tipologia;
+	private TipologiaEsame tipologiaEsame;
 	private Map<String,String> risultati;
 	private Date dataPrenotazione, dataVisita;
 	private Paziente paziente;
@@ -30,11 +30,11 @@ public class Esame {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public Tipologia getTipologia() {
-		return tipologia;
+	public TipologiaEsame getTipologia() {
+		return tipologiaEsame;
 	}
-	public void setTipologia(Tipologia tipologia) {
-		this.tipologia = tipologia;
+	public void setTipologia(TipologiaEsame tipologiaEsame) {
+		this.tipologiaEsame = tipologiaEsame;
 	}
 	public Map<String, String> getRisultati() {
 		return risultati;

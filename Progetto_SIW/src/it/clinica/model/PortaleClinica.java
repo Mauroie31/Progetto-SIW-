@@ -3,7 +3,7 @@ package it.clinica.model;
 public class PortaleClinica {
 	private Clinica clinica;
 	private Esame esameCorrente;
-	private Admin adminCorrente;
+	private Amministratore amministratoreCorrente;
 	private TipologiaEsame tipologiaEsameCorrente;
 	
 	
@@ -20,11 +20,11 @@ public class PortaleClinica {
 	public void setEsameCorrente(Esame esameCorrente) {
 		this.esameCorrente = esameCorrente;
 	}
-	public Admin getAdminCorrente() {
-		return adminCorrente;
+	public Amministratore getAmministratoreCorrente() {
+		return amministratoreCorrente;
 	}
-	public void setAdminCorrente(Admin adminCorrente) {
-		this.adminCorrente = adminCorrente;
+	public void setAmministratoreCorrente(Amministratore amministratoreCorrente) {
+		this.amministratoreCorrente = amministratoreCorrente;
 	}
 	public TipologiaEsame getTipologiaEsameCorrente() {
 		return tipologiaEsameCorrente;
