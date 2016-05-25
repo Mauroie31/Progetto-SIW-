@@ -1,5 +1,5 @@
 package it.clinica.model;
 
-public class Paziente {
+public class Esame {
 
 }
