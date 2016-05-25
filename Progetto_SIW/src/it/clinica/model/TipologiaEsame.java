@@ -3,10 +3,12 @@ package it.clinica.model;
 import java.util.*;
 
 public class TipologiaEsame {
-	private String dettagli;
-	private String codiceEsame;
+	private String dettagli, codiceEsame;
 	private Set<String> indicatoriEsami;
 	private Map<String, String> prerequisiti;
+
+
+
 	public String getDettagli() {
 		return dettagli;
 	}
@@ -31,6 +33,4 @@ public class TipologiaEsame {
 	public void setPrerequisiti(Map<String, String> prerequisiti) {
 		this.prerequisiti = prerequisiti;
 	}
-
-
 }

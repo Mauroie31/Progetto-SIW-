@@ -3,17 +3,18 @@ package it.clinica.model;
 import java.util.*;
 
 public class Medico {
-	private String codice, nome, cognome;
+	private Long id;
+	private String nome, cognome;
 	private TipologiaEsame specializzazione;
 	private Map<String, Esame> esami;
-	
-	
-	
-	public String getCodice() {
-		return codice;
+
+
+
+	public Long getId() {
+		return id;
 	}
-	public void setCodice(String codice) {
-		this.codice = codice;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getNome() {
 		return nome;

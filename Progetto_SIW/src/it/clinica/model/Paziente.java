@@ -3,11 +3,9 @@ package it.clinica.model;
 import java.util.Map;
 
 public class Paziente extends Utente {
-	private String indirizzo;
-	private String email;
-	private String ruolo;
+	private String indirizzo, email, ruolo;
 	private Map<String, Esame> esamiSvolti;
-	
+
 	public Paziente() {
 		this.ruolo = "user";
 	}
@@ -43,9 +41,9 @@ public class Paziente extends Utente {
 	public void setEsamiSvolti(Map<String, Esame> esamiSvolti) {
 		this.esamiSvolti = esamiSvolti;
 	}
-	
-	
-	
-	
+
+
+
+
 
 }

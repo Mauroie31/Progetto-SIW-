@@ -2,15 +2,19 @@ package it.clinica.model;
 
 
 public abstract class Utente {
-	private String nome;
-	private String cognome;
-	private String password;
-	private String codice;
-	private String ruolo;
-	
+	private Long id;
+	private String nome, cognome, password, ruolo;
+
 	public Utente() {
 	}
 
+
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -28,12 +32,6 @@ public abstract class Utente {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public String getCodice() {
-		return codice;
-	}
-	public void setCodice(String codice) {
-		this.codice = codice;
 	}
 	public String getRuolo() {
 		return ruolo;
