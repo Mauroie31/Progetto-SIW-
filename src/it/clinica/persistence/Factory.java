@@ -16,6 +16,7 @@ public class Factory {
 	public void closeEnityManagerFactory() {
 		if(emf.isOpen()) {
 			emf.close();
+			
 		}
 	}
 }
