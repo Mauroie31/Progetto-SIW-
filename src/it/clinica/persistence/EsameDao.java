@@ -6,7 +6,7 @@ import java.util.*;
 
 import javax.persistence.EntityManager;
 
-public abstract class EsameDao extends AbstractDao<Esame> {
+public class EsameDao extends AbstractDao<Esame> {
 
 	public EsameDao(EntityManager em) {
 		super(em);
