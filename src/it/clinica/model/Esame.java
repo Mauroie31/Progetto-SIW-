@@ -1,13 +1,17 @@
 package it.clinica.model;
 
 import java.util.*;
+import javax.persistence.*;
 
+@Entity
 public class Esame {
 	private Long id;
-	private String nome, descrizione;
+	private String nome;
+	private String descrizione;
 	private TipologiaEsame tipologiaEsame;
 	private Map<String, String> risultati;
-	private Date dataPrenotazione, dataVisita;
+	private Date dataPrenotazione;
+	private Date dataVisita;
 	private Paziente paziente;
 	private Medico medico;
 

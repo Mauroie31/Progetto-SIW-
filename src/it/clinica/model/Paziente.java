@@ -3,7 +3,9 @@ package it.clinica.model;
 import java.util.Map;
 
 public class Paziente extends Utente {
-	private String indirizzo, email, ruolo;
+	private String indirizzo;
+	private String email;
+	private String ruolo;
 	private Map<Long, Esame> esami;
 
 	public Paziente() {

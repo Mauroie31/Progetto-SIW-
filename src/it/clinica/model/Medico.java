@@ -1,10 +1,20 @@
 package it.clinica.model;
 
 import java.util.*;
+import javax.persistence.*;
 
+/* @Entity
+@Table(name="DIPENDENTI")
+@NamedQueries({
+@NamedQuery(name="getDipendenti", query = "SELECT x FROM Dipendente x order by x.nome"),
+@NamedQuery(name="getDipendenteByNome", query = "SELECT x FROM Dipendente x WHERE x.nome = :nomeX")
+}) */
+
+@Entity
 public class Medico {
 	private Long id;
-	private String nome, cognome;
+	private String nome;
+	private String cognome;
 	private TipologiaEsame specializzazione;
 	private Map<Long, Esame> esami;
 

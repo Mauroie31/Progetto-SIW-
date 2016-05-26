@@ -1,13 +1,20 @@
 package it.clinica.model;
 
-
+import javax.persistence.*;
+@Entity
+@Table(name = "DIPENDENTI")
+@NamedQuery(name="GetUtenteById", query = "SELECT u FROM Utente u WHERE u.nome = :nomeU")
 public abstract class Utente {
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String nome, cognome, password, ruolo;
+	private String nome;
+	private String cognome;
+	private String password;
+	private String ruolo;
 
 	public Utente() {
 	}
-
 
 	public Long getId() {
 		return id;

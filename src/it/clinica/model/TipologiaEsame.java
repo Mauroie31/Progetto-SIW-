@@ -2,12 +2,18 @@ package it.clinica.model;
 
 import java.util.*;
 
+import javax.persistence.*;
+
 public class TipologiaEsame {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String nome, descrizione;
+	private String nome;
+	private String descrizione;
 	private double costo;
 	private Set<String> indicatoriEsami;
 	private Map<String, String> prerequisiti;
+	@OneToMany
 	private Map<Long, Esame> esami;
 
 
