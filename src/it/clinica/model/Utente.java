@@ -2,8 +2,8 @@ package it.clinica.model;
 
 import javax.persistence.*;
 @Entity
-@Table(name = "DIPENDENTI")
-@NamedQuery(name="GetUtenteById", query = "SELECT u FROM Utente u WHERE u.nome = :nomeU")
+@Table(name = "Dipendenti")
+@NamedQuery(name="GetUtenteById", query = "SELECT u FROM Utente u WHERE u.id = :nidU")
 public abstract class Utente {
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

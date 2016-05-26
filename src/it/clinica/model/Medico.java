@@ -3,21 +3,18 @@ package it.clinica.model;
 import java.util.*;
 import javax.persistence.*;
 
-/* @Entity
-@Table(name="DIPENDENTI")
-@NamedQueries({
-@NamedQuery(name="getDipendenti", query = "SELECT x FROM Dipendente x order by x.nome"),
-@NamedQuery(name="getDipendenteByNome", query = "SELECT x FROM Dipendente x WHERE x.nome = :nomeX")
-}) */
-
 @Entity
+@Table(name = "Medici")
 public class Medico {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String cognome;
+	@OneToOne
 	private TipologiaEsame specializzazione;
+	@OneToMany
 	private Map<Long, Esame> esami;
-
 
 
 	public Long getId() {

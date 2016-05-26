@@ -4,15 +4,21 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Esami")
 public class Esame {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String descrizione;
-	private TipologiaEsame tipologiaEsame;
 	private Map<String, String> risultati;
 	private Date dataPrenotazione;
 	private Date dataVisita;
+	@OneToOne
+	private TipologiaEsame tipologiaEsame;
+	@OneToOne
 	private Paziente paziente;
+	@OneToOne
 	private Medico medico;
 
 

@@ -2,10 +2,17 @@ package it.clinica.model;
 
 import java.util.Map;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Pazienti")
 public class Paziente extends Utente {
 	private String indirizzo;
 	private String email;
 	private String ruolo;
+	@OneToMany
 	private Map<Long, Esame> esami;
 
 	public Paziente() {
