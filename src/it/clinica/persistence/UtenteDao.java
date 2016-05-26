@@ -1,14 +1,23 @@
 package it.clinica.persistence;
 
-import it.clinica.exception.*;
+import java.util.*;
+import javax.persistence.*;
 import it.clinica.model.*;
 
-public interface UtenteDao {
+public class UtenteDao extends AbstractDao<Utente> {
 
-	boolean insert(String nome, String cognome, String indirizzo, String email,
-			String username, String password) throws PersistenceException;
+	public UtenteDao(EntityManager em) {
+		super(em);
+	}
 
-	public Utente findById(Long id) throws PersistenceException;
+	@Override
+	public Utente findById(long id) {
+		return this.getEntityManager().find(Utente.class, id);
+	}
 
-	public Paziente findByEsame(Esame esame) throws PersistenceException;
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Utente> findAll() {
+		return this.getEntityManager().createNamedQuery("Utente.findAll").getResultList();
+	}
 }

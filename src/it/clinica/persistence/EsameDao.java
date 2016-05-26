@@ -1,27 +1,25 @@
 package it.clinica.persistence;
 
-import it.clinica.exception.*;
 import it.clinica.model.*;
+
 import java.util.*;
 
-public interface EsameDao {
+import javax.persistence.EntityManager;
 
-	/* Genera un id per l'esame inserito nel database */
-	public Long generaID() throws PersistenceException;
+public abstract class EsameDao extends AbstractDao<Esame> {
 
-	/* Inserisce un esame nel database */
-	public boolean insert(Esame esame) throws PersistenceException;
+	public EsameDao(EntityManager em) {
+		super(em);
+	}
 
-	/* Aggiorna un esame nel database */
-	public boolean update(Esame esame) throws PersistenceException;
+	@Override
+	public Esame findById(long id) {
+		return this.getEntityManager().find(Esame.class, id);
+	}
 
-	/* Cancella un esame dal database */
-	boolean delete(Esame esame) throws PersistenceException;
-
-	/* Restituisce un esame andando a cercarlo nel database per chiave primaria */
-	public Esame findById(Long idEsame) throws PersistenceException;
-
-	/* Restituisce la lista degli esami di un paziente */
-	public Map<String, Esame> findByIdCliente(Paziente paziente) throws PersistenceException;
-
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Esame> findAll() {
+		return this.getEntityManager().createNamedQuery("Esame.findAll").getResultList();
+	}
 }

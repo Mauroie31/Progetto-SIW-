@@ -1,14 +1,24 @@
 package it.clinica.persistence;
 
-import it.clinica.exception.*;
 import it.clinica.model.*;
 import java.util.*;
+import javax.persistence.EntityManager;
 
-public interface TipologiaEsameDao {
+public class TipologiaEsameDao extends AbstractDao<TipologiaEsame> {
 
-	public boolean insert(String nome, String descrizione, double costo) throws PersistenceException;
+	public TipologiaEsameDao(EntityManager em) {
+		super(em);
+	}
 
-	public List<TipologiaEsame> findAll() throws PersistenceException;
+	@Override
+	public TipologiaEsame findById(long id) {
+		return this.getEntityManager().find(TipologiaEsame.class, id);
+	}
 
-	public TipologiaEsame findById(Long id) throws PersistenceException;
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TipologiaEsame> findAll() {
+		return this.getEntityManager().createNamedQuery("TipologiaEsame.findAll").getResultList();
+	}
+
 }
