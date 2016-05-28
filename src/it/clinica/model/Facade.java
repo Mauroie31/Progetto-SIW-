@@ -19,6 +19,7 @@ public class Facade {
 		return em;
 	}
 
+	//Metodi Utente
 	public void inserisciUtente(Utente utente) {
 		this.em.getTransaction().begin();
 		UtenteDao utenteDao = new UtenteDao(this.em);
@@ -26,6 +27,7 @@ public class Facade {
 		this.em.getTransaction().commit();
 	}
 
+	//Metodi Esame
 	public void inserisciEsame(Esame esame) {
 		this.em.getTransaction().begin();
 		EsameDao esameDao = new EsameDao(this.em);
@@ -33,13 +35,15 @@ public class Facade {
 		this.em.getTransaction().commit();
 	}
 
+	//Metodi Medico
 	public void inserisciMedico(Medico medico) {
 		this.em.getTransaction().begin();
 		MedicoDao medicoDao = new MedicoDao(this.em);
 		medicoDao.save(medico);
 		this.em.getTransaction().commit();
 	}
-
+    
+	//Metodi TipologiaEsame
 	public void inserisciTipologiaEsame(TipologiaEsame tipologiaEsame) {
 		this.em.getTransaction().begin();
 		TipologiaEsameDao tipologiaEsameDao = new TipologiaEsameDao(this.em);
