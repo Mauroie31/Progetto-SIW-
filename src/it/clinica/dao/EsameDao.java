@@ -2,8 +2,7 @@ package it.clinica.dao;
 
 import java.util.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.*;
 
 import it.clinica.model.Esame;
 
@@ -26,14 +25,14 @@ public class EsameDao extends AbstractDao<Esame> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Esame> findEsamiByIdPaziente(Long id_paziente) {
+	public List<Esame> findEsamiByPaziente(Long id_paziente) {
 		Query query = this.getEntityManager().createQuery("SELECT e FROM Esami e JOIN Utente u where u.id = :id_paziente");
 		query.setParameter("id_paziente", id_paziente);
 		return query.getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Esame> findEsamibyIdMedico (Long id_medico) {
+	public List<Esame> findEsamiByMedico (Long id_medico) {
 		Query query = this.getEntityManager().createQuery("SELECT e FROM Esami e JOIN Medico m where m.id = :id_medico");
 		query.setParameter("id_medico", id_medico);
 		return query.getResultList();
@@ -47,13 +46,17 @@ public class EsameDao extends AbstractDao<Esame> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Esame> findEsamyBydataVisita(Date dataVisita) {
+	public List<Esame> findEsamiByDataVisita(Date dataVisita) {
 		Query query = this.getEntityManager().createQuery("SELECT e FROM Esami e WHERE e.dataprenotazione = :dataVisita");
 		query.setParameter("dataVisita", dataVisita);
 		return query.getResultList();
 	}
 	
-	
-
+	@SuppressWarnings("unchecked")
+	public List<Esame> findEsamiByTipologiaEsame(Long tipologiaEsame) {
+		Query query = this.getEntityManager().createQuery("SELECT e FROM Esami e WHERE e.tipologiaesame = :tipologiaEsame");
+		query.setParameter("tipologiaEsame", tipologiaEsame);
+		return query.getResultList();
+	}
 	
 }
