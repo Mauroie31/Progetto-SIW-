@@ -18,6 +18,7 @@ public class UtenteDao extends AbstractDao<Utente> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Utente> findAll() {
-		return this.getEntityManager().createNamedQuery("Utente.findAll").getResultList();
+		Query query = this.getEntityManager().createQuery("SELECT u FROM Utenti u");
+		return query.getResultList();
 	}
 }

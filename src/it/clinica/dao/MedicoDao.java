@@ -31,9 +31,10 @@ public class MedicoDao extends AbstractDao<Medico> {
 		return (Medico) query.getSingleResult();		
 	}
 
-	public Medico findMedicoByTipologiaEsame(Long id_tipologiaEsame) {
+	@SuppressWarnings("unchecked")
+	public List<Medico> findMediciByTipologiaEsame(Long id_tipologiaEsame) {
 		Query query = this.getEntityManager().createQuery("SELECT m FROM Medici m JOIN TipologiaEsame t where t.id = :id_tipologiaEsame");
 		query.setParameter("id_tipologiaEsame", id_tipologiaEsame);
-		return (Medico) query.getSingleResult();
+		return query.getResultList();
 	}
 }
