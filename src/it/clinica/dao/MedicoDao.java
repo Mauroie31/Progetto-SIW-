@@ -1,4 +1,4 @@
-package it.clinica.persistence;
+package it.clinica.dao;
 
 import it.clinica.model.Medico;
 import java.util.List;
