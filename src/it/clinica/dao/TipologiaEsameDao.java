@@ -1,8 +1,10 @@
 package it.clinica.dao;
 
-import it.clinica.model.*;
-import java.util.*;
-import javax.persistence.EntityManager;
+import java.util.List;
+
+import javax.persistence.*;
+
+import it.clinica.model.TipologiaEsame;
 
 public class TipologiaEsameDao extends AbstractDao<TipologiaEsame> {
 
@@ -18,7 +20,13 @@ public class TipologiaEsameDao extends AbstractDao<TipologiaEsame> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<TipologiaEsame> findAll() {
-		return this.getEntityManager().createNamedQuery("TipologiaEsame.findAll").getResultList();
+		Query query = this.getEntityManager().createQuery("SELECT t FROM TipologieEsami t");
+		return query.getResultList();
 	}
 
+	public TipologiaEsame findTipologiaEsameByEsame(Long id_esame) {
+		Query query = this.getEntityManager().createQuery("SELECT t FROM TipologieEsami t JOIN Esami e WHERE e.id = :id_esame");
+		query.setParameter("id_esame", id_esame);
+		return (TipologiaEsame) query.getSingleResult();
+	}
 }

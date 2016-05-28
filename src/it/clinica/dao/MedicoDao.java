@@ -21,7 +21,7 @@ public class MedicoDao extends AbstractDao<Medico> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Medico> findAll() {
-		Query query = this.getEntityManager().createQuery("SELECT m FROM medici m");
+		Query query = this.getEntityManager().createQuery("SELECT m FROM Medici m");
 		return query.getResultList();
 	}
 
