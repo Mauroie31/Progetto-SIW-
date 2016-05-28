@@ -54,8 +54,8 @@ public class EsameDao extends AbstractDao<Esame> {
 	
 	@SuppressWarnings("unchecked")
 	public List<Esame> findEsamiByTipologiaEsame(Long tipologiaEsame) {
-		Query query = this.getEntityManager().createQuery("SELECT e FROM Esami e WHERE e.tipologiaesame = :tipologiaEsame");
-		query.setParameter("tipologiaEsame", tipologiaEsame);
+		Query query = this.getEntityManager().createQuery("SELECT e FROM Esami e JOIN TipologiaEsame t WHERE t.id = :id_tipologiaEsame");
+		query.setParameter("id_tipologiaEsame", tipologiaEsame);
 		return query.getResultList();
 	}
 	
