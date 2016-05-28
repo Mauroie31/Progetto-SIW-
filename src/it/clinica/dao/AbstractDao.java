@@ -1,4 +1,6 @@
-package it.clinica.persistence;
+package it.clinica.dao;
+
+import it.clinica.persistence.*;
 import java.util.*;
 import javax.persistence.*;
 
@@ -6,7 +8,7 @@ public abstract class AbstractDao<T> {
 	private EntityManager em;
 
 	public AbstractDao(EntityManager em) {
-		this.em = Factory.getInstance().createEntityManager();
+		this.em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 	}
 
 	public void save(T entity) {

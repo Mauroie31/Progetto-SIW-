@@ -1,6 +1,10 @@
 package it.clinica.model;
 
+import it.clinica.dao.*;
 import it.clinica.persistence.*;
+
+import java.util.List;
+
 import javax.persistence.*;
 
 public class Facade {
@@ -11,7 +15,7 @@ public class Facade {
 	}
 
 	public static EntityManager getEntityManager() {
-		EntityManager em = Factory.getInstance().createEntityManager();
+		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 		return em;
 	}
 
@@ -41,6 +45,12 @@ public class Facade {
 		TipologiaEsameDao tipologiaEsameDao = new TipologiaEsameDao(this.em);
 		tipologiaEsameDao.save(tipologiaEsame);
 		this.em.getTransaction().commit();
+	}
+	
+	//TODO
+	public List<Esame> getEsamiByPaziente(Long id_paziente) {
+		return null;
+		
 	}
 }
 
