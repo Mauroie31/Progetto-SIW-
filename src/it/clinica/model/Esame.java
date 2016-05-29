@@ -9,6 +9,7 @@ public class Esame {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+    @Column(nullable = false)
 	private String nome;
 	private String descrizione;
 	private Map<String, String> risultati;

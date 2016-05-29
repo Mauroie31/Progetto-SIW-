@@ -8,13 +8,20 @@
 		<class>it.clinica.model.Esame</class>
 		<class>it.clinica.model.Medico</class>
 		<class>it.clinica.model.TipologiaEsame</class>
+		<class>it.clinica.model.Paziente</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
 			<property name="javax.persistence.jdbc.password" value="postgres" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/clinica" />
 			<property name="eclipselink.ddl-generation" value="create-tables" />
-			<property name="eclipselink.ddl-generation.output-mode"	value="database" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="database" />
+			<!-- Hibernate properties -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 		</properties>
 	</persistence-unit>
 </persistence>
