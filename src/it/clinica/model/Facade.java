@@ -27,9 +27,13 @@ public class Facade {
 		utenteDao.save(utente);
 		this.em.getTransaction().commit();
 	}
-	 //TODO
-	public Utente findUtenteByEmail(Utente utente) {
-		return null;
+
+	public Utente findUtenteByEmail(String email) {
+		UtenteDao utenteDao = new UtenteDao(this.em);
+		this.em.getTransaction().begin();
+		Utente utente = utenteDao.findUtenteByEmail(email);
+		this.em.getTransaction().commit();
+		return utente;
 	}
 
 	//Metodi Esame
@@ -209,7 +213,7 @@ public class Facade {
 	}
 	
 	//todo
-	public void autentica (String email, String password) {
+	public void autentica(String email, String password) {
 		
 	}
 

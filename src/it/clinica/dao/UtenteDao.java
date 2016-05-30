@@ -1,7 +1,9 @@
 package it.clinica.dao;
 
 import java.util.*;
+
 import javax.persistence.*;
+
 import it.clinica.model.*;
 
 public class UtenteDao extends AbstractDao<Utente> {
@@ -22,8 +24,10 @@ public class UtenteDao extends AbstractDao<Utente> {
 		return query.getResultList();
 	}
 	
-	//TODO
-	public Utente findUtenteByEmail(String email) {
-		return null;
+
+	public Utente findUtenteByEmail(String email_utente) {
+		Query query = this.getEntityManager().createQuery("SELECT u FROM Utenti u JOIN where u.email = :email_utente");
+		query.setParameter("email_utente", email_utente);
+		return (Utente) query.getSingleResult();
 	}
 }
