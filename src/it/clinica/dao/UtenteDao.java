@@ -21,4 +21,9 @@ public class UtenteDao extends AbstractDao<Utente> {
 		Query query = this.getEntityManager().createQuery("SELECT u FROM Utenti u");
 		return query.getResultList();
 	}
+	
+	//TODO
+	public Utente findUtenteByEmail(String email) {
+		return null;
+	}
 }

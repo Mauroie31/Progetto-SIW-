@@ -10,28 +10,18 @@ import javax.persistence.Table;
 @Table(name = "Pazienti")
 public class Paziente extends Utente {
 	private String indirizzo;
-	private String email;
 	private String ruolo;
 	@OneToMany
 	private Map<Long, Esame> esami;
 
 	public Paziente() {
 		this.ruolo = "user";
-	}
-
-	
-	
+	}	
 	public String getIndirizzo() {
 		return indirizzo;
 	}
 	public void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getRuolo() {
 		return ruolo;

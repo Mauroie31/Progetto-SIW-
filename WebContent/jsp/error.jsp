@@ -4,12 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Index</title>
-<link href=”bootstrap/css/bootstrap.min.css” rel=”stylesheet”
-	type=”text/css” />
-<script type=”text/javascript” src=”bootstrap/js/bootstrap.min.js”></script>
+<title>Error</title>
 </head>
 <body>
+	<br>
+	<br>
+	<br>
+	<h1 align="center">C'� stato un errore nel sistema:</h1>
+	    <p align="center">username o password errati</p>
+	
+
+	<br>
+	<br>
+	<p align="center">
+		<A HREF="paginaBenvenuto.jsp" class="classname"> Torna alla HOME </A>
+	</p>
 
 </body>
 </html>
