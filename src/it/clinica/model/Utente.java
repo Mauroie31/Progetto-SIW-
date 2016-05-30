@@ -52,4 +52,12 @@ public abstract class Utente {
 		this.ruolo = ruolo;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 }

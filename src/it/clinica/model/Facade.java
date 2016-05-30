@@ -212,8 +212,20 @@ public class Facade {
 		this.em.getTransaction().commit();
 	}
 	
-	//todo
-	public void autentica(String email, String password) {
+
+	public Utente autentica(String email, String password) {
+		Utente utente = null;
+		UtenteDao utenteDao = new UtenteDao(this.em);
+		
+		try {
+			Utente temp;
+			temp = utenteDao.findUtenteByEmail(email);
+			if(temp != null && temp.getPassword()!= null && temp.getPassword().equals(password))
+			utente=temp;
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+		}
+		return utente;
 		
 	}
 
