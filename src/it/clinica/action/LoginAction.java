@@ -20,7 +20,6 @@ public class LoginAction {
 			session.setAttribute("utente", utente);
 			return "OK";
 		} else
-			return "KO";
-		
+			return "KO";		
 	}
 }
