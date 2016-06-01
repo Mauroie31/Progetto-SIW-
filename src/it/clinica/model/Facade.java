@@ -5,10 +5,14 @@ import it.clinica.persistence.*;
 
 import java.sql.Date;
 import java.util.List;
+import javax.ejb.*;
+
 
 import javax.persistence.*;
 
+@Stateless(name="facade")
 public class Facade {
+	@PersistenceContext(unitName="unit-clinica")
 	private EntityManager em;
 
 	public Facade() {
@@ -179,7 +183,7 @@ public class Facade {
 		utenteDao.save(paziente);
 		this.em.getTransaction().commit();
 	}
-	
+
 	public Paziente findPaziente(Long id_paziente) {
 		PazienteDao pazienteDao = new PazienteDao(this.em);
 		this.em.getTransaction().begin();
@@ -203,7 +207,7 @@ public class Facade {
 		this.em.getTransaction().commit();
 		return paziente;
 	}
-	
+
 	public void setEsameToPaziente(Paziente paziente, Long idEsame, Esame esame) {
 		paziente.getEsami().put(idEsame, esame);
 		PazienteDao dao = new PazienteDao(this.em);
@@ -211,22 +215,22 @@ public class Facade {
 		dao.update(paziente);
 		this.em.getTransaction().commit();
 	}
-	
+
 
 	public Utente autentica(String email, String password) {
 		Utente utente = null;
 		UtenteDao utenteDao = new UtenteDao(this.em);
-		
+
 		try {
 			Utente temp;
 			temp = utenteDao.findUtenteByEmail(email);
 			if(temp != null && temp.getPassword()!= null && temp.getPassword().equals(password))
-			utente=temp;
+				utente=temp;
 		} catch (PersistenceException e) {
 			e.printStackTrace();
 		}
 		return utente;
-		
+
 	}
 
 }
