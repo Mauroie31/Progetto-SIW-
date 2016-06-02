@@ -5,9 +5,7 @@ import it.clinica.persistence.*;
 
 import java.sql.Date;
 import java.util.List;
-import javax.ejb.*;
-
-
+import javax.ejb.Stateless;
 import javax.persistence.*;
 
 @Stateless(name="facade")
