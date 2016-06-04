@@ -27,7 +27,7 @@ public class Autentica extends HttpServlet {
 		LoginAction login = new LoginAction();
 		String esito = login.esegui(request);
 		if(esito.equals("OK"))
-			prossimaPagina= "/risorsaProtetta.jsp"; //TODO
+			prossimaPagina= "/risorsaProtetta.jsp";
 		ServletContext application = getServletContext();
 		RequestDispatcher rd = application.getRequestDispatcher(prossimaPagina);
 		rd.forward(request, response);	

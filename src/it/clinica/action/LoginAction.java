@@ -5,21 +5,23 @@ import javax.servlet.http.*;
 import it.clinica.model.Facade;
 import it.clinica.model.Utente;
 
-public class LoginAction {
+public class LoginAction extends Action {
 	
 	public LoginAction() {
 	}
 	
 	public String esegui(HttpServletRequest request) throws ServletException{
-		Facade authservice = new Facade();
+		Facade facade = new Facade();
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		Utente utente = authservice.autentica(email, password);
+		Utente utente = facade.autentica(email, password);
+		String esito = "OK";
 		if(utente !=null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("utente", utente);
-			return "OK";
+			return esito;
 		} else
-			return "KO";		
+			esito ="KO";
+			return esito;
 	}
 }
