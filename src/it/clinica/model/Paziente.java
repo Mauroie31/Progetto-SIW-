@@ -36,4 +36,13 @@ public class Paziente extends Utente {
 	public void setEsami(Map<Long, Esame> esami) {
 		this.esami = esami;
 	}
+	
+	public Esame getEsame(Long id) {
+		return this.esami.get(id);
+	}
+	
+	public Map<String, String> getRisultatiByEsame(Esame esame) {
+		return esame.getRisultati();
+		
+	}
 }

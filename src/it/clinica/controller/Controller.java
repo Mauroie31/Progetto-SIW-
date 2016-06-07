@@ -3,6 +3,9 @@ package it.clinica.controller;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,23 +14,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.clinica.action.Action;
+import it.clinica.model.Facade;
 
+@ManagedBean
+@RequestScoped
+@EJB(name = "facade", beanInterface = Facade.class) 
 public class Controller extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private Map<String, String> esito2pagina;
 	private Map<String, String> comando2action;
-/*
-	private EntityManager em;
-
-	public Controller() {
-		this.em = getEntityManager();
-	}
-	
-	public static EntityManager getEntityManager() {
-		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-		return em;
-	}
-	*/
+	@EJB(name = "facade")
+	private Facade facade;
 
 	@SuppressWarnings("unused")
 	private String leggiComando(String servletPath) {

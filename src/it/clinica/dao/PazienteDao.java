@@ -31,4 +31,5 @@ public class PazienteDao extends AbstractDao<Paziente> {
 		return (Paziente) query.getSingleResult();		
 	}
 
+
 }

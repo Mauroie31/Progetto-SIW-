@@ -12,7 +12,7 @@ public class Esame {
     @Column(nullable = false)
 	private String nome;
 	private String descrizione;
-	private Map<String, String> risultati;
+	private List<Risultati> risultati;
 	private Date dataPrenotazione;
 	private Date dataVisita;
 	@OneToOne
@@ -48,11 +48,19 @@ public class Esame {
 	public void setTipologia(TipologiaEsame tipologiaEsame) {
 		this.tipologiaEsame = tipologiaEsame;
 	}
-	public Map<String, String> getRisultati() {
+
+	
+	public List<Risultati> getRisultati() {
 		return risultati;
 	}
-	public void setRisultati(Map<String, String> risultati) {
+	public void setRisultati(List<Risultati> risultati) {
 		this.risultati = risultati;
+	}
+	public TipologiaEsame getTipologiaEsame() {
+		return tipologiaEsame;
+	}
+	public void setTipologiaEsame(TipologiaEsame tipologiaEsame) {
+		this.tipologiaEsame = tipologiaEsame;
 	}
 	public Date getDataPrenotazione() {
 		return dataPrenotazione;

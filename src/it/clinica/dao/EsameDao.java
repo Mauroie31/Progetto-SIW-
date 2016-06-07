@@ -59,4 +59,6 @@ public class EsameDao extends AbstractDao<Esame> {
 		return query.getResultList();
 	}
 	
+	
+	
 }
