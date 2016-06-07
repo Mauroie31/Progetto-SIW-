@@ -213,7 +213,22 @@ public class Facade {
 		dao.update(paziente);
 		this.em.getTransaction().commit();
 	}
-
+	//Risultati
+	public void inserisciRisultati(Risultati risultati) {
+		this.em.getTransaction().begin();
+		RisultatiDao dao = new RisultatiDao(this.em);
+		dao.save(risultati);
+		this.em.getTransaction().commit();
+	}
+	
+	
+	public List<Risultati> getRisultatiByEsame(Long id_esame) {
+		RisultatiDao dao = new RisultatiDao(this.em);
+		this.em.getTransaction().begin();
+		List<Risultati> risultati = dao.findRisultatiByEsame(id_esame);
+		this.em.getTransaction().commit();
+		return risultati;
+	}
 
 	public Utente autentica(String email, String password) {
 		Utente utente = null;

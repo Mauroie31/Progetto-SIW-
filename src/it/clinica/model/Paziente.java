@@ -1,5 +1,6 @@
 package it.clinica.model;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.Entity;
@@ -35,5 +36,14 @@ public class Paziente extends Utente {
 
 	public void setEsami(Map<Long, Esame> esami) {
 		this.esami = esami;
+	}
+	
+	public Esame getEsame(Long id) {
+		return this.esami.get(id);
+	}
+	
+	public List<Risultati> getRisultatiByEsame(Esame esame) {
+		return esame.getRisultati();
+		
 	}
 }
