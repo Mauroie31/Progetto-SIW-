@@ -6,14 +6,14 @@ import javax.faces.bean.RequestScoped;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 
-import it.clinica.model.Facade;
+import it.clinica.facade.Facade;
 
 @ManagedBean
 @RequestScoped
 @EJB(name = "facade", beanInterface = Facade.class) 
 public abstract class Action {
 	@EJB(name = "facade")
-	private Facade facade;
+	public Facade facade;
 
 	public abstract String esegui(HttpServletRequest request) throws ServletException; {
 	}

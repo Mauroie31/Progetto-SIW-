@@ -1,6 +1,12 @@
-package it.clinica.model;
+package it.clinica.facade;
 
 import it.clinica.dao.*;
+import it.clinica.model.Esame;
+import it.clinica.model.Medico;
+import it.clinica.model.Paziente;
+import it.clinica.model.Risultati;
+import it.clinica.model.TipologiaEsame;
+import it.clinica.model.Utente;
 import it.clinica.persistence.*;
 
 import java.sql.Date;

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.clinica.action.Action;
-import it.clinica.model.Facade;
+import it.clinica.facade.Facade;
 
 @ManagedBean
 @RequestScoped

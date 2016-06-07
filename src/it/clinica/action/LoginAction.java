@@ -2,7 +2,7 @@ package it.clinica.action;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import it.clinica.model.Facade;
+import it.clinica.facade.Facade;
 import it.clinica.model.Utente;
 
 public class LoginAction extends Action {
