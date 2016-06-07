@@ -3,7 +3,6 @@ package it.clinica.controller;
 import java.io.IOException;
 import java.util.Map;
 
-import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,12 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.clinica.action.Action;
-import it.clinica.persistence.EntityManagerFactorySingleton;
 
 public class Controller extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private Map<String, String> esito2pagina;
 	private Map<String, String> comando2action;
+/*
 	private EntityManager em;
 
 	public Controller() {
@@ -28,6 +27,7 @@ public class Controller extends HttpServlet{
 		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 		return em;
 	}
+	*/
 
 	@SuppressWarnings("unused")
 	private String leggiComando(String servletPath) {
