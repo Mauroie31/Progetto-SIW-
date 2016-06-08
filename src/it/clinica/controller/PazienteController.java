@@ -19,6 +19,8 @@ public class PazienteController {
 	private String ruolo;
 	private Map<Long, Esame> esami;
 	
+	//caso d'uso UC3
+	
 	
 	//Getters and Setters
 	public PazienteFacade getPazienteFacade() {

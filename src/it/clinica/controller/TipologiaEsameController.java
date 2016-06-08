@@ -28,15 +28,18 @@ public class TipologiaEsameController {
 	private Map<String, String> prerequisiti;
 	private Map<Long, Esame> esami;
 	
+	//caso d'uso UC1
 	public List<TipologiaEsame> elencoTipologieEsame() {
 		return this.tipologiaEsameFacade.findAllTipologieEsami();
 	}
 	
-	public String dettagliTipologiaEsame(TipologiaEsame tipologiaEsame) {
+	public String dettagliTipologiaEsame(Long id_tipologia) {
+		TipologiaEsame tipologiaEsame = tipologiaEsameFacade.findTipologiaEsame(id_tipologia);
 		return tipologiaEsame.getDescrizione();
 	}
+	//end UC1
 	
-	//Getter and Setter
+
 	public void setTipologiaEsameFacade(TipologiaEsameFacade tipologiaEsameFacade) {
 		this.tipologiaEsameFacade = tipologiaEsameFacade;
 	}

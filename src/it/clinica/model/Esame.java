@@ -12,6 +12,7 @@ public class Esame {
     @Column(nullable = false)
 	private String nome;
 	private String descrizione;
+	@OneToMany
 	private List<Risultati> risultati;
 	private Date dataPrenotazione;
 	private Date dataVisita;
@@ -49,7 +50,7 @@ public class Esame {
 		this.tipologiaEsame = tipologiaEsame;
 	}
 
-	
+
 	public List<Risultati> getRisultati() {
 		return risultati;
 	}
@@ -86,4 +87,5 @@ public class Esame {
 	public void setMedico(Medico medico) {
 		this.medico = medico;
 	}
+
 }

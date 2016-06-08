@@ -9,7 +9,11 @@ import javax.persistence.PersistenceContext;
 
 import it.clinica.dao.EsameDao;
 import it.clinica.model.Esame;
+import it.clinica.model.Paziente;
+import it.clinica.model.Risultati;
+import it.clinica.model.TipologiaEsame;
 import it.clinica.persistence.EntityManagerFactorySingleton;
+import it.clinica.model.Medico;
 
 @Stateless(name="EsameFacade")
 public class EsameFacade {
@@ -23,6 +27,29 @@ public class EsameFacade {
 	public static EntityManager getEntityManager() {
 		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 		return em;
+	}
+	
+	public void UpdateEsame(Esame esame) {
+		this.em.getTransaction().begin();
+		EsameDao esameDao = new EsameDao(this.em);
+		esameDao.update(esame);
+		this.em.getTransaction().commit();
+	}
+	public Esame createEsame(Long id, String nome,
+			String descrizione, List<Risultati> risultati, java.util.Date dataPrenotazione, java.util.Date dataVisita,
+			TipologiaEsame tipologia, Paziente paziente, Medico medico) {
+		Esame esame = new Esame();
+		esame.setId(id);
+		esame.setNome(nome);
+		esame.setDescrizione(descrizione);
+		esame.setRisultati(risultati);
+		esame.setDataPrenotazione(dataPrenotazione);
+		esame.setDataVisita(dataVisita);
+		esame.setTipologia(tipologia);
+		esame.setPaziente(paziente);
+		esame.setMedico(medico);
+		this.em.persist(esame);
+		return esame;
 	}
 	
 	
@@ -88,5 +115,22 @@ public class EsameFacade {
 		this.em.getTransaction().commit();
 		return esami;
 	}
+
+	public void associaPazienteAdEsame(Paziente paziente, Esame esame) {
+		esame.setPaziente(paziente);
+		this.em.merge(esame);
+	}
+	
+	public void associaTipologiaEsameAdEsame(TipologiaEsame tipologia, Esame esame) {
+		esame.setTipologiaEsame(tipologia);
+		this.em.merge(esame);
+	}
+	
+	public void impostaDataPrenotazioneAdEsame(Esame esame, Date dataPrenotazione) {
+		esame.setDataPrenotazione(dataPrenotazione);
+		this.em.merge(esame);
+	}
+	
+	
 
 }
