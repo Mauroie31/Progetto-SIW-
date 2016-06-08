@@ -22,6 +22,11 @@ public class Esame {
 	private Paziente paziente;
 	@OneToOne
 	private Medico medico;
+	
+	public Esame() {
+		this.risultati = new ArrayList<>();
+		
+	}
 
 
 

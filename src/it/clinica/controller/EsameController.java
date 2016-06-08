@@ -125,7 +125,7 @@ public class EsameController {
 		return tipologia;
 	}
 	public void setTipologiaEsame(TipologiaEsame tipologiaEsame) {
-		this.tipologiaEsame = tipologia;
+		this.tipologia = tipologiaEsame;
 	}
 	public Paziente getPaziente() {
 		return paziente;
