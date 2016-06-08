@@ -3,6 +3,7 @@ package it.clinica.controller;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ManagedProperty;
 
 import it.clinica.facade.UtenteFacade;
 import it.clinica.model.Utente;
@@ -20,6 +21,9 @@ public class UtenteController {
 	private String email;
 	private String password;
 	private String ruolo;
+	
+	@ManagedProperty(value = "#{utenteManager}")
+	private UtenteManager session;
 
 	
 	public UtenteController() {
@@ -30,9 +34,11 @@ public class UtenteController {
 		utente = utenteFacade.autentica(utente.getEmail(), utente.getPassword());
 		if(utente!=null) {
 			if(utente.getRuolo() == "admin") {
+				this.session.login(utente);
 				return "/PortaleAdmin/portaleAdmin.jsp";
 			}
 			if(utente.getRuolo() == "user") {
+				this.session.login(utente);
 				return "/PortalePaziente/portalePaziente.jsp";
 			}
 		}
