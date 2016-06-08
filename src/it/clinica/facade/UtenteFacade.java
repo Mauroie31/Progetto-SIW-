@@ -3,6 +3,7 @@ package it.clinica.facade;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 
 import it.clinica.dao.UtenteDao;
 import it.clinica.model.Utente;
@@ -35,6 +36,22 @@ public class UtenteFacade {
 		this.em.getTransaction().begin();
 		Utente utente = utenteDao.findUtenteByEmail(email);
 		this.em.getTransaction().commit();
+		return utente;
+
+	}
+	
+	public Utente autentica(String email, String password) {
+		Utente utente = null;
+		UtenteDao utenteDao = new UtenteDao(this.em);
+
+		try {
+			Utente temp;
+			temp = utenteDao.findUtenteByEmail(email);
+			if(temp != null && temp.getPassword()!= null && temp.getPassword().equals(password))
+				utente=temp;
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+		}
 		return utente;
 
 	}
