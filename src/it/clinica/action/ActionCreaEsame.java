@@ -25,7 +25,7 @@ public class ActionCreaEsame extends Action {
 		Paziente paziente = (Paziente) session.getAttribute("paziente");
 		esame.setPaziente(paziente);
 		TipologiaEsame tipologiaEsame = new TipologiaEsame();
-		esame.setTipologia(tipologiaEsame);
+		esame.setTipologiaEsame(tipologiaEsame);
 		Date dataPrenotazione = new Date();
 		esame.setDataPrenotazione(dataPrenotazione);
 		Date dataVisita = (Date) session.getAttribute("dataVisita");

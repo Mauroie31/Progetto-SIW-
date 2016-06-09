@@ -4,25 +4,35 @@ import java.util.*;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "TipologieEsami")
+@NamedQuery(name = "findAllTipologieEsami", query = "SELECT t FROM TipologieEsami t")
 public class TipologiaEsame {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
     @Column(nullable = false)
 	private String nome;
 	private String descrizione;
 	private double costo;
-	private Set<String> indicatoriEsami;
 	private Map<String, String> prerequisiti;
-	@OneToMany
-	private Map<Long, Esame> esami;
+	@OneToMany(mappedBy="TipologieEsami")
+	@JoinColumn(name="esami_id")
+	private List<Esame> esami;
+	private List<String> risultati;
 
 
 
-	public Map<Long, Esame> getEsami() {
+	public List<String> getRisultati() {
+		return risultati;
+	}
+	public void setRisultati(List<String> risultati) {
+		this.risultati = risultati;
+	}
+	public List<Esame> getEsami() {
 		return esami;
 	}
-	public void setEsami(Map<Long, Esame> esami) {
+	public void setEsami(List<Esame> esami) {
 		this.esami = esami;
 	}
 	public Long getId() {
@@ -48,12 +58,6 @@ public class TipologiaEsame {
 	}
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
-	}
-	public Set<String> getIndicatoriEsami() {
-		return indicatoriEsami;
-	}
-	public void setIndicatoriEsami(Set<String> indicatoriEsami) {
-		this.indicatoriEsami = indicatoriEsami;
 	}
 	public Map<String, String> getPrerequisiti() {
 		return prerequisiti;

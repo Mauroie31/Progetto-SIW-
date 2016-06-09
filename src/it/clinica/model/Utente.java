@@ -3,18 +3,20 @@ package it.clinica.model;
 import javax.persistence.*;
 @Entity
 @Table(name = "Utenti")
+@NamedQuery(name = "findAllUtenti", query = "SELECT u FROM Utenti u")
 public abstract class Utente {
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	@Column(unique = true, nullable = false)  
-	private String username;
     @Column(nullable = false)
 	private String nome;
     @Column(nullable = false)
 	private String cognome;
+    @Column(unique=true, nullable=false)
 	private String email;
+    @Column(nullable = false)
 	private String password;
+    @Column(nullable = false)
 	private String ruolo;
 
 	public Utente() {

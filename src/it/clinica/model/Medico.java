@@ -1,22 +1,25 @@
 package it.clinica.model;
 
 import java.util.*;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Medici")
+@NamedQuery(name = "findAllMedici", query = "SELECT m FROM Medici m")
 public class Medico {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
     @Column(nullable = false)
 	private String nome;
     @Column(nullable = false)
 	private String cognome;
-	@OneToOne
+	@ManyToOne
 	private TipologiaEsame specializzazione;
-	@OneToMany
-	private Map<Long, Esame> esami;
+	@OneToMany(mappedBy="Medici")
+	@JoinColumn(name="esami_id")
+	private List<Esame> esami;
 
 
 	public Long getId() {
@@ -43,10 +46,10 @@ public class Medico {
 	public void setSpecializzazione(TipologiaEsame specializzazione) {
 		this.specializzazione = specializzazione;
 	}
-	public Map<Long, Esame> getEsami() {
+	public List<Esame> getEsami() {
 		return esami;
 	}
-	public void setEsami(Map<Long, Esame> esami) {
+	public void setEsami(List<Esame> esami) {
 		this.esami = esami;
 	}
 }

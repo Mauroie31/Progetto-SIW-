@@ -12,6 +12,7 @@
 		<class>it.clinica.model.TipologiaEsame</class>
 		<class>it.clinica.model.Paziente</class>
 		<class>it.clinica.model.Amministratore</class>
+		<class>it.clinica.model.Risultati</class>
 		<properties>
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
 		</properties>

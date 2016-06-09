@@ -1,6 +1,11 @@
-package it.clinica.model;
+package it.clinica.facade;
 
 import it.clinica.dao.*;
+import it.clinica.model.Esame;
+import it.clinica.model.Medico;
+import it.clinica.model.Paziente;
+import it.clinica.model.TipologiaEsame;
+import it.clinica.model.Utente;
 import it.clinica.persistence.*;
 
 import java.sql.Date;
@@ -206,28 +211,12 @@ public class Facade {
 		return paziente;
 	}
 
-	public void setEsameToPaziente(Paziente paziente, Long idEsame, Esame esame) {
-		paziente.getEsami().put(idEsame, esame);
+	public void setEsameToPaziente(Paziente paziente, Esame esame) {
+		paziente.getEsami().add(esame);
 		PazienteDao dao = new PazienteDao(this.em);
 		this.em.getTransaction().begin();
 		dao.update(paziente);
 		this.em.getTransaction().commit();
-	}
-	//Risultati
-	public void inserisciRisultati(Risultati risultati) {
-		this.em.getTransaction().begin();
-		RisultatiDao dao = new RisultatiDao(this.em);
-		dao.save(risultati);
-		this.em.getTransaction().commit();
-	}
-	
-	
-	public List<Risultati> getRisultatiByEsame(Long id_esame) {
-		RisultatiDao dao = new RisultatiDao(this.em);
-		this.em.getTransaction().begin();
-		List<Risultati> risultati = dao.findRisultatiByEsame(id_esame);
-		this.em.getTransaction().commit();
-		return risultati;
 	}
 
 	public Utente autentica(String email, String password) {

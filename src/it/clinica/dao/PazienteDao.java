@@ -30,6 +30,4 @@ public class PazienteDao extends AbstractDao<Paziente> {
 		query.setParameter("id_esame", id_esame);
 		return (Paziente) query.getSingleResult();		
 	}
-
-
 }
