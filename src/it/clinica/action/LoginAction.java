@@ -10,6 +10,7 @@ public class LoginAction extends Action {
 	public LoginAction() {
 	}
 	
+	@Override
 	public String esegui(HttpServletRequest request) throws ServletException{
 		Facade facade = new Facade();
 		String email = request.getParameter("email");

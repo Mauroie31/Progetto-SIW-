@@ -4,28 +4,40 @@ import java.util.*;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "TipologieEsami")
+@NamedQuery(name = "findAllTipologieEsami", query = "SELECT t FROM TipologieEsami t")
 public class TipologiaEsame {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
     @Column(nullable = false)
 	private String nome;
 	private String descrizione;
 	private double costo;
-	private Set<String> indicatoriEsami;
-	private Map<String, String> prerequisiti;
+	@ManyToMany
+	private List<Prerequisito> prerequisiti;
+	@ManyToMany
+	private List<RisultatoProposto> risultatiProposti;
+//	@OneToMany(mappedBy="TipologieEsami")
+//	@JoinColumn(name="esami_id")
+//	private List<Esame> esami;
 	
-	@OneToMany
-	private Map<Long, Esame> esami;
+	public TipologiaEsame() {}
 
 
-
-	public Map<Long, Esame> getEsami() {
-		return esami;
+	public List<RisultatoProposto> getRisultatiProposti() {
+		return this.risultatiProposti;
 	}
-	public void setEsami(Map<Long, Esame> esami) {
-		this.esami = esami;
+	public void setRisultatiProposti(List<RisultatoProposto> risultatiProposti) {
+		this.risultatiProposti = risultatiProposti;
 	}
+//	public List<Esame> getEsami() {
+//		return esami;
+//	}
+//	public void setEsami(List<Esame> esami) {
+//		this.esami = esami;
+//	}
 	public Long getId() {
 		return id;
 	}
@@ -50,16 +62,10 @@ public class TipologiaEsame {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public Set<String> getIndicatoriEsami() {
-		return indicatoriEsami;
+	public List<Prerequisito> getPrerequisiti() {
+		return this.prerequisiti;
 	}
-	public void setIndicatoriEsami(Set<String> indicatoriEsami) {
-		this.indicatoriEsami = indicatoriEsami;
-	}
-	public Map<String, String> getPrerequisiti() {
-		return prerequisiti;
-	}
-	public void setPrerequisiti(Map<String, String> prerequisiti) {
+	public void setPrerequisiti(List<Prerequisito> prerequisiti) {
 		this.prerequisiti = prerequisiti;
 	}
 }

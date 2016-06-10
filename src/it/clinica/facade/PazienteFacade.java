@@ -59,8 +59,8 @@ public class PazienteFacade {
 		return paziente;
 	}
 
-	public void setEsameToPaziente(Paziente paziente, Long idEsame, Esame esame) {
-		paziente.getEsami().put(idEsame, esame);
+	public void setEsameToPaziente(Paziente paziente, Esame esame) {
+		paziente.getEsami().add(esame);
 		PazienteDao dao = new PazienteDao(this.em);
 		this.em.getTransaction().begin();
 		dao.update(paziente);

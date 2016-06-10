@@ -3,21 +3,34 @@ package it.clinica.model;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Pazienti")
+@NamedQuery(name = "findAllPazienti", query = "SELECT p FROM Pazienti p")
 public class Paziente extends Utente {
 	private String indirizzo;
+	@Column(nullable = false)
 	private String ruolo;
-	@OneToMany
-	private Map<Long, Esame> esami;
+	@OneToMany(mappedBy="Pazienti")
+	@JoinColumn(name = "esami_id")
+	private List<Esame> esami;
 
 	public Paziente() {
 		this.ruolo = "user";
 	}	
+	
+	
+	public Map<String, String> getRisultatiEsame(Esame esame) {
+		return esame.getRisultati();		
+	}
+	
+	
 	public String getIndirizzo() {
 		return indirizzo;
 	}
@@ -30,20 +43,10 @@ public class Paziente extends Utente {
 	public void setRuolo(String ruolo) {
 		this.ruolo = ruolo;
 	}
-	public Map<Long, Esame> getEsami() {
+	public List<Esame> getEsami() {
 		return esami;
 	}
-
-	public void setEsami(Map<Long, Esame> esami) {
+	public void setEsami(List<Esame> esami) {
 		this.esami = esami;
-	}
-	
-	public Esame getEsame(Long id) {
-		return this.esami.get(id);
-	}
-	
-	public List<Risultati> getRisultatiByEsame(Esame esame) {
-		return esame.getRisultati();
-		
 	}
 }

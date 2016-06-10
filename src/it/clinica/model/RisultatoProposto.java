@@ -2,28 +2,29 @@ package it.clinica.model;
 
 
 import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
+@Table(name = "RisultatiProposti")
 @NamedQuery(name = "trovaTuttiIRisultatiProposti", query = "SELECT r FROM RisultatiProposti r")
-public class RisultatiProposti {
-	
+public class RisultatoProposto {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long codice;
 	@Column(nullable=false)
 	private String nome;
-	
 	@ManyToMany (mappedBy="risultatiProposti")
 	private List<TipologiaEsame> tipologieEsamePerQuestiRisultatiProposti;
-	
-	public RisultatiProposti(){}
-	
-	public RisultatiProposti(Long codice, String nome) {
+
+	public RisultatoProposto(){}
+
+	public RisultatoProposto(Long codice, String nome) {
 		this.codice = codice;
 		this.nome = nome;
 	}
-	
+
 	public Long getCodice() {
 		return codice;
 	}
@@ -36,6 +37,6 @@ public class RisultatiProposti {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 
 }

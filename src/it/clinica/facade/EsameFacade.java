@@ -1,7 +1,7 @@
 package it.clinica.facade;
 
 import java.sql.Date;
-import java.util.List;
+import java.util.*;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -10,7 +10,6 @@ import javax.persistence.PersistenceContext;
 import it.clinica.dao.EsameDao;
 import it.clinica.model.Esame;
 import it.clinica.model.Paziente;
-import it.clinica.model.Risultati;
 import it.clinica.model.TipologiaEsame;
 import it.clinica.persistence.EntityManagerFactorySingleton;
 import it.clinica.model.Medico;
@@ -35,17 +34,16 @@ public class EsameFacade {
 		esameDao.update(esame);
 		this.em.getTransaction().commit();
 	}
-	public Esame createEsame(Long id, String nome,
-			String descrizione, List<Risultati> risultati, java.util.Date dataPrenotazione, java.util.Date dataVisita,
-			TipologiaEsame tipologia, Paziente paziente, Medico medico) {
+	public Esame createEsame(String nome,
+			String descrizione, Map<String, String> risultati, java.util.Date dataPrenotazione, java.util.Date dataVisita,
+			TipologiaEsame tipologiaEsame, Paziente paziente, Medico medico) {
 		Esame esame = new Esame();
-		esame.setId(id);
-		esame.setNome(nome);
+		esame.setNome();
 		esame.setDescrizione(descrizione);
 		esame.setRisultati(risultati);
 		esame.setDataPrenotazione(dataPrenotazione);
 		esame.setDataVisita(dataVisita);
-		esame.setTipologia(tipologia);
+		esame.setTipologiaEsame(tipologiaEsame);
 		esame.setPaziente(paziente);
 		esame.setMedico(medico);
 		this.em.persist(esame);

@@ -5,31 +5,27 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Esami")
+@NamedQuery(name = "findAllEsami", query = "SELECT e FROM Esami e")
 public class Esame {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
     @Column(nullable = false)
 	private String nome;
 	private String descrizione;
-	@OneToMany
-	private List<Risultati> risultati;
+	private Map<String, String> risultati;
+	@Temporal(TemporalType.DATE)
 	private Date dataPrenotazione;
+	@Temporal(TemporalType.DATE)
 	private Date dataVisita;
-	@OneToOne
+	@ManyToOne
 	private TipologiaEsame tipologiaEsame;
-	@OneToOne
+	@ManyToOne
 	private Paziente paziente;
-	@OneToOne
+	@ManyToOne
 	private Medico medico;
 	
-	public Esame() {
-		this.risultati = new ArrayList<>();
-		
-	}
-
-
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -39,8 +35,8 @@ public class Esame {
 	public String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome() {
+		this.nome = this.tipologiaEsame.getNome() + "di" + this.paziente.getNome() + this.paziente.getCognome();
 	}
 	public String getDescrizione() {
 		return descrizione;
@@ -48,18 +44,10 @@ public class Esame {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public TipologiaEsame getTipologia() {
-		return tipologiaEsame;
+	public Map<String, String> getRisultati() {
+		return this.risultati;
 	}
-	public void setTipologia(TipologiaEsame tipologiaEsame) {
-		this.tipologiaEsame = tipologiaEsame;
-	}
-
-
-	public List<Risultati> getRisultati() {
-		return risultati;
-	}
-	public void setRisultati(List<Risultati> risultati) {
+	public void setRisultati(Map<String, String> risultati) {		
 		this.risultati = risultati;
 	}
 	public TipologiaEsame getTipologiaEsame() {
