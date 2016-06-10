@@ -26,7 +26,7 @@ public class EsameController {
 	@EJB(name = "tipolgiaEsameFacade")
 	private TipologiaEsameFacade tipologiaEsamefacade;
 	
-	private Long id;
+	private Long id;// da togliere
 	private String nome;
 	private String descrizione;
 	private Map<String, String> risultati;
