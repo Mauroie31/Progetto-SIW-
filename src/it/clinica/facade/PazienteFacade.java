@@ -12,7 +12,7 @@ import it.clinica.model.Esame;
 import it.clinica.model.Paziente;
 import it.clinica.persistence.EntityManagerFactorySingleton;
 
-@Stateless(name="PazienteFacade")
+@Stateless(name="pazienteFacade")
 public class PazienteFacade {
 	
 	@PersistenceContext(unitName="unit-clinica")

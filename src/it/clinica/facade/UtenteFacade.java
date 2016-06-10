@@ -9,7 +9,7 @@ import it.clinica.dao.UtenteDao;
 import it.clinica.model.Utente;
 import it.clinica.persistence.EntityManagerFactorySingleton;
 
-@Stateless(name="UtenteFacade")
+@Stateless(name="utenteFacade")
 public class UtenteFacade {
 
 	@PersistenceContext(unitName="unit-clinica")

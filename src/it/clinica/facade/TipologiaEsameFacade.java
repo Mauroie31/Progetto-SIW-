@@ -10,7 +10,7 @@ import it.clinica.dao.TipologiaEsameDao;
 import it.clinica.model.TipologiaEsame;
 import it.clinica.persistence.EntityManagerFactorySingleton;
 
-@Stateless(name="TipologiaEsameFacade")
+@Stateless(name="tipologiaEsameFacade")
 public class TipologiaEsameFacade {
 	
 	@PersistenceContext(unitName="unit-clinica")
