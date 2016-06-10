@@ -1,3 +1,5 @@
 1) Problema setRisultati<LIST>
 3) aggiustare i metodi dei controller //DONE
 4) Come gestire l'esame da Creare? Caso d'uso Uc2 -> EsameController //DONE
+To Do:
+5)creare i metodi Insert nel TipologiaEsameDao

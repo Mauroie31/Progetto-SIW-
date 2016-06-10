@@ -1,9 +1,6 @@
 package it.clinica.controller;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import java.util.*;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -17,15 +14,21 @@ import it.clinica.model.TipologiaEsame;
 @RequestScoped
 @EJB(name = "tipologiaEsameFacade", beanInterface = TipologiaEsameFacade.class) 
 public class TipologiaEsameController {
+	
 	@EJB(name = "tipologiaEsameFacade")
+	
 	private TipologiaEsameFacade tipologiaEsameFacade;
 	
 	private Long id;
 	private String nome;
 	private String descrizione;
 	private double costo;
+	
+	
 	private Set<String> indicatoriEsami;
+	
 	private Map<String, String> prerequisiti;
+	
 	private Map<Long, Esame> esami;
 	
 	//caso d'uso UC1
@@ -39,7 +42,7 @@ public class TipologiaEsameController {
 	}
 	//end UC1
 	
-
+	//Il settaggio di una tipologia esame non è richiesta nei casi d'uso
 	public void setTipologiaEsameFacade(TipologiaEsameFacade tipologiaEsameFacade) {
 		this.tipologiaEsameFacade = tipologiaEsameFacade;
 	}
@@ -68,6 +71,9 @@ public class TipologiaEsameController {
 	public void setCosto(double costo) {
 		this.costo = costo;
 	}
+	
+	
+	
 	public Set<String> getIndicatoriEsami() {
 		return indicatoriEsami;
 	}

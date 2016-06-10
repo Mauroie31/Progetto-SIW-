@@ -14,6 +14,7 @@ public class TipologiaEsame {
 	private double costo;
 	private Set<String> indicatoriEsami;
 	private Map<String, String> prerequisiti;
+	
 	@OneToMany
 	private Map<Long, Esame> esami;
 
