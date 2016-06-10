@@ -21,7 +21,6 @@ public class Medico {
 	@JoinColumn(name="esami_id")
 	private List<Esame> esami;
 
-
 	public Long getId() {
 		return id;
 	}

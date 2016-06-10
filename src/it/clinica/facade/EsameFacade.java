@@ -11,7 +11,6 @@ import it.clinica.dao.EsameDao;
 import it.clinica.model.Esame;
 import it.clinica.model.Paziente;
 import it.clinica.model.TipologiaEsame;
-import it.clinica.persistence.EntityManagerFactorySingleton;
 import it.clinica.model.Medico;
 
 @Stateless(name="EsameFacade")
@@ -19,13 +18,8 @@ public class EsameFacade {
 	@PersistenceContext(unitName="unit-clinica")
 	private EntityManager em;
 
-	public EsameFacade() {
-		this.em = getEntityManager();
-	}
-
-	public static EntityManager getEntityManager() {
-		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-		return em;
+	public EsameFacade(EntityManager em) {
+		this.em = em;
 	}
 	
 	public void UpdateEsame(Esame esame) {

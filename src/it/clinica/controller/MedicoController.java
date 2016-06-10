@@ -11,16 +11,20 @@ import it.clinica.facade.MedicoFacade;
 import it.clinica.model.Esame;
 import it.clinica.model.TipologiaEsame;
 
-@ManagedBean
+@ManagedBean(name="medicoController")
 @RequestScoped
-@EJB(name = "medicoFacade", beanInterface = MedicoFacade.class) 
 public class MedicoController {
+	@EJB(name="medicoFacade")
 	private MedicoFacade medicoFacade;
 	private Long id;
 	private String nome;
 	private String cognome;
 	private TipologiaEsame specializzazione;
 	private Map<Long, Esame> esami;
+	
+	public MedicoController() {
+		
+	}
 	
 	
 	

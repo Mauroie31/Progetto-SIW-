@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 
 import it.clinica.dao.PrerequisitoDao;
 import it.clinica.model.Prerequisito;
-import it.clinica.persistence.EntityManagerFactorySingleton;
 
 @Stateless(name="prerequisitoFacade")
 public class PrerequisitoFacade {
@@ -16,13 +15,8 @@ public class PrerequisitoFacade {
 	@PersistenceContext(unitName="unit-clinica")
 	private EntityManager em;
 
-	public PrerequisitoFacade() {
-		this.em = getEntityManager();
-	}
-
-	public static EntityManager getEntityManager() {
-		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-		return em;
+	public PrerequisitoFacade(EntityManager em) {
+		this.em = em;
 	}
 	
 	public Prerequisito findPrerequisito(Long id_prerequisito) {

@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 
 import it.clinica.dao.TipologiaEsameDao;
 import it.clinica.model.TipologiaEsame;
-import it.clinica.persistence.EntityManagerFactorySingleton;
 
 @Stateless(name="tipologiaEsameFacade")
 public class TipologiaEsameFacade {
@@ -16,17 +15,9 @@ public class TipologiaEsameFacade {
 	@PersistenceContext(unitName="unit-clinica")
 	private EntityManager em;
 
-	public TipologiaEsameFacade() {
-		this.em = getEntityManager();
-	}
-
-	public static EntityManager getEntityManager() {
-		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-		return em;
-	}
-	
-	
-	
+	public TipologiaEsameFacade(EntityManager em) {
+		this.em = em;
+	}	
 	
 	public void inserisciTipologiaEsame(TipologiaEsame tipologiaEsame) {
 		this.em.getTransaction().begin();

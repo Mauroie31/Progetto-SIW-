@@ -6,7 +6,6 @@ import javax.persistence.PersistenceContext;
 
 import it.clinica.dao.UtenteDao;
 import it.clinica.model.Utente;
-import it.clinica.persistence.EntityManagerFactorySingleton;
 
 @Stateless(name="amministratoreFacade")
 public class AmministratoreFacade {
@@ -14,13 +13,8 @@ public class AmministratoreFacade {
 	@PersistenceContext(unitName="unit-clinica")
 	private EntityManager em;
 
-	public AmministratoreFacade() {
-		this.em = getEntityManager();
-	}
-
-	public static EntityManager getEntityManager() {
-		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
-		return em;
+	public AmministratoreFacade(EntityManager em) {
+		this.em =em;
 	}
 	
 	public void inserisciUtente(Utente utente) {

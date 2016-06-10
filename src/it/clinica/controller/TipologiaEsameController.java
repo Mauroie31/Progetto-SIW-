@@ -10,9 +10,8 @@ import it.clinica.facade.*;
 import it.clinica.model.*;
 
 
-@ManagedBean
+@ManagedBean(name="tipologiaEsameController")
 @RequestScoped
-@EJB(name = "tipologiaEsameFacade", beanInterface = TipologiaEsameFacade.class) 
 public class TipologiaEsameController {
 	
 	@EJB(name = "tipologiaEsameFacade")
@@ -24,6 +23,12 @@ public class TipologiaEsameController {
 	private String nome;
 	private String descrizione;
 	private double costo;
+	
+	public TipologiaEsameController() {
+		
+	}
+	
+
 	
 
 	
@@ -45,7 +50,7 @@ public class TipologiaEsameController {
 	//caso d'uso uc4
 	
 	public String goToPagina() {
-		return "/portaleAdmin/inserisciTipologiaEsame.jsp";
+		return "login.jsp";
 	}
 
 	public List<Prerequisito> getPrerequisiti(){

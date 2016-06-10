@@ -15,9 +15,8 @@ import it.clinica.model.Medico;
 import it.clinica.model.Paziente;
 import it.clinica.model.TipologiaEsame;
 
-@ManagedBean
+@ManagedBean(name="esameController")
 @RequestScoped
-@EJB(name = "esameFacade", beanInterface = EsameFacade.class) 
 public class EsameController {
 	@EJB(name = "esameFacade")
 	private EsameFacade esameFacade;
@@ -25,6 +24,10 @@ public class EsameController {
 	private PazienteFacade pazienteFacade;
 	@EJB(name = "tipolgiaEsameFacade")
 	private TipologiaEsameFacade tipologiaEsamefacade;
+	
+	public EsameController() {
+		
+	}
 	
 	private Long id;// da togliere
 	private String nome;

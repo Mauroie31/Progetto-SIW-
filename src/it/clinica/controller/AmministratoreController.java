@@ -5,13 +5,18 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import it.clinica.facade.AmministratoreFacade;
 
-@ManagedBean
+@ManagedBean(name="amministratoreController")
 @RequestScoped
-@EJB(name = "amministratoreFacade", beanInterface = AmministratoreFacade.class) 
 public class AmministratoreController {
+
 	@EJB(name = "amministratoreFacade")
     private AmministratoreFacade amministratoreFacade;
 	private String ruolo;
+	
+	public AmministratoreController() {
+		
+	}
+	
 	public AmministratoreFacade getAmministratoreFacade() {
 		return amministratoreFacade;
 	}

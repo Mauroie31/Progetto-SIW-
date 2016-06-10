@@ -8,9 +8,8 @@ import javax.faces.bean.ManagedProperty;
 import it.clinica.facade.UtenteFacade;
 import it.clinica.model.Utente;
 
-@ManagedBean
+@ManagedBean(name="utenteController")
 @RequestScoped
-@EJB(name = "utenteFacade", beanInterface = UtenteFacade.class) 
 public class UtenteController {
 	@EJB(name = "utenteFacade")
 	private UtenteFacade utenteFacade;

@@ -8,15 +8,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Inizia Nuova Tipologia Esame</title>
 </head>
+<f:view>
 <body>
-	<form>
+	<h:form>
 		crea nuova tipologia esame
 
 		<div>
 			<h:commandButton value="invia"
-				action="#{TipologiaEsameController.pagina}" />
+				action="#{tipologiaEsameController.goToPagina()}" />
 		</div>
 
-	</form>
+	</h:form>
 </body>
+</f:view>
+
 </html>

@@ -9,15 +9,17 @@ import javax.faces.bean.RequestScoped;
 import it.clinica.facade.PazienteFacade;
 import it.clinica.model.Esame;
 
-@ManagedBean
+@ManagedBean(name="pazienteController")
 @RequestScoped
-@EJB(name = "pazienteFacade", beanInterface = PazienteFacade.class) 
 public class PazienteController {
 	@EJB(name = "pazienteFacade")
 	private PazienteFacade pazienteFacade;
 	private String indirizzo;
 	private String ruolo;
 	private Map<Long, Esame> esami;
+	
+	public PazienteController() {
+	}
 	
 	//caso d'uso UC3
 	
