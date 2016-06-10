@@ -14,7 +14,7 @@ import it.clinica.model.TipologiaEsame;
 import it.clinica.persistence.EntityManagerFactorySingleton;
 import it.clinica.model.Medico;
 
-@Stateless(name="esameFacade")
+@Stateless(name="EsameFacade")
 public class EsameFacade {
 	@PersistenceContext(unitName="unit-clinica")
 	private EntityManager em;
