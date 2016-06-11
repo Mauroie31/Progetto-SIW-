@@ -6,10 +6,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import it.clinica.dao.PrerequisitoDao;
-import it.clinica.dao.RisultatoDao;
-import it.clinica.model.Prerequisito;
-import it.clinica.model.Risultato;
+import it.clinica.dao.*;
+import it.clinica.model.*;
 
 @Stateless(name="risultatoFacade")
 public class RisultatoFacade {
