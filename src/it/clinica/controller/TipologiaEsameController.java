@@ -23,9 +23,7 @@ public class TipologiaEsameController {
 
 	private String nome;
 	private String descrizione;
-	private double costo;
-	private TipologiaEsame tipologiaDaInserire;
-	
+	private double costo;	
 	public TipologiaEsameController() {
 		
 	}
@@ -62,8 +60,10 @@ public class TipologiaEsameController {
 	}
 	
 	//TODO : inserimento boolean
-	public void registraTipologiaEsame() {
-		this.tipologiaEsameFacade.inserisciTipologiaEsame(tipologiaDaInserire);
+	public String creaTipologiaEsame() {
+		TipologiaEsame t= new TipologiaEsame(nome, descrizione, costo);
+		this.tipologiaEsameFacade.inserisciTipologiaEsame(t);
+		return "inserimentoTipologiaTerminato.jsp";
 	}
 	
 	
