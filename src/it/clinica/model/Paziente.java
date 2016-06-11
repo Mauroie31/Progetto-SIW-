@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Pazienti")
 @NamedQuery(name = "findAllPazienti", query = "SELECT p FROM Pazienti p")
-public class Paziente extends Utente {
+public class Paziente extends Utente  {
 	private String indirizzo;
 	@Column(nullable = false)
 	private String ruolo;
