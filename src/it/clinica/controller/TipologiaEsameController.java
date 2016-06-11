@@ -13,7 +13,7 @@ import it.clinica.model.*;
 @ManagedBean(name="tipologiaEsameController")
 @RequestScoped
 public class TipologiaEsameController {
-	
+
 	@EJB(name = "tipologiaEsameFacade")
 	private TipologiaEsameFacade tipologiaEsameFacade;
 	@EJB(name = "prerequisitoFacade")
@@ -25,32 +25,32 @@ public class TipologiaEsameController {
 	private String descrizione;
 	private double costo;	
 	public TipologiaEsameController() {
-		
+
 	}
-	
 
-	
 
-	
-//	private Set<String> indicatoriEsami;
-	
-//	private Map<Long, Esame> esami;
-	
-//	//caso d'uso UC1
-//	public List<TipologiaEsame> elencoTipologieEsame() {
-//		return this.tipologiaEsameFacade.findAllTipologieEsami();
-//	}
-//	
-//	public String dettagliTipologiaEsame(Long id_tipologia) {
-//		TipologiaEsame tipologiaEsame = this.tipologiaEsameFacade.findTipologiaEsame(id_tipologia);
-//		return tipologiaEsame.getDescrizione();
-//	}
+
+
+
+	//	private Set<String> indicatoriEsami;
+
+	//	private Map<Long, Esame> esami;
+
+	//	//caso d'uso UC1
+	//	public List<TipologiaEsame> elencoTipologieEsame() {
+	//		return this.tipologiaEsameFacade.findAllTipologieEsami();
+	//	}
+	//	
+	//	public String dettagliTipologiaEsame(Long id_tipologia) {
+	//		TipologiaEsame tipologiaEsame = this.tipologiaEsameFacade.findTipologiaEsame(id_tipologia);
+	//		return tipologiaEsame.getDescrizione();
+	//	}
 	//end UC1
-	
+
 	//caso d'uso uc4
-	
+
 	//TODO : metodo per creare TIpologiaEsame da inserire nel db (FACADE)
-	
+
 	public String goToPaginaInserimentoTipologiaEsame() {
 		return "/portaleAdmin/inserisciTipologiaEsame.jsp";
 	}
@@ -58,29 +58,29 @@ public class TipologiaEsameController {
 	public List<Prerequisito> getPrerequisiti(){
 		return this.prerequisitoFacade.findAllPrerequisiti();
 	}
-	
+
 	//TODO : inserimento boolean
 	public String creaTipologiaEsame() {
 		TipologiaEsame t= new TipologiaEsame(nome, descrizione, costo);
 		this.tipologiaEsameFacade.inserisciTipologiaEsame(t);
 		return "/portaleAdmin/inserimentoTipologiaTerminato.jsp";
 	}
-	
-	
+
+
 	//END UC4
-	
+
 	//GetternsAndSetters
 	//Questi sono i risultati proposti per una tipologia di Esame
 	public List<Risultato> getRisultati() {
 		return this.risultatoFacade.findAllRisultati();
 	}
-	
+
 	public void setTipologiaEsameFacade(TipologiaEsameFacade tipologiaEsameFacade) {
 		this.tipologiaEsameFacade = tipologiaEsameFacade;
 	}
-	
-	
-	
+
+
+
 
 	public String getNome() {
 		return nome;
@@ -100,20 +100,20 @@ public class TipologiaEsameController {
 	public void setCosto(double costo) {
 		this.costo = costo;
 	}
-	
-	
-	
-//	public Set<String> getIndicatoriEsami() {
-//		return indicatoriEsami;
-//	}
-//	public void setIndicatoriEsami(Set<String> indicatoriEsami) {
-//		this.indicatoriEsami = indicatoriEsami;
-//	}
-//	public Map<Long, Esame> getEsami() {
-//		return esami;
-//	}
-//	public void setEsami(Map<Long, Esame> esami) {
-//		this.esami = esami;
-//	}
-	
+
+
+
+	//	public Set<String> getIndicatoriEsami() {
+	//		return indicatoriEsami;
+	//	}
+	//	public void setIndicatoriEsami(Set<String> indicatoriEsami) {
+	//		this.indicatoriEsami = indicatoriEsami;
+	//	}
+	//	public Map<Long, Esame> getEsami() {
+	//		return esami;
+	//	}
+	//	public void setEsami(Map<Long, Esame> esami) {
+	//		this.esami = esami;
+	//	}
+
 }
