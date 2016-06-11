@@ -18,10 +18,11 @@
  
         <h:form>
         cacca
-            <div>
-                Nome:
+             <div>
+                Nome: 
                 <h:inputText value="#{tipologiaEsameController.nome}" />
             </div>
+           
             <div>
                 Descrizione :
                 <h:inputText value="#{tipologiaEsameController.descrizione}" />
@@ -30,20 +31,19 @@
                 Costo
                 <h:inputText value="#{tipologiaEsameController.costo}" />
             </div>
-            <c:forEach var="prerequisito"
+           <%-- <c:forEach var="prerequisito"
                 items="#{tipologiaEsameController.getPrerequisiti()}">
                 <br>
                 <h:selectBooleanCheckbox value="#{prerequisito.descrizione}" />
-            </c:forEach>
+            </c:forEach> --%>
  
             <c:forEach var="risultato"
-                items="#{tipologiaEsameController.getRisultati}">
+                items="#{tipologiaEsameController.getRisultati()}">
                 <br>
                 <h:selectBooleanCheckbox value="#{risultato.nome}" />
- 
-                <h:commandButton value="Inserisci"
-                    action="#{tipologiaEsameController.createProduct()}" />
-            </c:forEach>
+            </c:forEach> 
+            <h:commandButton value="Inserisci"
+                action="#{tipologiaEsameController.createProduct()}" />
         </h:form>
  
     </f:view>
