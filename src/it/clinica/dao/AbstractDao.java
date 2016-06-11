@@ -7,7 +7,6 @@ public abstract class AbstractDao<T> {
 	@PersistenceContext(unitName="unit-clinica")
 	private EntityManager em;
 
-
 	public AbstractDao(EntityManager em) {
 		this.em = em;
 	}

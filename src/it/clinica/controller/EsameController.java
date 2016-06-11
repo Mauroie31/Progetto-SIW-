@@ -24,15 +24,12 @@ public class EsameController {
 	private PazienteFacade pazienteFacade;
 	@EJB(name = "tipolgiaEsameFacade")
 	private TipologiaEsameFacade tipologiaEsamefacade;
-	
+
 	public EsameController() {
-		
 	}
-	
-	private Long id;// da togliere
 	private String nome;
 	private String descrizione;
-	private Map<String, String> risultati;
+//	private List<Risultato> risultati; //TODO
 	private Date dataPrenotazione;
 	private Date dataVisita;
 	private TipologiaEsame tipologia;
@@ -40,41 +37,41 @@ public class EsameController {
 	private Medico medico;
 	private Esame esameDaCreare;
 
-	
+
 	@ManagedProperty(value = "#{utenteManager}")
 	private UtenteManager session;
 
 	//Caso d'uso UC2
 	public String creaEsame() {
-		this.esameDaCreare = this.esameFacade.createEsame(nome, descrizione, risultati, dataPrenotazione, dataVisita, tipologia, paziente, medico);
+		this.esameDaCreare = this.esameFacade.createEsame(nome, descrizione);
 		this.esameFacade.inserisciEsame(esameDaCreare);
-        return "/portaleAdmin/creaEsame.jsp";
+		return "/portaleAdmin/creaEsame.jsp";
 	}
-	
+
 	public String associaTipologiaEsameAdEsameDaCreare(Long id_tipologia) {
 		TipologiaEsame tipologia = this.tipologiaEsamefacade.findTipologiaEsame(id_tipologia);
 		this.esameFacade.associaTipologiaEsameAdEsame(tipologia, esameDaCreare);
 		return "/portaleAdmin/inserisciTipologiaEsame.jsp";
 	}
-	
+
 	public String associaPazienteAdEsame(Long id_Paziente, Esame e) {
 		Paziente paziente = this.pazienteFacade.findPaziente(id_Paziente);
 		this.esameFacade.associaPazienteAdEsame(paziente, e);
 		return "/portaleAdmin/associaPaziente.jsp";
 	}
-	
+
 	public String registraEsame() {
 		Date dataPrenotazione = new Date();
 		this.esameFacade.impostaDataPrenotazioneAdEsame(esameDaCreare, (java.sql.Date) dataPrenotazione);
-        //devo fare l'update dell'esameDaCreare
+		//devo fare l'update dell'esameDaCreare
 		this.esameFacade.UpdateEsame(esameDaCreare);
 		return "/portaleAdmin/esameRegistrato.jsp";
-	
+
 	}
 	//fine caso d'uso UC2
-	
-	
-	
+
+
+
 
 
 	//Getters and Setters
@@ -84,12 +81,7 @@ public class EsameController {
 	public void setEsameFacade(EsameFacade esameFacade) {
 		this.esameFacade = esameFacade;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+
 	public String getNome() {
 		return nome;
 	}

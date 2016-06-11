@@ -18,11 +18,13 @@ public class TipologiaEsameController {
 	private TipologiaEsameFacade tipologiaEsameFacade;
 	@EJB(name = "prerequisitoFacade")
 	private PrerequisitoFacade prerequisitoFacade;
+	@EJB(name = "risultatoFacade")
+	private RisultatoFacade risultatoFacade;
 
-	private Long id;
 	private String nome;
 	private String descrizione;
 	private double costo;
+	private TipologiaEsame tipologiaDaInserire;
 	
 	public TipologiaEsameController() {
 		
@@ -49,27 +51,37 @@ public class TipologiaEsameController {
 	
 	//caso d'uso uc4
 	
-	public String goToPagina() {
-		return "login.jsp";
+	//TODO : metodo per creare TIpologiaEsame da inserire nel db (FACADE)
+	
+	public String goToPaginaInserimentoTipologiaEsame() {
+		return "/portaleAdmin/inserisciTipologiaEsame.jsp";
 	}
 
 	public List<Prerequisito> getPrerequisiti(){
-		List<Prerequisito> prerequisiti= this.prerequisitoFacade.findAllPrerequisiti();
-		return prerequisiti;
-		
+		return this.prerequisitoFacade.findAllPrerequisiti();
 	}
 	
+	//TODO : inserimento boolean
+	public void registraTipologiaEsame() {
+		this.tipologiaEsameFacade.inserisciTipologiaEsame(tipologiaDaInserire);
+	}
+	
+	
+	//END UC4
+	
+	//GetternsAndSetters
+	//Questi sono i risultati proposti per una tipologia di Esame
+	public List<Risultato> getRisultati() {
+		return this.risultatoFacade.findAllRisultati();
+	}
 	
 	public void setTipologiaEsameFacade(TipologiaEsameFacade tipologiaEsameFacade) {
 		this.tipologiaEsameFacade = tipologiaEsameFacade;
 	}
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
+	
+
 	public String getNome() {
 		return nome;
 	}

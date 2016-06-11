@@ -1,7 +1,6 @@
 package it.clinica.model;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,12 +23,6 @@ public class Paziente extends Utente {
 	public Paziente() {
 		this.ruolo = "user";
 	}	
-	
-	
-	public Map<String, String> getRisultatiEsame(Esame esame) {
-		return esame.getRisultati();		
-	}
-	
 	
 	public String getIndirizzo() {
 		return indirizzo;

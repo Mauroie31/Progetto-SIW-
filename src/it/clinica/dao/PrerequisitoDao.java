@@ -23,7 +23,7 @@ public class PrerequisitoDao extends AbstractDao<Prerequisito> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Prerequisito> findAll() {
-		Query query = this.getEntityManager().createQuery("SELECT p FROM Prerequisito");
+		Query query = this.getEntityManager().createQuery("SELECT p FROM Prerequisiti");
 		return query.getResultList();
 	}
 

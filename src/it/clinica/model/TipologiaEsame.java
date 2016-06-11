@@ -18,19 +18,25 @@ public class TipologiaEsame {
 	@ManyToMany
 	private List<Prerequisito> prerequisiti;
 	@ManyToMany
-	private List<RisultatoProposto> risultatiProposti;
+	private List<Risultato> risultati;
 //	@OneToMany(mappedBy="TipologieEsami")
 //	@JoinColumn(name="esami_id")
 //	private List<Esame> esami;
 	
 	public TipologiaEsame() {}
-
-
-	public List<RisultatoProposto> getRisultatiProposti() {
-		return this.risultatiProposti;
+	
+	public TipologiaEsame(String nome, String descrizione, double costo) {
+		this.nome=nome;
+		this.descrizione=descrizione;
+		this.costo=costo;
 	}
-	public void setRisultatiProposti(List<RisultatoProposto> risultatiProposti) {
-		this.risultatiProposti = risultatiProposti;
+
+
+	public List<Risultato> getRisultatiProposti() {
+		return this.risultati;
+	}
+	public void setRisultatiProposti(List<Risultato> risultatiProposti) {
+		this.risultati = risultatiProposti;
 	}
 //	public List<Esame> getEsami() {
 //		return esami;
@@ -50,6 +56,18 @@ public class TipologiaEsame {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	
+	public List<Risultato> getRisultati() {
+		return risultati;
+	}
+
+
+	public void setRisultati(List<Risultato> risultati) {
+		this.risultati = risultati;
+	}
+
+
 	public double getCosto() {
 		return costo;
 	}

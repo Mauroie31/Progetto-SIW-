@@ -15,9 +15,7 @@ public class Amministratore extends Utente {
 	public Amministratore() {
 		this.ruolo = "admin";
 	}
-
-
-
+	
 	public String getRuolo() {
 		return ruolo;
 	}

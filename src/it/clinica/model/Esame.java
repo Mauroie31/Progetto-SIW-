@@ -13,7 +13,7 @@ public class Esame {
     @Column(nullable = false)
 	private String nome;
 	private String descrizione;
-	private Map<String, String> risultati;
+	private List<Risultato> risultati;
 	@Temporal(TemporalType.DATE)
 	private Date dataPrenotazione;
 	@Temporal(TemporalType.DATE)
@@ -35,19 +35,28 @@ public class Esame {
 	public String getNome() {
 		return nome;
 	}
+	
+	public void setNome(String nome) {
+		this.nome=nome;
+	}
+	//TODO ToString
+	/*
 	public void setNome() {
 		this.nome = this.tipologiaEsame.getNome() + "di" + this.paziente.getNome() + this.paziente.getCognome();
 	}
+	*/
 	public String getDescrizione() {
 		return descrizione;
 	}
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public Map<String, String> getRisultati() {
-		return this.risultati;
+	
+
+	public List<Risultato> getRisultati() {
+		return risultati;
 	}
-	public void setRisultati(Map<String, String> risultati) {		
+	public void setRisultati(List<Risultato> risultati) {
 		this.risultati = risultati;
 	}
 	public TipologiaEsame getTipologiaEsame() {

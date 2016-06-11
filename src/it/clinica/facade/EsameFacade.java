@@ -11,7 +11,6 @@ import it.clinica.dao.EsameDao;
 import it.clinica.model.Esame;
 import it.clinica.model.Paziente;
 import it.clinica.model.TipologiaEsame;
-import it.clinica.model.Medico;
 
 @Stateless(name="EsameFacade")
 public class EsameFacade {
@@ -28,6 +27,17 @@ public class EsameFacade {
 		esameDao.update(esame);
 		this.em.getTransaction().commit();
 	}
+	
+	public Esame createEsame(String nome, String descrizione) {
+		Esame esame = new Esame();
+		esame.setNome(nome);
+		esame.setDescrizione(descrizione);
+		this.em.persist(esame);
+		return esame;
+	}
+	
+	//TODO
+	/*
 	public Esame createEsame(String nome,
 			String descrizione, Map<String, String> risultati, java.util.Date dataPrenotazione, java.util.Date dataVisita,
 			TipologiaEsame tipologiaEsame, Paziente paziente, Medico medico) {
@@ -43,6 +53,7 @@ public class EsameFacade {
 		this.em.persist(esame);
 		return esame;
 	}
+	*/
 	
 	
 	public void inserisciEsame(Esame esame) {
