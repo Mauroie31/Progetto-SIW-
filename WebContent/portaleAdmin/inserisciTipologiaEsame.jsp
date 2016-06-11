@@ -17,10 +17,10 @@
 	Descrizione :<h:inputText value="#{tipologiaEsameController.descrizione}" />
 	Costo <h:inputText value="#{tipologiaEsameController.costo}" />
 	<c:forEach var="prerequisito" items="${tipologiaEsameController.getPrerequisiti}">
-			<br><input type="checkbox" name="prerequisito"/> #{prerequisito.descrizione}
+			<br><input type="checkbox" name="prerequisito"/> "#{prerequisito.descrizione}"
 	</c:forEach>
 	<c:forEach var="risultato" items="${tipologiaEsameController.getRisultati}">
-			<br><input type="checkbox" name="risultato"/> #{risultato.nome}
+			<br><input type="checkbox" name="risultato"/> "#{risultato.nome}"
 	</c:forEach>
 	</p>
 	<div><h:commandButton value="Submit" action="#{tipologiaEsameController.createProduct}"/></div>	
