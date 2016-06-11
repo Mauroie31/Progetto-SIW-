@@ -63,7 +63,7 @@ public class TipologiaEsameController {
 	public String creaTipologiaEsame() {
 		TipologiaEsame t= new TipologiaEsame(nome, descrizione, costo);
 		this.tipologiaEsameFacade.inserisciTipologiaEsame(t);
-		return "inserimentoTipologiaTerminato.jsp";
+		return "/portaleAdmin/inserimentoTipologiaTerminato.jsp";
 	}
 	
 	

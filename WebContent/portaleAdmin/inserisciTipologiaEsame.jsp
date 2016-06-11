@@ -23,7 +23,7 @@
 			<br><input type="checkbox" name="risultato"/> #{risultato.nome}
 	</c:forEach>
 	</p>
-	<div><h:commandButton value="Submit" acLon="#{tipologiaEsameController.createProduct}"/></div>	
+	<div><h:commandButton value="Submit" action="#{tipologiaEsameController.createProduct}"/></div>	
 
 </body>
 </html>
