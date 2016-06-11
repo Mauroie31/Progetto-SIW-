@@ -31,7 +31,7 @@ public class PrerequisitoFacade {
 
 	public List<Prerequisito>  findAllPrerequisiti() {
 		try{
-			return this.em.createNamedQuery("Prerequisito.findAllPrerequisiti", Prerequisito.class).getResultList();	
+			return this.em.createNamedQuery("findAllPrerequisiti", Prerequisito.class).getResultList();	
 		}catch(NoResultException e){
 			return new ArrayList<Prerequisito>();
 		}
