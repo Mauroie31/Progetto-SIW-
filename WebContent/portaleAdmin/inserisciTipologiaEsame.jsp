@@ -33,7 +33,7 @@
             <c:forEach var="prerequisito"
                 items="#{tipologiaEsameController.getPrerequisiti()}">
                 <br>
-                <h:selectBooleanCheckbox nome="prerequsiti" />${prerequisito.descrizione}
+                <h:selectBooleanCheckbox />${prerequisito.descrizione}
             </c:forEach>
  
             <c:forEach var="risultato"
