@@ -3,7 +3,6 @@ package it.clinica.controller;
 import java.util.*;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 
 import it.clinica.facade.*;
@@ -11,14 +10,12 @@ import it.clinica.model.*;
 
 
 @ManagedBean(name="tipologiaEsameController")
-@RequestScoped
 public class TipologiaEsameController {
-
-	@EJB(name = "tipologiaEsameFacade")
+	@EJB
 	private TipologiaEsameFacade tipologiaEsameFacade;
-	@EJB(name = "prerequisitoFacade")
+	@EJB
 	private PrerequisitoFacade prerequisitoFacade;
-	@EJB(name = "risultatoFacade")
+	@EJB
 	private RisultatoFacade risultatoFacade;
 
 	private String nome;
@@ -69,8 +66,6 @@ public class TipologiaEsameController {
 
 	//END UC4
 
-	//GetternsAndSetters
-	//Questi sono i risultati proposti per una tipologia di Esame
 	public List<Risultato> getRisultati() {
 		return this.risultatoFacade.findAllRisultati();
 	}

@@ -4,26 +4,32 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Pazienti")
-@NamedQuery(name = "findAllPazienti", query = "SELECT p FROM Pazienti p")
+@Table(name = "Utenti")
+@NamedQueries({
+	@NamedQuery(name = "findAll", 
+	query = "SELECT p FROM Pazienti p"),
+	@NamedQuery(name = "findPazienteByEsame", 
+	query = "SELECT p FROM Pazienti p JOIN Esami e where e.id = :id_esame")
+
+})
 public class Paziente extends Utente  {
 	private String indirizzo;
 	@Column(nullable = false)
 	private String ruolo;
-	@OneToMany(mappedBy="Pazienti")
-	@JoinColumn(name = "esami_id")
+	@OneToMany
 	private List<Esame> esami;
+	
 
 	public Paziente() {
 		this.ruolo = "user";
 	}	
-	
+
 	public String getIndirizzo() {
 		return indirizzo;
 	}
@@ -41,5 +47,9 @@ public class Paziente extends Utente  {
 	}
 	public void setEsami(List<Esame> esami) {
 		this.esami = esami;
+	}
+	
+	public void addEsame(Esame esame) {
+		this.esami.add(esame);
 	}
 }

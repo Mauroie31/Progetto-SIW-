@@ -3,7 +3,12 @@ package it.clinica.model;
 import javax.persistence.*;
 @Entity
 @Table(name = "Utenti")
-@NamedQuery(name = "findAllUtenti", query = "SELECT u FROM Utenti u")
+@NamedQueries({
+@NamedQuery(name = "findAll", 
+query = "SELECT u FROM Utenti u"),
+@NamedQuery(name = "findUtenteByEmail", 
+query = "SELECT u FROM Utenti u JOIN where u.email = :email_utente")
+})
 public abstract class Utente {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)

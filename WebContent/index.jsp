@@ -21,6 +21,8 @@
 					action="#{tipologiaEsameController.goToPaginaInserimentoTipologiaEsame()}" />
 			</div>
 
+
+
 		</h:form>
 	</f:view>
 

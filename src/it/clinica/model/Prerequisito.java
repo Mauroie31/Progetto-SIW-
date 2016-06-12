@@ -8,25 +8,20 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Prerequisiti")
-@NamedQuery(name = "findAllPrerequisiti", query = "SELECT p FROM Prerequisiti p")
+@NamedQuery(name = "findAllPrerequisiti", query = "SELECT p FROM Prerequisito p")
 public class Prerequisito {
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	@Column(nullable=false)
 	private String nome;
 	private String descrizione;
-	@ManyToMany(mappedBy="prerequisiti")
+	@ManyToMany
 	private List<TipologiaEsame> tipologieEsami;
 
 
-	public Prerequisito(){}
-
-	
-	public Prerequisito(String nome, String descrizione) {
-		this.nome = nome;
-		this.descrizione = descrizione;
+	public Prerequisito(){
+		
 	}
 	
 	

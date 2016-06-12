@@ -4,7 +4,6 @@ import java.util.*;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ManagedProperty;
 
 import it.clinica.facade.EsameFacade;
@@ -16,7 +15,6 @@ import it.clinica.model.Paziente;
 import it.clinica.model.TipologiaEsame;
 
 @ManagedBean(name="esameController")
-@RequestScoped
 public class EsameController {
 	@EJB(name = "esameFacade")
 	private EsameFacade esameFacade;
@@ -48,11 +46,11 @@ public class EsameController {
 		return "/portaleAdmin/creaEsame.jsp";
 	}
 
-	public String associaTipologiaEsameAdEsameDaCreare(Long id_tipologia) {
-		TipologiaEsame tipologia = this.tipologiaEsamefacade.findTipologiaEsame(id_tipologia);
-		this.esameFacade.associaTipologiaEsameAdEsame(tipologia, esameDaCreare);
-		return "/portaleAdmin/inserisciTipologiaEsame.jsp";
-	}
+//	public String associaTipologiaEsameAdEsameDaCreare(Long id_tipologia) {
+//		TipologiaEsame tipologia = this.tipologiaEsamefacade.findTipologiaEsame(id_tipologia);
+//		this.esameFacade.associaTipologiaEsameAdEsame(tipologia, esameDaCreare);
+//		return "/portaleAdmin/inserisciTipologiaEsame.jsp";
+//	}
 
 	public String associaPazienteAdEsame(Long id_Paziente, Esame e) {
 		Paziente paziente = this.pazienteFacade.findPaziente(id_Paziente);

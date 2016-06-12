@@ -5,10 +5,8 @@ import it.clinica.facade.*;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 @ManagedBean(name="prerequisitoController")
-@RequestScoped
 public class PrerequisitoController {
 	
 	@EJB(name="prerequisitoFacade")

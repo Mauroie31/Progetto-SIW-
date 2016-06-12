@@ -3,6 +3,7 @@ package it.clinica.facade;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -10,7 +11,8 @@ import javax.persistence.PersistenceContext;
 
 import it.clinica.model.*;
 
-@Stateless(name="risultatoFacade")
+@Stateless
+@EJB(name="ejb/risultatoFacade", beanInterface=RisultatoFacade.class, beanName="risultatoFacade")
 public class RisultatoFacade {
 
 	@PersistenceContext(unitName="unit-clinica")
@@ -19,10 +21,14 @@ public class RisultatoFacade {
 	public RisultatoFacade(EntityManager em) {
 		this.em = em;
 	}
+	
+	public RisultatoFacade() {
+		
+	}
 
 	public List<Risultato> findAllRisultati() {
 		try{
-			return this.em.createNamedQuery("Risultato.findAllRisultati", Risultato.class).getResultList();	
+			return this.em.createNamedQuery("findAllRisultati", Risultato.class).getResultList();	
 		}catch(NoResultException e){
 			return new ArrayList<Risultato>();
 		}

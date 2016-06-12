@@ -6,7 +6,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TipologieEsami")
-@NamedQuery(name = "findAllTipologieEsami", query = "SELECT t FROM TipologieEsami t")
+@NamedQueries({
+	@NamedQuery(name = "findAllTipologieEsami", 
+	query = "SELECT t FROM TipologieEsami t"),
+	@NamedQuery(name = "findTipologiaEsameByEsame",
+    query = "SELECT t FROM TipologieEsami t JOIN Esami e WHERE e.id = :id_esame")
+})
+
 public class TipologiaEsame {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -19,9 +25,8 @@ public class TipologiaEsame {
 	private List<Prerequisito> prerequisiti;
 	@ManyToMany
 	private List<Risultato> risultati;
-//	@OneToMany(mappedBy="TipologieEsami")
-//	@JoinColumn(name="esami_id")
-//	private List<Esame> esami;
+	@OneToMany
+	private List<Esame> esami;
 	
 	public TipologiaEsame() {}
 	
@@ -38,12 +43,12 @@ public class TipologiaEsame {
 	public void setRisultatiProposti(List<Risultato> risultatiProposti) {
 		this.risultati = risultatiProposti;
 	}
-//	public List<Esame> getEsami() {
-//		return esami;
-//	}
-//	public void setEsami(List<Esame> esami) {
-//		this.esami = esami;
-//	}
+	public List<Esame> getEsami() {
+		return esami;
+	}
+	public void setEsami(List<Esame> esami) {
+		this.esami = esami;
+	}
 	public Long getId() {
 		return id;
 	}

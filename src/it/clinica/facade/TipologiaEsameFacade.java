@@ -2,14 +2,16 @@ package it.clinica.facade;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-import it.clinica.dao.TipologiaEsameDao;
 import it.clinica.model.TipologiaEsame;
 
-@Stateless(name="tipologiaEsameFacade")
+@Stateless
+@EJB(name="ejb/tipologiaEsameFacade", beanInterface=TipologiaEsameFacade.class, beanName="tipologiaEsameFacade")
 public class TipologiaEsameFacade {
 	
 	@PersistenceContext(unitName="unit-clinica")
@@ -19,35 +21,34 @@ public class TipologiaEsameFacade {
 		this.em = em;
 	}	
 	
+	public TipologiaEsameFacade() {
+		
+	}
+	
 	public void inserisciTipologiaEsame(TipologiaEsame tipologiaEsame) {
-		this.em.getTransaction().begin();
-		TipologiaEsameDao tipologiaEsameDao = new TipologiaEsameDao(this.em);
-		tipologiaEsameDao.save(tipologiaEsame);
-		this.em.getTransaction().commit();
+		this.em.persist(tipologiaEsame);
 	}
 
 	public TipologiaEsame findTipologiaEsame(Long id_tipologiaEsame) {
-		TipologiaEsameDao tipologiaEsameDao = new TipologiaEsameDao(this.em);
-		this.em.getTransaction().begin();
-		TipologiaEsame tipologiaEsame = tipologiaEsameDao.findById(id_tipologiaEsame);
-		this.em.getTransaction().commit();
-		return tipologiaEsame;
+		return this.em.find(TipologiaEsame.class, id_tipologiaEsame);
 	}
 
 	public List<TipologiaEsame> findAllTipologieEsami() {
-		TipologiaEsameDao dao = new TipologiaEsameDao(this.em);
-		this.em.getTransaction().begin();
-		List<TipologiaEsame> result = dao.findAll();
-		this.em.getTransaction().commit();
-		return result;
+		try {
+			return this.em.createNamedQuery("findAllTipologieEsami", TipologiaEsame.class)
+					.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 	public TipologiaEsame findTipologiaEsameByEsame(Long id_esame) {
-		TipologiaEsameDao dao = new TipologiaEsameDao(this.em);
-		this.em.getTransaction().begin();
-		TipologiaEsame tipologiaEsame = dao.findTipologiaEsameByEsame(id_esame);
-		this.em.getTransaction().commit();
-		return tipologiaEsame;
+		try {
+			return this.em.createNamedQuery("findTipologiaEsameByEsame", TipologiaEsame.class)
+					.setParameter("id_esame", id_esame).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 }

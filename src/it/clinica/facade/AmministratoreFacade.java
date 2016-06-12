@@ -1,13 +1,14 @@
 package it.clinica.facade;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import it.clinica.dao.UtenteDao;
 import it.clinica.model.Utente;
 
-@Stateless(name="amministratoreFacade")
+@Stateless
+@EJB(name="ejb/amministratoreFacade", beanInterface=AmministratoreFacade.class, beanName="amministratoreFacade")
 public class AmministratoreFacade {
 	
 	@PersistenceContext(unitName="unit-clinica")
@@ -17,19 +18,16 @@ public class AmministratoreFacade {
 		this.em =em;
 	}
 	
+	public AmministratoreFacade() {
+		
+	}
+	
 	public void inserisciUtente(Utente utente) {
-		this.em.getTransaction().begin();
-		UtenteDao utenteDao = new UtenteDao(this.em);
-		utenteDao.save(utente);
-		this.em.getTransaction().commit();
+		this.em.persist(utente);
 	}
 
 	public Utente findUtenteByEmail(String email) {
-		UtenteDao utenteDao = new UtenteDao(this.em);
-		this.em.getTransaction().begin();
-		Utente utente = utenteDao.findUtenteByEmail(email);
-		this.em.getTransaction().commit();
-		return utente;
+		return this.em.createNamedQuery("findUtenteByEmail", Utente.class).setParameter("email_utente", email).getSingleResult();
 
 	}
 

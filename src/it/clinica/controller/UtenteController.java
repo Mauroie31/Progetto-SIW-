@@ -2,14 +2,12 @@ package it.clinica.controller;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ManagedProperty;
 
 import it.clinica.facade.UtenteFacade;
 import it.clinica.model.Utente;
 
 @ManagedBean(name="utenteController")
-@RequestScoped
 public class UtenteController {
 	@EJB(name = "utenteFacade")
 	private UtenteFacade utenteFacade;

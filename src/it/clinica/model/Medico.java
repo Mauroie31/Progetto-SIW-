@@ -4,22 +4,33 @@ import java.util.*;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "Medici")
-@NamedQuery(name = "findAllMedici", query = "SELECT m FROM Medici m")
+@NamedQueries({
+	@NamedQuery(name = "findAllMedici", 
+	query = "SELECT m FROM Medici m"),
+	@NamedQuery(name = "findMedicoByEsame", 
+	query = "SELECT m FROM Medici m JOIN Esami e where e.id = :id_esame"),
+	@NamedQuery(name = "findMediciByTipologiaEsame", 
+	query = "SELECT m FROM Medici m JOIN TipologiaEsame t where t.id = :id_tipologiaEsame"),
+})
 public class Medico {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-    @Column(nullable = false)
+	@Column(nullable = false)
 	private String nome;
-    @Column(nullable = false)
+	@Column(nullable = false)
 	private String cognome;
 	@ManyToOne
 	private TipologiaEsame specializzazione;
-	@OneToMany(mappedBy="Medici")
-	@JoinColumn(name="esami_id")
+	@OneToMany
 	private List<Esame> esami;
+	
+	public Medico() {
+		
+	}
 
 	public Long getId() {
 		return id;

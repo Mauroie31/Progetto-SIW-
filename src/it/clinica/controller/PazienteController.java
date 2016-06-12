@@ -4,13 +4,11 @@ import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 
 import it.clinica.facade.PazienteFacade;
 import it.clinica.model.Esame;
 
 @ManagedBean(name="pazienteController")
-@RequestScoped
 public class PazienteController {
 	@EJB(name = "pazienteFacade")
 	private PazienteFacade pazienteFacade;
