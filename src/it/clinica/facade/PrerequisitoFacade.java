@@ -25,6 +25,7 @@ public class PrerequisitoFacade {
 		this.em = em;
 	}
 
+	// secondo me non c'è bisogno di questo metodo perchè in nessun casa d'uso utilizzi il prerequisito 
 	public Prerequisito findPrerequisito(Long id_prerequisito) {
 	     return this.em.find(Prerequisito.class, id_prerequisito);
 	}

@@ -119,5 +119,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/Users/While/Desktop/Università/SIW/Progetto/SIW librerie/javax.faces.jar"/>
 	<classpathentry kind="lib" path="/Users/While/Desktop/Università/SIW/Progetto/SIW librerie/javax.persistence.jar"/>
+	<classpathentry kind="lib" path="/Users/While/Downloads/jstl.jar"/>
+	<classpathentry kind="lib" path="/Users/While/Downloads/standard.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
