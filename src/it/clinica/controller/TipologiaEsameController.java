@@ -20,13 +20,14 @@ public class TipologiaEsameController {
 
 	private String nome;
 	private String descrizione;
-	private double costo;	
+	private double costo;
+	
+	//sto provando ad aggiungere i prerequisiti ad una tipologia esame
+	private List<Prerequisito> prerequsiti;
+	
 	public TipologiaEsameController() {
 
 	}
-
-
-
 
 
 	//	private Set<String> indicatoriEsami;
@@ -52,48 +53,61 @@ public class TipologiaEsameController {
 		return "/portaleAdmin/inserisciTipologiaEsame.jsp";
 	}
 
-	public List<Prerequisito> getPrerequisiti(){
-		return this.prerequisitoFacade.findAllPrerequisiti();
-	}
 
 	//TODO : inserimento boolean
 	public String creaTipologiaEsame() {
-		TipologiaEsame t= new TipologiaEsame(nome, descrizione, costo);
+		TipologiaEsame t= new TipologiaEsame(nome, descrizione, costo, this.prerequsiti);
 		this.tipologiaEsameFacade.inserisciTipologiaEsame(t);
 		return "/portaleAdmin/inserimentoTipologiaTerminato.jsp";
 	}
 
 
-	//END UC4
-
-	public List<Risultato> getRisultati() {
+	public List<Risultato> getTuttiIRisultati() {
 		return this.risultatoFacade.findAllRisultati();
+	}
+	
+	public List<Prerequisito> getTuttiIPrerequisiti(){
+		return this.prerequisitoFacade.findAllPrerequisiti();
 	}
 
 	public void setTipologiaEsameFacade(TipologiaEsameFacade tipologiaEsameFacade) {
 		this.tipologiaEsameFacade = tipologiaEsameFacade;
 	}
 
+	//END UC4
 
-
-
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	public String getDescrizione() {
 		return descrizione;
 	}
+	
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
+	
 	public double getCosto() {
 		return costo;
 	}
+
 	public void setCosto(double costo) {
 		this.costo = costo;
+	}
+
+	public List<Prerequisito> getPrerequsiti() {
+		return prerequsiti;
+	}
+
+
+	public void setPrerequsiti(List<Prerequisito> prerequsiti) {
+		this.prerequsiti = prerequsiti;
 	}
 
 

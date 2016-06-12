@@ -21,19 +21,23 @@ public class TipologiaEsame {
 	private String nome;
 	private String descrizione;
 	private double costo;
-	@ManyToMany
+	
+	@ManyToMany(cascade={CascadeType.PERSIST})
 	private List<Prerequisito> prerequisiti;
-	@ManyToMany
+	
+	@ManyToMany(cascade={CascadeType.PERSIST})
 	private List<Risultato> risultati;
+	
 	@OneToMany
 	private List<Esame> esami;
 	
 	public TipologiaEsame() {}
 	
-	public TipologiaEsame(String nome, String descrizione, double costo) {
+	public TipologiaEsame(String nome, String descrizione, double costo, List<Prerequisito> p) {
 		this.nome=nome;
 		this.descrizione=descrizione;
 		this.costo=costo;
+		this.prerequisiti=p;
 	}
 
 

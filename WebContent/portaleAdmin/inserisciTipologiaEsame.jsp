@@ -30,16 +30,16 @@
           
             <br><h2>Prerequisiti richiesti:</h2>
             <c:forEach var="prerequisito"
-                items="#{tipologiaEsameController.getPrerequisiti()}">
+                items="#{tipologiaEsameController.getTuttiIPrerequisiti()}">
                 <br>
-                <h:selectBooleanCheckbox/>${prerequisito.descrizione}
+                <h:selectBooleanCheckbox value="#{tipologiaEsameController.addPrerequisito(prerequisto)}"/>${prerequisito.descrizione}
             </c:forEach>
  			
  			<br><h2>Risultati Proposti:</h2>
             <c:forEach var="risultato"
-                items="#{tipologiaEsameController.getRisultati()}">
+                items="#{tipologiaEsameController.getTuttiIRisultati()}">
                 <br>
-                <h:selectBooleanCheckbox/>${risultato.nome}
+                <h:selectBooleanCheckbox />${risultato.nome}
             </c:forEach>
          
            <br>
