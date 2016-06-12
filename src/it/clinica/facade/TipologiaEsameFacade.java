@@ -35,8 +35,7 @@ public class TipologiaEsameFacade {
 
 	public List<TipologiaEsame> findAllTipologieEsami() {
 		try {
-			return this.em.createNamedQuery("findAllTipologieEsami", TipologiaEsame.class)
-					.getResultList();
+			return this.em.createNamedQuery("findAllTipologieEsami", TipologiaEsame.class).getResultList();
 		} catch (NoResultException e) {
 			return null;
 		}

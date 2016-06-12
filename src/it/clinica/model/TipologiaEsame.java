@@ -65,17 +65,6 @@ public class TipologiaEsame {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
-	public List<Risultato> getRisultati() {
-		return risultati;
-	}
-
-
-	public void setRisultati(List<Risultato> risultati) {
-		this.risultati = risultati;
-	}
-
 
 	public double getCosto() {
 		return costo;
@@ -89,10 +78,19 @@ public class TipologiaEsame {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
+	
 	public List<Prerequisito> getPrerequisiti() {
 		return this.prerequisiti;
 	}
-	public void setPrerequisiti(List<Prerequisito> prerequisiti) {
-		this.prerequisiti = prerequisiti;
+	
+	public void setPrerequisiti(Prerequisito prerequisito) {
+		this.prerequisiti.add(prerequisito);
+	}
+	
+	public List<Risultato> getRisultati() {
+		return risultati;
+	}
+	public void setRisultati(List<Risultato> risultati) {
+		this.risultati = risultati;
 	}
 }

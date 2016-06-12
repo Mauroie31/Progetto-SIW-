@@ -23,7 +23,7 @@ public class TipologiaEsameController {
 	private double costo;
 	
 	//sto provando ad aggiungere i prerequisiti ad una tipologia esame
-	private List<Prerequisito> prerequsiti;
+	private List<Prerequisito> prerequsiti= new ArrayList<>();
 	
 	public TipologiaEsameController() {
 
@@ -73,6 +73,10 @@ public class TipologiaEsameController {
 	public void setTipologiaEsameFacade(TipologiaEsameFacade tipologiaEsameFacade) {
 		this.tipologiaEsameFacade = tipologiaEsameFacade;
 	}
+	
+	public void addPrerequisito(Prerequisito p){
+		this.prerequsiti.add(p);
+	}
 
 	//END UC4
 
@@ -101,13 +105,13 @@ public class TipologiaEsameController {
 		this.costo = costo;
 	}
 
-	public List<Prerequisito> getPrerequsiti() {
+	public List<Prerequisito> getPrerequisiti() {
 		return prerequsiti;
 	}
 
 
-	public void setPrerequsiti(List<Prerequisito> prerequsiti) {
-		this.prerequsiti = prerequsiti;
+	public void setPrerequisiti(Prerequisito p) {
+		this.prerequsiti.add(p);
 	}
 
 

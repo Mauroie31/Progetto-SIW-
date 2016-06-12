@@ -27,12 +27,11 @@
                 Costo
                 <h:inputText value="#{tipologiaEsameController.costo}" />
             </p>
-          
-            <br><h2>Prerequisiti richiesti:</h2>
-            <c:forEach var="prerequisito"
-                items="#{tipologiaEsameController.getTuttiIPrerequisiti()}">
+                 <br><h2>Prerequisiti richiesti:</h2>
+             
+            <c:forEach var="prerequisito" items="#{tipologiaEsameController.getTuttiIPrerequisiti()}">
                 <br>
-                <h:selectBooleanCheckbox value="#{tipologiaEsameController.addPrerequisito(prerequisto)}"/>${prerequisito.descrizione}
+                ${prerequisito.descrizione} <h:commandButton value="Aggiungi Prerequisito" action="#{tipologiaEsameController.setPrerequisiti(prerequisito)}"/>
             </c:forEach>
  			
  			<br><h2>Risultati Proposti:</h2>
@@ -43,6 +42,7 @@
             </c:forEach>
          
            <br>
+    
             <h:commandButton value="Inserisci"
                 action="#{tipologiaEsameController.creaTipologiaEsame()}" />
         </h:form>
