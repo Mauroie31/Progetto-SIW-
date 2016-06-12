@@ -17,30 +17,32 @@
         <h1>Inserisci la nuova Tipologia di Esame</h1>
  
         <h:form>
-        cacca
-            <<div>
+            <p>
                 Nome:
                 <h:inputText value="#{tipologiaEsameController.nome}" />
-            </div>
-            <div>
+           
                 Descrizione :
                 <h:inputText value="#{tipologiaEsameController.descrizione}" />
-            </div>
-            <div>
+           
                 Costo
                 <h:inputText value="#{tipologiaEsameController.costo}" />
-            </div>
+            </p>
+          
+            <br><h2>Prerequisiti richiesti:</h2>
             <c:forEach var="prerequisito"
                 items="#{tipologiaEsameController.getPrerequisiti()}">
                 <br>
-                <h:selectBooleanCheckbox />${prerequisito.descrizione}
+                <h:selectBooleanCheckbox/>${prerequisito.descrizione}
             </c:forEach>
- 
+ 			
+ 			<br><h2>Risultati Proposti:</h2>
             <c:forEach var="risultato"
                 items="#{tipologiaEsameController.getRisultati()}">
                 <br>
-                <h:selectBooleanCheckbox value="#{risultato.nome}" />
+                <h:selectBooleanCheckbox/>${risultato.nome}
             </c:forEach>
+         
+           <br>
             <h:commandButton value="Inserisci"
                 action="#{tipologiaEsameController.creaTipologiaEsame()}" />
         </h:form>
