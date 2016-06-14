@@ -10,12 +10,13 @@ import it.clinica.facade.EsameFacade;
 import it.clinica.facade.PazienteFacade;
 import it.clinica.facade.TipologiaEsameFacade;
 import it.clinica.model.Esame;
-import it.clinica.model.Medico;
+//import it.clinica.model.Medico;
 import it.clinica.model.Paziente;
 import it.clinica.model.TipologiaEsame;
 
 @ManagedBean(name="esameController")
 public class EsameController {
+	
 	@EJB(name = "esameFacade")
 	private EsameFacade esameFacade;
 	@EJB(name = "pazienteFacade")
@@ -25,14 +26,13 @@ public class EsameController {
 
 	public EsameController() {
 	}
-	private String nome;
-	private String descrizione;
+
 //	private List<Risultato> risultati; //TODO
 	private Date dataPrenotazione;
 	private Date dataVisita;
 	private TipologiaEsame tipologia;
 	private Paziente paziente;
-	private Medico medico;
+//	private Medico medico; //rigiarda il caso d'uso 5
 	private Esame esameDaCreare;
 
 
@@ -41,8 +41,6 @@ public class EsameController {
 
 	//Caso d'uso UC2
 	public String creaEsame() {
-		this.esameDaCreare = this.esameFacade.createEsame(nome, descrizione);
-		this.esameFacade.inserisciEsame(esameDaCreare);
 		return "/portaleAdmin/creaEsame.jsp";
 	}
 
@@ -80,18 +78,6 @@ public class EsameController {
 		this.esameFacade = esameFacade;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getDescrizione() {
-		return descrizione;
-	}
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
-	}
 	public Date getDataPrenotazione() {
 		return dataPrenotazione;
 	}
@@ -116,12 +102,14 @@ public class EsameController {
 	public void setPaziente(Paziente paziente) {
 		this.paziente = paziente;
 	}
-	public Medico getMedico() {
+
+	//Riguarda il caso d'uso 5
+	/*public Medico getMedico() {
 		return medico;
 	}
 	public void setMedico(Medico medico) {
 		this.medico = medico;
-	}
+	}*/
 
 	public UtenteManager getSession() {
 		return session;

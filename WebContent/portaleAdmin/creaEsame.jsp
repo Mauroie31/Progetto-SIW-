@@ -13,7 +13,7 @@
 <title>Inizia Nuovo Esame</title>
 </head>
 <body>
-	<form>
+	<h:form>
 		inizia complilazione esame
 
 		<div>
@@ -27,6 +27,6 @@
 		<div>
 			<h:commandButton value="invia" action="#{EsameController.creaEsame}" />
 		</div>
-	</form>
+	</h:form>
 </body>
 </html>
