@@ -17,8 +17,8 @@ import it.clinica.model.TipologiaEsame;
 
 @ManagedBean(name="esameController")
 @SessionScoped
-public class EsameController {
-	
+public class EsameController  {
+	 
 	@EJB(name = "esameFacade")
 	private EsameFacade esameFacade;
 //	@EJB(name = "utenteFacade")
