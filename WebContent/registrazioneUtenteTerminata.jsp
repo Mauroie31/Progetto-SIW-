@@ -12,10 +12,10 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Tipologia esame inserita</title>
+<title>Registrazione effettuata</title>
 
 <!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="./../css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
 
 <!-- Custom Fonts -->
 <link
@@ -24,15 +24,14 @@
 <link
 	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
 	rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="./../font-awesome/css/font-awesome.min.css"
+<link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css"
 	type="text/css">
 
 <!-- Plugin CSS -->
-<link rel="stylesheet" href="./../css/magnific-popup.css"
-	type="text/css">
+<link rel="stylesheet" href="./css/magnific-popup.css" type="text/css">
 
 <!-- Custom CSS -->
-<link rel="stylesheet" href="./../css/creative.css" type="text/css">
+<link rel="stylesheet" href="./css/creative.css" type="text/css">
 
 </head>
 
@@ -48,16 +47,16 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand page-scroll" href="./../index.jsp"  style="color: #EE4B28">Home</a>
+					<a class="navbar-brand page-scroll" href="./index.jsp"
+						style="color: #EE4B28">Home</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="./inserisciTipologiaEsame.jsp">Inserisci
-								tipologia esame</a></li>
-						<li><a class="navbar-brand page-scroll" href="./portaleAdmin.jsp">Portale amministratore</a></li>
+						<li class="active"><a class="navbar-brand page-scroll"
+							href="./login.jsp">Accedi</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -70,10 +69,12 @@
 			<h:form>
 				<div align="center" class="header-content">
 					<div class="header-content-inner">
-						<h1 style="color: #EE4B28; font-size: 40px;">Tipologia esame
-							inserita</h1>
+						<h1 style="color: #EE4B28; font-size: 40px;">Registrazione
+							effettuata con successo</h1>
 						<hr>
-						<a href="./../portaleAdmin/inserisciTipologiaEsame.jsp" class="btn btn-primary btn-xl page-scroll">Inserisci una nuova tipologia esame</a>
+
+						<strong style="color: black; font-size: 20px;"> Accedi
+							cliccando in alto a destra. </strong>
 					</div>
 				</div>
 			</h:form>

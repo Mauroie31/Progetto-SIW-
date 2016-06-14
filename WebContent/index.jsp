@@ -48,16 +48,14 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand page-scroll" href="./index.jsp">Home</a>
+				<a class="navbar-brand page-scroll" href="./index.jsp" style="color: #EE4B28">Home</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="./portaleAdmin/inserisciTipologiaEsame.jsp">Inserisci
-							tipologia esame</a></li>
-					<li><a href="./errorPage.jsp">Un'altra cosa</a></li>
+					<li><a class="navbar-brand page-scroll" href="./login.jsp">Accedi</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
