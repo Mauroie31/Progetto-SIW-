@@ -31,6 +31,7 @@ public class TipologiaEsameController {
 	private TipologiaEsame tipologia;
 	private List<TipologiaEsame> tipologieEsami;
 	private List<Prerequisito> prerequisiti;
+	private List<Risultato> risultati;
 
 	public TipologiaEsameController() {
 	}
@@ -39,6 +40,7 @@ public class TipologiaEsameController {
 	public void init(){
 		this.tipologieEsami = this.tipologiaEsameFacade.findAllTipologieEsami();
 		this.prerequisiti = this.prerequisitoFacade.findAllPrerequisiti();
+		this.setRisultati(this.risultatoFacade.findAllRisultati());
 	}
 
 	//CASO d'USO UC1
@@ -117,6 +119,10 @@ public class TipologiaEsameController {
 		this.tipologiaEsameFacade.aggiorna(this.tipologia.getId(), p);
 	}
 	
+	public void addRisultati(Risultato r) {
+		this.tipologiaEsameFacade.aggiorna(this.tipologia.getId(), r);
+	}
+	
 	public String tipologiaInserita() {
 		return "/portaleAdmin/inserimentoTipologiaTerminato.jsp";
 	}
@@ -171,6 +177,14 @@ public class TipologiaEsameController {
 
 	public void setPrerequisiti(List<Prerequisito> prerequisiti) {
 		this.prerequisiti = prerequisiti;
+	}
+
+	public List<Risultato> getRisultati() {
+		return risultati;
+	}
+
+	public void setRisultati(List<Risultato> risultati) {
+		this.risultati = risultati;
 	}
 
 

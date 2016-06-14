@@ -83,15 +83,9 @@
 							<h:inputText style="color: black;"
 								value="#{tipologiaEsameController.descrizione}" />
 							<br> <br> <strong style="color: #000000">Costo</strong><br>
-							<h:inputText style="color: black;"
+							<h:inputText style="color: black;" 
 								value="#{tipologiaEsameController.costo}" />
 						</p>
-
-
-						<h2>
-							<strong style="color: #000000">Prerequisiti richiesti:</strong>
-						</h2>
-						<br>
 
 						<p>
 							<h:commandButton styleClass="btn btn-success btn-lg"

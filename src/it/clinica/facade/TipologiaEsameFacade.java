@@ -54,6 +54,12 @@ public class TipologiaEsameFacade {
 		t.getPrerequisiti().add(p);
 		this.em.merge(t);
 	}
+	
+	public void aggiorna(Long id_tipologia, Risultato r) {
+		TipologiaEsame t = this.em.find(TipologiaEsame.class, id_tipologia);
+		t.getRisultati().add(r);
+		this.em.merge(t);
+	}
 
 	public TipologiaEsame findTipologiaEsameByEsame(Long id_esame) {
 		try {

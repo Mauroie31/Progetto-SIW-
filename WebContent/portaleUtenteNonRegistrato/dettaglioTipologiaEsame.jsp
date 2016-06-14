@@ -75,12 +75,20 @@
 							tipologia di esame richiesta</h1>
 						<hr>
 						<p style="color: #000000">
-							<strong>Nome:</strong>
+							<strong>Nome:</strong><br>
 							${tipologiaEsameController.tipologia.getNome()}<br>
-							<strong>Descrizione:</strong>
+							<strong>Descrizione:</strong><br>
 							${tipologiaEsameController.tipologia.getDescrizione()} <br>
-							<strong>Costo:</strong>
-								${tipologiaEsameController.tipologia.getCosto()}
+							<strong>Costo:</strong><br>
+								${tipologiaEsameController.tipologia.getCosto()} <br><br>
+							<strong>Prerequisiti:</strong><c:forEach var="prerequisito"
+								items="#{tipologiaEsameController.getTuttiIPrerequisiti()}">
+								<br> - ${prerequisito.descrizione}
+							</c:forEach><br><br>
+							<strong>Risultati:</strong><c:forEach var="risultato"
+								items="#{tipologiaEsameController.getTuttiIRisultati()}">
+								<br> - ${risultato.nome}
+							</c:forEach>
 						</p>
 
 					</div>
