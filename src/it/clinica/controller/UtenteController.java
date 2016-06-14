@@ -1,5 +1,8 @@
 package it.clinica.controller;
 
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -12,35 +15,56 @@ public class UtenteController {
 	@EJB(name = "utenteFacade")
 	private UtenteFacade utenteFacade;
 	private Long id;
-	private String username;
-	private String nome;
-	private String cognome;
-	private String email;
-	private String password;
-	private String ruolo;
-	
+	private String nome, cognome, email, password, indirizzo, ruolo;
+	private Utente utente;
+	private List<Utente> utenti;
+
 	@ManagedProperty(value = "#{utenteManager}")
 	private UtenteManager session;
 
-	
-	public UtenteController() {
-		
+
+	public UtenteController() {		
 	}
-	
-	public String login(Utente utente) {
-		utente = utenteFacade.autentica(utente.getEmail(), utente.getPassword());
-		if(utente!=null) {
-			if(utente.getRuolo() == "admin") {
+
+	@PostConstruct
+	public void init() {
+		this.utenti = this.utenteFacade.findAllUtenti();
+		this.ruolo = "paziente";
+	}
+
+	public String goToPaginaRegistrazione() {
+		return "/registrazione.jsp";
+	}
+
+	public String creaUtente() {
+		this.utente = new Utente(nome, cognome, email, password, indirizzo);
+		this.utenteFacade.inserisciUtente(this.utente);
+		return "/registrazioneUtenteTerminata.jsp";
+	}
+
+
+
+
+
+	public String login( ) {
+		this.email = this.email.trim();
+		Utente utente = utenteFacade.findUtenteByEmail(this.email);
+		if(utente != null) {
+			if(this.email == "admin" && this.password == "admin") {
 				this.session.login(utente);
-				return "/PortaleAdmin/portaleAdmin.jsp";
+				return "/portaleAdmin/portaleAdmin.jsp";
 			}
-			if(utente.getRuolo() == "user") {
-				this.session.login(utente);
-				return "/PortalePaziente/portalePaziente.jsp";
-			}
+			this.session.login(utente);
+			return "/portalePaziente/portalePaziente.jsp";
 		}
-		return "/error.jsp";
+		return "errorPage.jsp";
 	}
+
+
+
+
+
+
 
 	public UtenteFacade getUtenteFacade() {
 		return utenteFacade;
@@ -56,14 +80,6 @@ public class UtenteController {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getNome() {
@@ -98,6 +114,14 @@ public class UtenteController {
 		this.password = password;
 	}
 
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
+	}
+
 	public String getRuolo() {
 		return ruolo;
 	}
@@ -105,7 +129,20 @@ public class UtenteController {
 	public void setRuolo(String ruolo) {
 		this.ruolo = ruolo;
 	}
-	
 
+	public List<Utente> getUtenti() {
+		return utenti;
+	}
 
+	public void setUtenti(List<Utente> utenti) {
+		this.utenti = utenti;
+	}
+
+	public UtenteManager getSession() {
+		return session;
+	}
+
+	public void setSession(UtenteManager session) {
+		this.session = session;
+	}
 }

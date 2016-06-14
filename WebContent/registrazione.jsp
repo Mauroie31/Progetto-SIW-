@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Tipologia esame inserita</title>
+<title>Registrazione</title>
 
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" href="./../css/bootstrap.min.css" type="text/css">
@@ -36,6 +36,7 @@
 
 </head>
 
+
 <body>
 	<f:view>
 		<nav id="mainNav" class="navbar navbar-inverse navbar-fixed-top">
@@ -48,16 +49,15 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand page-scroll" href="./../index.jsp"  style="color: #EE4B28">Home</a>
+					<a class="navbar-brand page-scroll" href="./index.jsp"
+						style="color: #EE4B28">Home</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="./inserisciTipologiaEsame.jsp">Inserisci
-								tipologia esame</a></li>
-						<li><a class="navbar-brand page-scroll" href="./portaleAdmin.jsp">Portale amministratore</a></li>
+						<li><a class="navbar-brand page-scroll" href="./login.jsp">Accedi</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -65,15 +65,39 @@
 			<!-- /.container-fluid -->
 		</nav>
 
+
+
 		<header
 			style="background-image: -webkit-radial-gradient(center, circle farthest-corner, #FFFFFF 0%, #2F4C5E 100%);">
 			<h:form>
 				<div align="center" class="header-content">
 					<div class="header-content-inner">
-						<h1 style="color: #EE4B28; font-size: 40px;">Tipologia esame
-							inserita</h1>
+						<h1 style="color: #EE4B28; font-size: 40px;">Registrati</h1>
 						<hr>
-						<a href="./../portaleAdmin/inserisciTipologiaEsame.jsp" class="btn btn-primary btn-xl page-scroll">Inserisci una nuova tipologia esame</a>
+
+						<p>
+							<strong style="color: #000000">Nome</strong><br>
+							<h:inputText required="true" id="usNome" style="color: black;"
+								value="#{utenteController.nome}" />
+							<br> <br> <strong style="color: #000000">Cognome</strong><br>
+							<h:inputText required="true" style="color: black;"
+								value="#{utenteController.cognome}" />
+							<br> <br> <strong style="color: #000000">Email</strong><br>
+							<h:inputText required="true" style="color: black;"
+								value="#{utenteController.email}" />
+							<br> <br> <strong style="color: #000000">Password</strong><br>
+							<h:inputSecret required="true" style="color: black;"
+								value="#{utenteController.password}" />
+							<br> <br> <strong style="color: #000000">Indirizzo</strong><br>
+							<h:inputText required="true" style="color: black;"
+								value="#{utenteController.indirizzo}" />
+						</p>
+
+						<p>
+							<h:commandButton styleClass="btn btn-success btn-lg"
+								value="Inserisci"
+								action="#{utenteController.creaUtente()}" />
+						</p>
 					</div>
 				</div>
 			</h:form>

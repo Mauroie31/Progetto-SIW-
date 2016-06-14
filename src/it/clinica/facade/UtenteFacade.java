@@ -21,13 +21,11 @@ public class UtenteFacade {
 		this.em = em;
 	}
 	public UtenteFacade() {
-
 	}
 
-	public List<Utente> findAll() {
+	public List<Utente> findAllUtenti() {
 		try {
-			return this.em.createNamedQuery("findAll", Utente.class)
-					.getResultList();
+			return this.em.createNamedQuery("findAllUtenti", Utente.class).getResultList();
 		}
 		catch (NoResultException e) {
 			return null;
@@ -41,7 +39,11 @@ public class UtenteFacade {
 	public Utente findUtenteByEmail(String email) {
 		return this.em.createNamedQuery("findUtenteByEmail", Utente.class)
 				.setParameter("email_utente", email).getSingleResult();
-
+	}
+	
+	public Utente findUtenteById(Long id) {
+		return this.em.createNamedQuery("findUtenteById", Utente.class)
+				.setParameter("id_utente", id).getSingleResult();
 	}
 
 	public Utente autentica(String email, String password) {
