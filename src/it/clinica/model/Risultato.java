@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Risultato")
-@NamedQuery(name = "findAllRisultati", query = "SELECT r FROM Risultato r")
+@NamedQuery(name = "findAllRisultati", query = "SELECT r FROM Risultato r order by r.nome")
 public class Risultato {
 
 	@Id
@@ -15,35 +15,31 @@ public class Risultato {
 	private Long id;
 	@Column(nullable=false)
 	private String nome;
-	@ManyToMany
+	@ManyToMany(mappedBy = "risultati", cascade = CascadeType.ALL)
 	private List<TipologiaEsame> tipologieEsami;
 
-	public Risultato(){
-		
+
+	public Risultato(){		
 	}
+
+
 
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long codice) {
 		this.id = codice;
-	}
-	
-	
+	}	
 	public List<TipologiaEsame> getTipologieEsami() {
 		return tipologieEsami;
 	}
-
 	public void setTipologieEsami(List<TipologiaEsame> tipologieEsami) {
 		this.tipologieEsami = tipologieEsami;
 	}
-
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-
 }

@@ -117,6 +117,10 @@ public class TipologiaEsameController {
 		this.tipologiaEsameFacade.aggiorna(this.tipologia.getId(), p);
 	}
 	
+	public void addRisultati(Risultato r) {
+		this.tipologiaEsameFacade.aggiorna(this.tipologia.getId(), r);
+	}
+	
 	public String tipologiaInserita() {
 		return "/portaleAdmin/inserimentoTipologiaTerminato.jsp";
 	}

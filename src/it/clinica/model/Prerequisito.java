@@ -14,15 +14,6 @@ public class Prerequisito {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	public Long getId() {
-		return id;
-	}
-
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	@Column(nullable = false)
 	private String nome;
 	private String descrizione;
@@ -37,13 +28,15 @@ public class Prerequisito {
 	public List<TipologiaEsame> getTipologieEsami() {
 		return tipologieEsami;
 	}
-
-
 	public void setTipologieEsami(List<TipologiaEsame> tipologieEsami) {
 		this.tipologieEsami = tipologieEsami;
 	}
-
-
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -53,7 +46,6 @@ public class Prerequisito {
 	public String getDescrizione() {
 		return descrizione;
 	}
-	
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}

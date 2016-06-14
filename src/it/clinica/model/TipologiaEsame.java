@@ -25,7 +25,7 @@ public class TipologiaEsame {
 	@ManyToMany
 	private List<Prerequisito> prerequisiti;
 
-	@ManyToMany(cascade={CascadeType.PERSIST})
+	@ManyToMany
 	private List<Risultato> risultati;
 
 	@OneToMany
