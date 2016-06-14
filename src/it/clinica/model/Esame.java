@@ -24,21 +24,35 @@ import javax.persistence.*;
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		private Long id;
-		@Column(nullable = false)
-		private String nome;
-		private String descrizione;
+		
+		@ManyToMany
 		private List<Risultato> risultati;
+		
 		@Temporal(TemporalType.DATE)
 		private Date dataPrenotazione;
+		
 		@Temporal(TemporalType.DATE)
 		private Date dataVisita;
+		
 		@ManyToOne
 		private TipologiaEsame tipologiaEsame;
-		@ManyToOne
-		private Paziente paziente;
-		@ManyToOne
-		private Medico medico;
 		
+		@ManyToOne
+		private Utente utente;
+		
+//		@ManyToOne
+//		private Medico medico;
+		
+		public Utente getUtente() {
+			return utente;
+		}
+
+
+		public void setUtente(Utente utente) {
+			this.utente = utente;
+		}
+
+
 		public Esame() {
 			
 		}
@@ -50,26 +64,12 @@ import javax.persistence.*;
 		public void setId(Long id) {
 			this.id = id;
 		}
-		public String getNome() {
-			return nome;
-		}
-
-		public void setNome(String nome) {
-			this.nome=nome;
-		}
 		//TODO ToString
 		/*
 	public void setNome() {
 		this.nome = this.tipologiaEsame.getNome() + "di" + this.paziente.getNome() + this.paziente.getCognome();
 	}
 		 */
-		public String getDescrizione() {
-			return descrizione;
-		}
-		public void setDescrizione(String descrizione) {
-			this.descrizione = descrizione;
-		}
-
 
 		public List<Risultato> getRisultati() {
 			return risultati;
@@ -95,17 +95,12 @@ import javax.persistence.*;
 		public void setDataVisita(Date dataVisita) {
 			this.dataVisita = dataVisita;
 		}
-		public Paziente getPaziente() {
-			return paziente;
-		}
-		public void setPaziente(Paziente paziente) {
-			this.paziente = paziente;
-		}
-		public Medico getMedico() {
-			return medico;
-		}
-		public void setMedico(Medico medico) {
-			this.medico = medico;
-		}
+		
+//		public Medico getMedico() {
+//			return medico;
+//		}
+//		public void setMedico(Medico medico) {
+//			this.medico = medico;
+//		}
 
 	}

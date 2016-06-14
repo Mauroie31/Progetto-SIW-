@@ -1,6 +1,6 @@
 package it.clinica.facade;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.*;
 
 import javax.ejb.EJB;
@@ -10,17 +10,19 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import it.clinica.model.Esame;
-import it.clinica.model.Paziente;
 import it.clinica.model.TipologiaEsame;
+import it.clinica.model.Utente;
 
 @Stateless
 @EJB(name="ejb/esameFacade", beanInterface=EsameFacade.class, beanName="esameFacade")
 public class EsameFacade {
 	@PersistenceContext(unitName="unit-clinica")
 	private EntityManager em;
+	private Esame esame;
 
 	public EsameFacade(EntityManager em) {
 		this.em = em;
+		
 	}
 	
 	public EsameFacade() {
@@ -31,17 +33,15 @@ public class EsameFacade {
 		return this.em.merge(esame);
 	}
 	
-	public Esame createEsame(String nome, String descrizione) {
-		Esame esame = new Esame();
-		esame.setNome(nome);
-		esame.setDescrizione(descrizione);
-		this.em.persist(esame);
-		return esame;
+	public Esame createEsame(Date dataVisita) {
+		this.esame = new Esame();
+		this.esame.setDataVisita(dataVisita);
+		Date dataPrenotazione= new Date();
+		this.esame.setDataPrenotazione(dataPrenotazione);
+		this.em.persist(this.esame);
+		return this.esame;
 	}
 	
-	public void inserisciEsame(Esame esame) {
-		this.em.persist(esame);
-	}
 
 	public Esame findEsame(Long id_esame) {
 		try {
@@ -88,10 +88,10 @@ public class EsameFacade {
 		}
 	}
 
-	public List<Esame> findEsamiByDataVisita(Date datav) {
+	public List<Esame> findEsamiByDataVisita(Date data) {
 		try {
 			return this.em.createNamedQuery("findEsamiByDataVisita", Esame.class)
-					.setParameter("dataVisita", datav).getResultList();
+					.setParameter("dataVisita", data).getResultList();
 		} catch (NoResultException e) {
 			return null;
 		}
@@ -106,13 +106,13 @@ public class EsameFacade {
 		}
 	}
 
-	public void associaPazienteAdEsame(Paziente paziente, Esame esame) {
-		esame.setPaziente(paziente);
+	public void associaPazienteAdEsame(Utente paziente, Esame esame) {
+		esame.setUtente(paziente);
 		this.em.merge(esame);
 	}
 	
-	public void associaTipologiaEsameAdEsame(TipologiaEsame tipologia, Esame esame) {
-		esame.setTipologiaEsame(tipologia);
+	public void associaTipologiaEsameAdEsame(TipologiaEsame tipologia) {
+		this.esame.setTipologiaEsame(tipologia);
 		this.em.merge(esame);
 	}
 	
