@@ -66,7 +66,6 @@
 		</nav>
 
 
-
 		<header
 			style="background-image: -webkit-radial-gradient(center, circle farthest-corner, #FFFFFF 0%, #2F4C5E 100%);">
 			<h:form>
