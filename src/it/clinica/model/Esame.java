@@ -11,7 +11,7 @@ import javax.persistence.*;
 	@NamedQuery(name = "findEsamiByPaziente", 
           	query="SELECT e FROM Esame e JOIN Utente u where u.id = :id_paziente"),
 	@NamedQuery(name = "findEsamiByMedico",
-	        query ="SELECT e FROM Esame e JOIN Medico m where m.id = :id_medico"),
+	        query ="SELECT e FROM Esame e JOIN Medicos m where m.id = :id_medico"),
 	@NamedQuery(name = "findEsamiByDataPrenotazione",
 	        query = "SELECT e FROM Esame e WHERE e.dataprenotazione = :dataPrenotazione"),
 	@NamedQuery(name = "findEsamiByDataVisita",
@@ -20,7 +20,7 @@ import javax.persistence.*;
 			query = "SELECT e FROM Esame e JOIN TipologiaEsame t WHERE t.id = :id_tipologiaEsame")
 })
 
-	public class Esame {
+	public class Esame  {
 		@Id
 		@GeneratedValue(strategy=GenerationType.AUTO)
 		private Long id;
@@ -43,6 +43,10 @@ import javax.persistence.*;
 //		@ManyToOne
 //		private Medico medico;
 		
+		public Esame() {
+			
+		}
+		
 		public Utente getUtente() {
 			return utente;
 		}
@@ -50,11 +54,6 @@ import javax.persistence.*;
 
 		public void setUtente(Utente utente) {
 			this.utente = utente;
-		}
-
-
-		public Esame() {
-			
 		}
 
 
