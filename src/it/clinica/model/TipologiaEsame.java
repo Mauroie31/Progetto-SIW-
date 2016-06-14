@@ -37,7 +37,8 @@ public class TipologiaEsame {
 		this.nome=nome;
 		this.descrizione=descrizione;
 		this.costo=costo;
-		this.prerequisiti=new ArrayList<>();
+		this.prerequisiti = new ArrayList<>();
+		this.risultati = new ArrayList<>();
 	}
 
 
