@@ -2,29 +2,110 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
+<!DOCTYPE html>
+<html lang="it">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Inizia Nuova Tipologia Esame</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Home</title>
+
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+<!-- Custom Fonts -->
+<link
+	href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"
+	type="text/css">
+
+<!-- Plugin CSS -->
+<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/creative.css" type="text/css">
+
 </head>
 
-<body>
-	<f:view>
+<body id="page-top">
 
-
-		<h:form>
-		crea nuova tipologia esame
-
-		<div>
-				<h:commandButton value="invia"
-					action="#{tipologiaEsameController.goToPaginaInserimentoTipologiaEsame()}" />
+	<nav id="mainNav" class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand page-scroll" href="./index.jsp">Home</a>
 			</div>
 
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="./portaleAdmin/inserisciTipologiaEsame.jsp">Inserisci
+							tipologia esame</a></li>
+					<li><a href="./errorPage.jsp">Un'altra cosa</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+	<header style="background-image: url('../img/header.jpg');">
+		<div class="header-content">
+			<div class="header-content-inner">
+				<h1 style="color: #EE4B28;">
+					<strong
+						style="font-size: 120px; text-shadow: 0pt 0pt 5px #ffffff, 0pt 0pt 10px #ffffff, 0pt 0pt 15px #ffffff, 0pt 0pt 20px #ffffff, 0pt 0pt 35px #ffffff, 0pt 0pt 40px #ffffff, 0pt 0pt 50px #ffffff, 0pt 0pt 75px #ffffff;">Clinica
+						ACME</strong>
+				</h1>
+				<hr>
+				<p>
+					<strong
+						style="color: #000000; text-shadow: 0pt 0pt 5px #ffffff, 0pt 0pt 10px #ffffff, 0pt 0pt 15px #ffffff, 0pt 0pt 20px #ffffff, 0pt 0pt 35px #ffffff, 0pt 0pt 40px #ffffff, 0pt 0pt 50px #ffffff, 0pt 0pt 75px #ffffff;">
+						La nostra clinica ACME offre molte tipologie di esame e medici
+						competenti.<br> Prenota il tuo esame, controlla i tuoi
+						risultati o consulta le nostre offerte!
+					</strong>
+				</p>
+				<a
+					href="./portaleUtenteNonRegistrato/consultaElencoTipologiaEsame.jsp"
+					class="btn btn-primary btn-xl page-scroll">Consulta le nostre
+					offerte</a>
+			</div>
+		</div>
+	</header>
 
 
-		</h:form>
-	</f:view>
+
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- Plugin JavaScript -->
+	<script src="js/scrollreveal.min.js"></script>
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/jquery.fittext.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="js/creative.js"></script>
 
 </body>
 

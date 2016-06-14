@@ -6,14 +6,14 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "Medici")
+@Table(name = "Medico")
 @NamedQueries({
 	@NamedQuery(name = "findAllMedici", 
-	query = "SELECT m FROM Medici m"),
+	query = "SELECT m FROM Medico m"),
 	@NamedQuery(name = "findMedicoByEsame", 
-	query = "SELECT m FROM Medici m JOIN Esami e where e.id = :id_esame"),
+	query = "SELECT m FROM Medico m JOIN Esame e where e.id = :id_esame"),
 	@NamedQuery(name = "findMediciByTipologiaEsame", 
-	query = "SELECT m FROM Medici m JOIN TipologiaEsame t where t.id = :id_tipologiaEsame"),
+	query = "SELECT m FROM Medico m JOIN TipologiaEsame t where t.id = :id_tipologiaEsame"),
 })
 public class Medico {
 	@Id

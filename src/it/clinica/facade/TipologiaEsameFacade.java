@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-import it.clinica.model.TipologiaEsame;
+import it.clinica.model.*;
 
 @Stateless
 @EJB(name="ejb/tipologiaEsameFacade", beanInterface=TipologiaEsameFacade.class, beanName="tipologiaEsameFacade")
@@ -39,6 +39,20 @@ public class TipologiaEsameFacade {
 		} catch (NoResultException e) {
 			return null;
 		}
+	}
+	
+	public List<Prerequisito> findAllPrerequisiti() {
+		try {
+			return this.em.createNamedQuery("findAllPrerequisiti", Prerequisito.class).getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+	
+	public void aggiorna(Long id_tipologia, Prerequisito p) {
+		TipologiaEsame t = this.em.find(TipologiaEsame.class, id_tipologia);
+		t.getPrerequisiti().add(p);
+		this.em.merge(t);
 	}
 
 	public TipologiaEsame findTipologiaEsameByEsame(Long id_esame) {

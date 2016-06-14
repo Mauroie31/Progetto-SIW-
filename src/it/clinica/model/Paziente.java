@@ -10,12 +10,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Utenti")
+@Table(name = "Utente")
 @NamedQueries({
 	@NamedQuery(name = "findAll", 
-	query = "SELECT p FROM Pazienti p"),
+	query = "SELECT p FROM Paziente p"),
 	@NamedQuery(name = "findPazienteByEsame", 
-	query = "SELECT p FROM Pazienti p JOIN Esami e where e.id = :id_esame")
+	query = "SELECT p FROM Paziente p JOIN Esame e where e.id = :id_esame")
 
 })
 public class Paziente extends Utente  {

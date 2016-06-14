@@ -2,12 +2,12 @@ package it.clinica.model;
 
 import javax.persistence.*;
 @Entity
-@Table(name = "Utenti")
+@Table(name = "Utente")
 @NamedQueries({
 @NamedQuery(name = "findAll", 
-query = "SELECT u FROM Utenti u"),
+query = "SELECT u FROM Utente u"),
 @NamedQuery(name = "findUtenteByEmail", 
-query = "SELECT u FROM Utenti u JOIN where u.email = :email_utente")
+query = "SELECT u FROM Utente u JOIN where u.email = :email_utente")
 })
 public abstract class Utente {
 	@Id

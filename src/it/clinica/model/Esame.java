@@ -4,20 +4,20 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Esami")
+@Table(name = "Esame")
 @NamedQueries({
 	@NamedQuery(name = "findAllEsami", 
-			query = "SELECT e FROM Esami e"),
+			query = "SELECT e FROM Esame e"),
 	@NamedQuery(name = "findEsamiByPaziente", 
-          	query="SELECT e FROM Esami e JOIN Utente u where u.id = :id_paziente"),
+          	query="SELECT e FROM Esame e JOIN Utente u where u.id = :id_paziente"),
 	@NamedQuery(name = "findEsamiByMedico",
-	        query ="SELECT e FROM Esami e JOIN Medico m where m.id = :id_medico"),
+	        query ="SELECT e FROM Esame e JOIN Medico m where m.id = :id_medico"),
 	@NamedQuery(name = "findEsamiByDataPrenotazione",
-	        query = "SELECT e FROM Esami e WHERE e.dataprenotazione = :dataPrenotazione"),
+	        query = "SELECT e FROM Esame e WHERE e.dataprenotazione = :dataPrenotazione"),
 	@NamedQuery(name = "findEsamiByDataVisita",
-	        query = "SELECT e FROM Esami e WHERE e.dataprenotazione = :dataVisita"),
+	        query = "SELECT e FROM Esame e WHERE e.dataprenotazione = :dataVisita"),
 	@NamedQuery(name = "findEsamiByTipologiaEsame",
-			query = "SELECT e FROM Esami e JOIN TipologiaEsame t WHERE t.id = :id_tipologiaEsame")
+			query = "SELECT e FROM Esame e JOIN TipologiaEsame t WHERE t.id = :id_tipologiaEsame")
 })
 
 	public class Esame {

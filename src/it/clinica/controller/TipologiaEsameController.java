@@ -1,15 +1,21 @@
 package it.clinica.controller;
 
 import java.util.*;
+
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
+
+
+import javax.faces.bean.SessionScoped;
 
 import it.clinica.facade.*;
 import it.clinica.model.*;
 
 
 @ManagedBean(name="tipologiaEsameController")
+@SessionScoped
 public class TipologiaEsameController {
 	@EJB
 	private TipologiaEsameFacade tipologiaEsameFacade;
@@ -18,32 +24,67 @@ public class TipologiaEsameController {
 	@EJB
 	private RisultatoFacade risultatoFacade;
 
+	private Long id;
 	private String nome;
 	private String descrizione;
 	private double costo;
-	
-	//sto provando ad aggiungere i prerequisiti ad una tipologia esame
-	private List<Prerequisito> prerequsiti= new ArrayList<>();
-	
-	public TipologiaEsameController() {
+	private TipologiaEsame tipologia;
+	private List<TipologiaEsame> tipologieEsami;
+	private List<Prerequisito> prerequisiti;
 
+	public TipologiaEsameController() {
+	}
+	
+	@PostConstruct
+	public void init(){
+		this.tipologieEsami = this.tipologiaEsameFacade.findAllTipologieEsami();
+		this.prerequisiti = this.prerequisitoFacade.findAllPrerequisiti();
 	}
 
+	//CASO d'USO UC1
+	public String goToElencoTipologie() {
+		return "/portaleUtenteNonRegistrato/consultaElencoTipologiaEsame.jsp";
+	}
 
-	//	private Set<String> indicatoriEsami;
+	public PrerequisitoFacade getPrerequisitoFacade() {
+		return prerequisitoFacade;
+	}
 
-	//	private Map<Long, Esame> esami;
+	public void setPrerequisitoFacade(PrerequisitoFacade prerequisitoFacade) {
+		this.prerequisitoFacade = prerequisitoFacade;
+	}
 
-	//	//caso d'uso UC1
-	//	public List<TipologiaEsame> elencoTipologieEsame() {
-	//		return this.tipologiaEsameFacade.findAllTipologieEsami();
-	//	}
-	//	
-	//	public String dettagliTipologiaEsame(Long id_tipologia) {
-	//		TipologiaEsame tipologiaEsame = this.tipologiaEsameFacade.findTipologiaEsame(id_tipologia);
-	//		return tipologiaEsame.getDescrizione();
-	//	}
-	//end UC1
+	public RisultatoFacade getRisultatoFacade() {
+		return risultatoFacade;
+	}
+
+	public void setRisultatoFacade(RisultatoFacade risultatoFacade) {
+		this.risultatoFacade = risultatoFacade;
+	}
+
+	public List<TipologiaEsame> getTipologieEsami() {
+		return tipologieEsami;
+	}
+
+	public void setTipologieEsami(List<TipologiaEsame> tipologieEsami) {
+		this.tipologieEsami = tipologieEsami;
+	}
+
+	public TipologiaEsameFacade getTipologiaEsameFacade() {
+		return tipologiaEsameFacade;
+	}
+
+	public String vaiSuPaginaDettagliTipologia(Long id_tipologia) {
+		this.tipologia = this.tipologiaEsameFacade.findTipologiaEsame(id_tipologia);
+		return "/portaleUtenteNonRegistrato/dettaglioTipologiaEsame.jsp";
+	}
+
+	public String richiediDettagliTipologia(TipologiaEsame tipologia) {
+		return tipologia.getDescrizione();
+	}
+
+	//END caso d'uso UC1
+
 
 	//caso d'uso uc4
 
@@ -54,49 +95,60 @@ public class TipologiaEsameController {
 	}
 
 
-	//TODO : inserimento boolean
 	public String creaTipologiaEsame() {
-		TipologiaEsame t= new TipologiaEsame(nome, descrizione, costo, this.prerequsiti);
-		this.tipologiaEsameFacade.inserisciTipologiaEsame(t);
-		return "/portaleAdmin/inserimentoTipologiaTerminato.jsp";
+		this.tipologia = new TipologiaEsame(nome, descrizione, costo);
+		this.tipologiaEsameFacade.inserisciTipologiaEsame(this.tipologia);
+		return "/portaleAdmin/inserimentoPrerequisitiRisultatiPerTipologiaEsame.jsp";
 	}
 
-
-	public List<Risultato> getTuttiIRisultati() {
-		return this.risultatoFacade.findAllRisultati();
+	public List<Prerequisito> getTuttiIPrerequisiti() {
+		return this.prerequisitoFacade.findAllPrerequisiti();
 	}
 	
-	public List<Prerequisito> getTuttiIPrerequisiti(){
-		return this.prerequisitoFacade.findAllPrerequisiti();
+	public List<Risultato> getTuttiIRisultati() {
+		return this.risultatoFacade.findAllRisultati();
 	}
 
 	public void setTipologiaEsameFacade(TipologiaEsameFacade tipologiaEsameFacade) {
 		this.tipologiaEsameFacade = tipologiaEsameFacade;
 	}
+
+	public void addPrerequisiti(Prerequisito p){
+		this.tipologiaEsameFacade.aggiorna(this.tipologia.getId(), p);
+	}
 	
-	public void addPrerequisito(Prerequisito p){
-		this.prerequsiti.add(p);
+	public String tipologiaInserita() {
+		return "/portaleAdmin/inserimentoTipologiaTerminato.jsp";
 	}
 
 	//END UC4
 
-	
+
+
 	public String getNome() {
 		return nome;
 	}
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public String getDescrizione() {
 		return descrizione;
 	}
-	
+
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	
+
 	public double getCosto() {
 		return costo;
 	}
@@ -105,28 +157,34 @@ public class TipologiaEsameController {
 		this.costo = costo;
 	}
 
+	public TipologiaEsame getTipologia() {
+		return tipologia;
+	}
+
+	public void setTipologia(TipologiaEsame tipologia) {
+		this.tipologia = tipologia;
+	}
+
 	public List<Prerequisito> getPrerequisiti() {
-		return prerequsiti;
+		return prerequisiti;
+	}
+
+	public void setPrerequisiti(List<Prerequisito> prerequisiti) {
+		this.prerequisiti = prerequisiti;
 	}
 
 
-	public void setPrerequisiti(Prerequisito p) {
-		this.prerequsiti.add(p);
-	}
-
-
-
-	//	public Set<String> getIndicatoriEsami() {
-	//		return indicatoriEsami;
-	//	}
-	//	public void setIndicatoriEsami(Set<String> indicatoriEsami) {
-	//		this.indicatoriEsami = indicatoriEsami;
-	//	}
-	//	public Map<Long, Esame> getEsami() {
-	//		return esami;
-	//	}
-	//	public void setEsami(Map<Long, Esame> esami) {
-	//		this.esami = esami;
-	//	}
+	//  public Set<String> getIndicatoriEsami() {
+		//      return indicatoriEsami;
+		//  }
+	//  public void setIndicatoriEsami(Set<String> indicatoriEsami) {
+		//      this.indicatoriEsami = indicatoriEsami;
+	//  }
+	//  public Map<Long, Esame> getEsami() {
+	//      return esami;
+	//  }
+	//  public void setEsami(Map<Long, Esame> esami) {
+	//      this.esami = esami;
+	//  }
 
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Risultati")
+@Table(name = "Risultato")
 @NamedQuery(name = "findAllRisultati", query = "SELECT r FROM Risultato r")
 public class Risultato {
 

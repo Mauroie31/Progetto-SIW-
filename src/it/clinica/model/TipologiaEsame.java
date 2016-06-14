@@ -5,39 +5,39 @@ import java.util.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TipologieEsami")
+@Table(name = "TipologiaEsame")
 @NamedQueries({
 	@NamedQuery(name = "findAllTipologieEsami", 
-	query = "SELECT t FROM TipologieEsami t"),
-	@NamedQuery(name = "findTipologiaEsameByEsame",
-    query = "SELECT t FROM TipologieEsami t JOIN Esami e WHERE e.id = :id_esame")
+			query = "SELECT t FROM TipologiaEsame t order by t.nome"),
+			@NamedQuery(name = "findTipologiaEsameByEsame",
+			query = "SELECT t FROM TipologiaEsame t JOIN Esame e WHERE e.id = :id_esame")
 })
 
 public class TipologiaEsame {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-    @Column(nullable = false)
+	@Column(nullable = false)
 	private String nome;
 	private String descrizione;
 	private double costo;
-	
-	@ManyToMany(cascade={CascadeType.PERSIST})
+
+	@ManyToMany
 	private List<Prerequisito> prerequisiti;
-	
+
 	@ManyToMany(cascade={CascadeType.PERSIST})
 	private List<Risultato> risultati;
-	
+
 	@OneToMany
 	private List<Esame> esami;
-	
+
 	public TipologiaEsame() {}
-	
-	public TipologiaEsame(String nome, String descrizione, double costo, List<Prerequisito> p) {
+
+	public TipologiaEsame(String nome, String descrizione, double costo) {
 		this.nome=nome;
 		this.descrizione=descrizione;
 		this.costo=costo;
-		this.prerequisiti=p;
+		this.prerequisiti=new ArrayList<>();
 	}
 
 
@@ -78,15 +78,15 @@ public class TipologiaEsame {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	
+
 	public List<Prerequisito> getPrerequisiti() {
 		return this.prerequisiti;
 	}
-	
-	public void setPrerequisiti(Prerequisito prerequisito) {
-		this.prerequisiti.add(prerequisito);
+
+	public void setPrerequisiti(List<Prerequisito> prerequisiti) {
+		this.prerequisiti = prerequisiti;
 	}
-	
+
 	public List<Risultato> getRisultati() {
 		return risultati;
 	}

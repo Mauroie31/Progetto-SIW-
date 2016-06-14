@@ -7,33 +7,31 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "Prerequisiti")
-@NamedQuery(name = "findAllPrerequisiti", query = "SELECT p FROM Prerequisito p")
+@Table(name = "Prerequisito")
+@NamedQuery(name = "findAllPrerequisiti", query = "SELECT p FROM Prerequisito p order by p.nome")
 public class Prerequisito {
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.AUTO)
-//	private Long id;
-//	@Column(nullable=false)
+
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@Column(nullable = false)
 	private String nome;
 	private String descrizione;
-	@ManyToMany
+	@ManyToMany(mappedBy = "prerequisiti", cascade = CascadeType.ALL)
 	private List<TipologiaEsame> tipologieEsami;
 
 
 	public Prerequisito(){
-		
 	}
-	
-	
-//	public Long getId() {
-//		return id;
-//	}
-//
-//
-//	public void setId(Long id) {
-//		this.id = id;
-//	}
 
 
 	public List<TipologiaEsame> getTipologieEsami() {

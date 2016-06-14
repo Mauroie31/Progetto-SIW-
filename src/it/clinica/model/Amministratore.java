@@ -6,8 +6,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Utenti")
-@NamedQuery(name = "findAll", query = "SELECT a FROM Amministratori a")
+@Table(name = "Utente")
+@NamedQuery(name = "findAll", query = "SELECT a FROM Amministratore a")
 public class Amministratore extends Utente {
 	@Column(nullable = false)
 	private String ruolo;

@@ -19,7 +19,7 @@
 	<br>
 	<br>
 	<p align="center">
-		<A HREF="paginaBenvenuto.jsp" class="classname"> Torna alla HOME </A>
+		<A HREF="./index.jsp" class="classname"> Torna alla HOME </A>
 	</p>
 
 </body>
