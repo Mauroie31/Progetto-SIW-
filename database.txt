@@ -1,0 +1,428 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
+-- Started on 2016-06-15 18:39:39
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 1 (class 3079 OID 12355)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2175 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 181 (class 1259 OID 17345)
+-- Name: esame; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE esame (
+    id bigint NOT NULL,
+    dataprenotazione date,
+    datavisita date,
+    medico_nome character varying(255),
+    tipologiaesame_id bigint,
+    utente_id bigint
+);
+
+
+ALTER TABLE esame OWNER TO postgres;
+
+--
+-- TOC entry 182 (class 1259 OID 17350)
+-- Name: esame_risultato; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE esame_risultato (
+    esame_id bigint,
+    risultati_id bigint
+);
+
+
+ALTER TABLE esame_risultato OWNER TO postgres;
+
+--
+-- TOC entry 183 (class 1259 OID 17353)
+-- Name: medico; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE medico (
+    nome character varying(255) NOT NULL,
+    cognome character varying(255) NOT NULL,
+    specializzazione character varying(255) NOT NULL
+);
+
+
+ALTER TABLE medico OWNER TO postgres;
+
+--
+-- TOC entry 184 (class 1259 OID 17361)
+-- Name: openjpa_sequence_table; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE openjpa_sequence_table (
+    id smallint NOT NULL,
+    sequence_value bigint
+);
+
+
+ALTER TABLE openjpa_sequence_table OWNER TO postgres;
+
+--
+-- TOC entry 185 (class 1259 OID 17366)
+-- Name: prerequisito; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE prerequisito (
+    id bigint NOT NULL,
+    descrizione character varying(255),
+    nome character varying(255) NOT NULL
+);
+
+
+ALTER TABLE prerequisito OWNER TO postgres;
+
+--
+-- TOC entry 186 (class 1259 OID 17374)
+-- Name: risultato; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE risultato (
+    id bigint NOT NULL,
+    nome character varying(255) NOT NULL
+);
+
+
+ALTER TABLE risultato OWNER TO postgres;
+
+--
+-- TOC entry 187 (class 1259 OID 17379)
+-- Name: tipologiaesame; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tipologiaesame (
+    id bigint NOT NULL,
+    costo double precision,
+    descrizione character varying(255),
+    nome character varying(255) NOT NULL
+);
+
+
+ALTER TABLE tipologiaesame OWNER TO postgres;
+
+--
+-- TOC entry 188 (class 1259 OID 17387)
+-- Name: tipologiaesame_prerequisito; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tipologiaesame_prerequisito (
+    tipologieesami_id bigint,
+    prerequisiti_id bigint
+);
+
+
+ALTER TABLE tipologiaesame_prerequisito OWNER TO postgres;
+
+--
+-- TOC entry 189 (class 1259 OID 17390)
+-- Name: tipologiaesame_risultato; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE tipologiaesame_risultato (
+    tipologieesami_id bigint,
+    risultati_id bigint
+);
+
+
+ALTER TABLE tipologiaesame_risultato OWNER TO postgres;
+
+--
+-- TOC entry 190 (class 1259 OID 17393)
+-- Name: utente; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE utente (
+    id bigint NOT NULL,
+    cognome character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    indirizzo character varying(255),
+    nome character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    ruolo character varying(255) NOT NULL
+);
+
+
+ALTER TABLE utente OWNER TO postgres;
+
+--
+-- TOC entry 2158 (class 0 OID 17345)
+-- Dependencies: 181
+-- Data for Name: esame; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2159 (class 0 OID 17350)
+-- Dependencies: 182
+-- Data for Name: esame_risultato; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2160 (class 0 OID 17353)
+-- Dependencies: 183
+-- Data for Name: medico; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2161 (class 0 OID 17361)
+-- Dependencies: 184
+-- Data for Name: openjpa_sequence_table; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO openjpa_sequence_table VALUES (0, 101);
+
+
+--
+-- TOC entry 2162 (class 0 OID 17366)
+-- Dependencies: 185
+-- Data for Name: prerequisito; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2163 (class 0 OID 17374)
+-- Dependencies: 186
+-- Data for Name: risultato; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2164 (class 0 OID 17379)
+-- Dependencies: 187
+-- Data for Name: tipologiaesame; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO tipologiaesame VALUES (51, 20, 'Prelievo del sangue generico.', 'Analisi del sangue');
+
+
+--
+-- TOC entry 2165 (class 0 OID 17387)
+-- Dependencies: 188
+-- Data for Name: tipologiaesame_prerequisito; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2166 (class 0 OID 17390)
+-- Dependencies: 189
+-- Data for Name: tipologiaesame_risultato; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 2167 (class 0 OID 17393)
+-- Dependencies: 190
+-- Data for Name: utente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO utente VALUES (1, 'Ferraro', 'simone.ferraro23@gmail.com', 'Via Treviso 45', 'Simone', 'e1adc3949ba59abbe56e057f2f883e', 'admin');
+
+
+--
+-- TOC entry 2020 (class 2606 OID 17349)
+-- Name: esame_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY esame
+    ADD CONSTRAINT esame_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2027 (class 2606 OID 17360)
+-- Name: medico_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY medico
+    ADD CONSTRAINT medico_pkey PRIMARY KEY (nome);
+
+
+--
+-- TOC entry 2029 (class 2606 OID 17365)
+-- Name: openjpa_sequence_table_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY openjpa_sequence_table
+    ADD CONSTRAINT openjpa_sequence_table_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2031 (class 2606 OID 17373)
+-- Name: prerequisito_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY prerequisito
+    ADD CONSTRAINT prerequisito_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2033 (class 2606 OID 17378)
+-- Name: risultato_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY risultato
+    ADD CONSTRAINT risultato_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2035 (class 2606 OID 17386)
+-- Name: tipologiaesame_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY tipologiaesame
+    ADD CONSTRAINT tipologiaesame_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2041 (class 2606 OID 17402)
+-- Name: u_utente_email; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY utente
+    ADD CONSTRAINT u_utente_email UNIQUE (email);
+
+
+--
+-- TOC entry 2043 (class 2606 OID 17400)
+-- Name: utente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY utente
+    ADD CONSTRAINT utente_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2021 (class 1259 OID 17403)
+-- Name: i_esame_medico; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX i_esame_medico ON esame USING btree (medico_nome);
+
+
+--
+-- TOC entry 2022 (class 1259 OID 17404)
+-- Name: i_esame_tipologiaesame; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX i_esame_tipologiaesame ON esame USING btree (tipologiaesame_id);
+
+
+--
+-- TOC entry 2023 (class 1259 OID 17405)
+-- Name: i_esame_utente; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX i_esame_utente ON esame USING btree (utente_id);
+
+
+--
+-- TOC entry 2024 (class 1259 OID 17406)
+-- Name: i_sm_rltt_element; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX i_sm_rltt_element ON esame_risultato USING btree (risultati_id);
+
+
+--
+-- TOC entry 2025 (class 1259 OID 17407)
+-- Name: i_sm_rltt_esame_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX i_sm_rltt_esame_id ON esame_risultato USING btree (esame_id);
+
+
+--
+-- TOC entry 2038 (class 1259 OID 17410)
+-- Name: i_tplgltt_element; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX i_tplgltt_element ON tipologiaesame_risultato USING btree (risultati_id);
+
+
+--
+-- TOC entry 2039 (class 1259 OID 17411)
+-- Name: i_tplgltt_tipologieesami_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX i_tplgltt_tipologieesami_id ON tipologiaesame_risultato USING btree (tipologieesami_id);
+
+
+--
+-- TOC entry 2036 (class 1259 OID 17408)
+-- Name: i_tplgqst_element; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX i_tplgqst_element ON tipologiaesame_prerequisito USING btree (prerequisiti_id);
+
+
+--
+-- TOC entry 2037 (class 1259 OID 17409)
+-- Name: i_tplgqst_tipologieesami_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX i_tplgqst_tipologieesami_id ON tipologiaesame_prerequisito USING btree (tipologieesami_id);
+
+
+--
+-- TOC entry 2174 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2016-06-15 18:39:39
+
+--
+-- PostgreSQL database dump complete
+--
+

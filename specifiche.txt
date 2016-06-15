@@ -1,0 +1,67 @@
+Descrizione dei casi d'uso.
+Caso d'uso UC1
+- Consultazione dell'offerta
+- Attore primario : utente non registrato 
+
+- Scenario principale di successo: 
+-> l'utente visita la home. (index.jsp)
+-> l'utente sceglie l'opzione "Consulta le nostre offerte"
+-> Il sistema mostra l'elenco delle tipologie d'esame
+-> L'utente sceglie una tipolgoia d'esame
+-> Il sistema mostra i dettagli della tipologia d'esame selezionata (errore dell'ultima ora)
+N.B. L'utente ripete i passi un numero indefinito di volte.
+
+---------------------------------------------------------------------------
+
+Caso d'uso UC2 - Creazione di un esame
+- Attore primario : Amministratore
+
+- Scenario principale di successo:
+-> L'amministratore sceglie l'opzione "Crea Esame"
+-> L'amministratore inserisce la data della visita, l'ID del paziente da associare e
+   l'id del medico che terrà l'esame
+-> Il sistema mostra l'elenco delle tipologie presenti nel sistema
+-> L'amministratore sceglie una tra le tipologie da impostare all'esame
+-> Il sistema registra l'esame
+
+Precondizione : L'amministratore ha effettuato il login
+
+----------------------------------------------------------------------------
+
+Caso d'uso UC4 - Inserimento di una Tipologia di Esame
+- Attore primario : Amministratore 
+
+- Scenario principale di successo:
+-> L'amministratore sceglie l'opzione "Inserisci tipologia esame"
+-> L'amministratore inserisce nome, desctrizione, e costo della tipologia da inserire
+-> Il sistema mostra i Prerequisiti e i Risultati proposti presenti nel sistema
+-> L'amministratore sceglie i prerequisiti e i risultati proposti da aggiungere alla 
+   tipologia d'esame appena creata
+-> Il sistema registra la tipologia d'esame
+N.B. L'amministratore ripete i passi un numero indefinito di volte
+
+Precondizione: L'amministratore ha effettuato il login 
+
+-----------------------------------------------------------------------------
+
+Caso d'uso UC5: Esami effettuati da un medico
+- Attore primario : Amministratore 
+
+- Scenario principale di successo:
+-> L'amministratore sceglie l'opzione di "ricerca Esami di un Medico"
+-> L'amministratore inserisce l'id del medico
+-> Il sistema mostra all'amministratore tutti gli esami effettuati dal medico (non funziona) 
+
+Precondizione: L'amministratore ha effettuato il login 
+
+----------------------------------------------------------------------------
+
+Caso d'uso : Registrazione sul sito
+- Attore primario : Utente non reigstrato
+
+-Scenario principale di successo:
+-> L'utente non registrato sceglie l'opzione "Accedi"
+-> L'utente non registrato sceglie l'opzione "Registrati"
+-> L'utente non registrato inserisce nome, cognome, email, password e indirizzo
+-> Il sistema registra l'utente appena registrato
+

@@ -2,8 +2,10 @@ package it.clinica.controller;
 
 import java.util.*;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 //import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
@@ -25,6 +27,25 @@ public class EsameController  {
 	@EJB(name = "medicoFacade")
 	private MedicoFacade medicoFacade;
 	
+	@ManagedProperty(value = "#{utenteManager}")
+	private UtenteManager session;
+	
+	public MedicoFacade getMedicoFacade() {
+		return medicoFacade;
+	}
+
+	public void setMedicoFacade(MedicoFacade medicoFacade) {
+		this.medicoFacade = medicoFacade;
+	}
+
+	public UtenteManager getSession() {
+		return session;
+	}
+
+	public void setSession(UtenteManager session) {
+		this.session = session;
+	}
+
 	private Date dataPrenotazione;
 	private Date dataVisita;
 
@@ -39,6 +60,10 @@ public class EsameController  {
 //	private List<Risultato> risultati; //serve per il caso d'uso 3
 
 
+	@PostConstruct
+	public void init() {
+		UtenteManager.sessionCheckerUtenteAmministratore();
+	}
 
 //	@ManagedProperty(value = "#{utenteManager}")
 //	private UtenteManager session;

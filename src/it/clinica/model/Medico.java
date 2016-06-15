@@ -31,7 +31,7 @@ public class Medico {
 	private String cognome;
 	@Column(nullable = false)
 	private String specializzazione;
-	@OneToMany(mappedBy="medico")
+	@OneToMany(mappedBy="medico", fetch=FetchType.EAGER)
 	private List<Esame> esami;
 	
 	public Medico() {
