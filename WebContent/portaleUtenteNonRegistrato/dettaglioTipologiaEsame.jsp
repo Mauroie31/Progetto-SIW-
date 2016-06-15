@@ -79,11 +79,11 @@
 							<strong>Costo:</strong><br>
 								${tipologiaEsameController.tipologia.getCosto()} <br><br>
 							<strong>Prerequisiti:</strong><c:forEach var="prerequisito"
-								items="#{tipologiaEsameController.prerequisiti}">
+								items="#{tipologiaEsameController.tipologia.prerequisiti}">
 								<br> - ${prerequisito.descrizione}
 							</c:forEach><br><br>
 							<strong>Risultati:</strong><c:forEach var="risultato"
-								items="#{tipologiaEsameController.getTuttiIRisultati()}">
+								items="#{tipologiaEsameController.tipologia.risultati}">
 								<br> - ${risultato.nome}
 							</c:forEach>
 						</p>
