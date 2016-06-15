@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.3
 -- Dumped by pg_dump version 9.5.3
 
--- Started on 2016-06-15 18:39:39
+-- Started on 2016-06-15 19:23:10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -203,6 +203,9 @@ ALTER TABLE utente OWNER TO postgres;
 -- Data for Name: medico; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO medico VALUES ('Mario', 'Rossi', 'chirurgo');
+INSERT INTO medico VALUES ('Paolo', 'Bianchi', 'infermiere');
+INSERT INTO medico VALUES ('Lucia', 'Azzurri', 'oculista');
 
 
 --
@@ -211,7 +214,7 @@ ALTER TABLE utente OWNER TO postgres;
 -- Data for Name: openjpa_sequence_table; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO openjpa_sequence_table VALUES (0, 101);
+INSERT INTO openjpa_sequence_table VALUES (0, 201);
 
 
 --
@@ -220,6 +223,8 @@ INSERT INTO openjpa_sequence_table VALUES (0, 101);
 -- Data for Name: prerequisito; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO prerequisito VALUES (1, 'Le donne incinte non possono sostenere questo esame.', 'noPregnant');
+INSERT INTO prerequisito VALUES (2, 'Per poter sostenere questo esame di deve essere a digiuno da almeno dodici ore.', 'digiuno12');
 
 
 --
@@ -228,6 +233,13 @@ INSERT INTO openjpa_sequence_table VALUES (0, 101);
 -- Data for Name: risultato; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO risultato VALUES (10, 'Emoglobina');
+INSERT INTO risultato VALUES (11, 'Ferro');
+INSERT INTO risultato VALUES (13, 'Colesterolo');
+INSERT INTO risultato VALUES (15, 'Colore del prelievo');
+INSERT INTO risultato VALUES (16, 'Gradazione della vista');
+INSERT INTO risultato VALUES (14, 'Arrossamento cutaneo');
+INSERT INTO risultato VALUES (12, 'Presenza di noduli');
 
 
 --
@@ -236,7 +248,10 @@ INSERT INTO openjpa_sequence_table VALUES (0, 101);
 -- Data for Name: tipologiaesame; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO tipologiaesame VALUES (51, 20, 'Prelievo del sangue generico.', 'Analisi del sangue');
+INSERT INTO tipologiaesame VALUES (152, 10, 'Consegna di un contenitore delle urine.', 'Analisi delle urine');
+INSERT INTO tipologiaesame VALUES (153, 45, 'Controllo della vista.', 'Esame della vista');
+INSERT INTO tipologiaesame VALUES (154, 40, 'Visita di un otorino.', 'Esame dell''udito');
+INSERT INTO tipologiaesame VALUES (151, 25, 'Prelievo del sangue generico.', 'Analisi del sangue');
 
 
 --
@@ -245,6 +260,8 @@ INSERT INTO tipologiaesame VALUES (51, 20, 'Prelievo del sangue generico.', 'Ana
 -- Data for Name: tipologiaesame_prerequisito; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO tipologiaesame_prerequisito VALUES (151, 2);
+INSERT INTO tipologiaesame_prerequisito VALUES (152, 2);
 
 
 --
@@ -253,6 +270,17 @@ INSERT INTO tipologiaesame VALUES (51, 20, 'Prelievo del sangue generico.', 'Ana
 -- Data for Name: tipologiaesame_risultato; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO tipologiaesame_risultato VALUES (151, 13);
+INSERT INTO tipologiaesame_risultato VALUES (151, 15);
+INSERT INTO tipologiaesame_risultato VALUES (151, 10);
+INSERT INTO tipologiaesame_risultato VALUES (151, 11);
+INSERT INTO tipologiaesame_risultato VALUES (152, 15);
+INSERT INTO tipologiaesame_risultato VALUES (152, 11);
+INSERT INTO tipologiaesame_risultato VALUES (153, 14);
+INSERT INTO tipologiaesame_risultato VALUES (153, 16);
+INSERT INTO tipologiaesame_risultato VALUES (153, 12);
+INSERT INTO tipologiaesame_risultato VALUES (154, 14);
+INSERT INTO tipologiaesame_risultato VALUES (154, 12);
 
 
 --
@@ -261,7 +289,9 @@ INSERT INTO tipologiaesame VALUES (51, 20, 'Prelievo del sangue generico.', 'Ana
 -- Data for Name: utente; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO utente VALUES (1, 'Ferraro', 'simone.ferraro23@gmail.com', 'Via Treviso 45', 'Simone', 'e1adc3949ba59abbe56e057f2f883e', 'admin');
+INSERT INTO utente VALUES (101, 'Verdi', 'giuseppeverdi@gmail.com', 'Via Roma 12', 'Giuseppe', 'e1adc3949ba59abbe56e057f2f883e', 'paziente');
+INSERT INTO utente VALUES (102, 'Arancioni', 'claudiaarancioni@gmail.com', 'Via della Spiga 7', 'Claudia', '6c44e5cd17f019c64b042e4a745412a', 'paziente');
+INSERT INTO utente VALUES (103, 'Ferraro', 'simoneferraro@gmail.com', 'Via del Corso', 'Simone', '25f9e794323b453885f5181f1b624db', 'admin');
 
 
 --
@@ -420,7 +450,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2016-06-15 18:39:39
+-- Completed on 2016-06-15 19:23:11
 
 --
 -- PostgreSQL database dump complete
