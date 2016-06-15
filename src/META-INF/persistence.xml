@@ -11,8 +11,6 @@
 		<class>it.clinica.model.Esame</class>
 		<class>it.clinica.model.Medico</class>
 		<class>it.clinica.model.TipologiaEsame</class>
-		<class>it.clinica.model.Paziente</class>
-		<class>it.clinica.model.Amministratore</class>
 		<class>it.clinica.model.Risultato</class>
 		<class>it.clinica.model.Prerequisito</class>
 

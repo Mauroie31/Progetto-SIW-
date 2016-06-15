@@ -28,7 +28,7 @@ public class TipologiaEsame {
 	@ManyToMany
 	private List<Risultato> risultati;
 
-	@OneToMany
+	@OneToMany(mappedBy="tipologiaEsame")
 	private List<Esame> esami;
 
 	public TipologiaEsame() {}

@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 public class MD5Encrypter {
 	private static MessageDigest md;
 
-	public String cryptWithMD5(String pass){
+	public static String cryptWithMD5(String pass){
 		try {
 			md = MessageDigest.getInstance("MD5");
 			byte[] passBytes = pass.getBytes();

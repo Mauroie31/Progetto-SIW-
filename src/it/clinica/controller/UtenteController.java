@@ -4,12 +4,16 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 import it.clinica.facade.UtenteFacade;
-import it.clinica.model.Utente;
+import it.clinica.model.*;
+import it.clinica.password.MD5Encrypter;
 
+@SessionScoped
 @ManagedBean(name="utenteController")
 public class UtenteController {
 	@EJB(name = "utenteFacade")
@@ -38,6 +42,8 @@ public class UtenteController {
 
 	public String creaUtente() {
 		this.utente = new Utente(nome, cognome, email, password, indirizzo);
+		String passwordCriptata = MD5Encrypter.cryptWithMD5(password);
+		this.utente.setPassword(passwordCriptata);
 		this.utenteFacade.inserisciUtente(this.utente);
 		return "/registrazioneUtenteTerminata.jsp";
 	}
@@ -46,24 +52,20 @@ public class UtenteController {
 
 
 
-	public String login( ) {
-		this.email = this.email.trim();
-		Utente utente = utenteFacade.findUtenteByEmail(this.email);
-		if(utente != null) {
-			if(this.email == "admin" && this.password == "admin") {
-				this.session.login(utente);
-				return "/portaleAdmin/portaleAdmin.jsp";
-			}
+	public String login() {
+		try {
+			this.utente = utenteFacade.findUtenteByEmail(email);
+		}catch (EJBException e) {
+			return "errorPage.jsp";
+		}
+		if(utente.getRuolo().equals("admin") && MD5Encrypter.cryptWithMD5(this.password).equals(utente.getPassword())) {
+			this.session.login(utente);
+			return "/portaleAdmin/accessoEffettuato.jsp";
+		} else if (MD5Encrypter.cryptWithMD5(this.password).equals(utente.getPassword())) {
 			this.session.login(utente);
 			return "/portalePaziente/portalePaziente.jsp";
-		}
-		return "errorPage.jsp";
+		} else return "errorPage.jsp";
 	}
-
-
-
-
-
 
 
 	public UtenteFacade getUtenteFacade() {

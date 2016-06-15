@@ -94,7 +94,7 @@
 
 						<p>
 							<h:commandButton styleClass="btn btn-success btn-lg"
-								value="Inserisci"
+								value="Registrati"
 								action="#{utenteController.creaUtente()}" />
 						</p>
 					</div>

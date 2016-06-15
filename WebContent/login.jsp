@@ -74,19 +74,19 @@
 							credenziali</h1>
 						<hr>
 
-						<p>
+						<p style="color: #000000">
 							Email:
 							<h:inputText value="#{utenteController.email}" />
 						</p>
 
-						<p>
+						<p style="color: #000000">
 							Password:
 							<h:inputSecret value="#{utenteController.password}" />
 						</p>
 
-						<h:commandButton value="Accedi"
+						<h:commandButton styleClass="btn btn-primary" value="Accedi" style="width:150px;height:80px; padding-right: 10px"
 							action="#{utenteController.login()}" />
-						<h:commandButton value="Registrati"
+						<h:commandButton styleClass="btn btn-warning" value="Registrati" style="width:150px;height:80px"
 							action="#{utenteController.goToPaginaRegistrazione()}" />
 
 					</div>
