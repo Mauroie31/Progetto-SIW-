@@ -77,25 +77,25 @@
 						<p>
 							<strong style="color: #000000">Nome</strong><br>
 							<h:inputText required="true" id="usNome" style="color: black;"
-								value="#{utenteController.nome}" />
+								value="#{loginController.nome}" />
 							<br> <br> <strong style="color: #000000">Cognome</strong><br>
 							<h:inputText required="true" style="color: black;"
-								value="#{utenteController.cognome}" />
+								value="#{loginController.cognome}" />
 							<br> <br> <strong style="color: #000000">Email</strong><br>
 							<h:inputText required="true" style="color: black;"
-								value="#{utenteController.email}" />
+								value="#{loginController.email}" />
 							<br> <br> <strong style="color: #000000">Password</strong><br>
 							<h:inputSecret required="true" style="color: black;"
-								value="#{utenteController.password}" />
+								value="#{loginController.password}" />
 							<br> <br> <strong style="color: #000000">Indirizzo</strong><br>
 							<h:inputText required="true" style="color: black;"
-								value="#{utenteController.indirizzo}" />
+								value="#{loginController.indirizzo}" />
 						</p>
 
 						<p>
 							<h:commandButton styleClass="btn btn-success btn-lg"
 								value="Registrati"
-								action="#{utenteController.creaUtente()}" />
+								action="#{loginController.creaUtente()}" />
 						</p>
 					</div>
 				</div>

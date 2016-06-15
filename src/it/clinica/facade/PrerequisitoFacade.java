@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
-import it.clinica.model.Prerequisito;
+import it.clinica.model.*;
 
 @Stateless
 @EJB(name="ejb/prerequisitoFacade", beanInterface=PrerequisitoFacade.class, beanName="prerequisitoFacade")
@@ -36,6 +36,14 @@ public class PrerequisitoFacade {
 			return this.em.createNamedQuery("findAllPrerequisiti", Prerequisito.class).getResultList();	
 		}catch(NoResultException e){
 			return new ArrayList<Prerequisito>();
+		}
+	}
+	public List<Prerequisito> findPrerequisitiTipologiaEsame(Long id_tipologiaEsame) {
+		try {
+			return this.em.createNamedQuery("findPrerequisitiByTipologiaEsame", Prerequisito.class)
+					.setParameter("id_tipologiaEsame", id_tipologiaEsame).getResultList();
+		} catch (NoResultException e) {
+			return null;
 		}
 	}
 

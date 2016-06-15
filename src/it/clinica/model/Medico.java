@@ -12,32 +12,38 @@ import javax.persistence.*;
 	query = "SELECT m FROM Medico m"),
 	@NamedQuery(name = "findMedicoByEsame", 
 	query = "SELECT m FROM Medico m JOIN Esame e where e.id = :id_esame"),
+	@NamedQuery(name = "findEsamiByMedico", 
+	query = "SELECT e FROM Esame e where e.medico_nome = :id_medico"),
 	@NamedQuery(name = "findMediciByTipologiaEsame", 
 	query = "SELECT m FROM Medico m JOIN TipologiaEsame t where t.id = :id_tipologiaEsame"),
+	@NamedQuery(name = "findMedicoById", 
+	query = "SELECT m FROM Medico m where m.id = :id_medico")
 })
+
 public class Medico {
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.AUTO)
+//	private Long id;
+//	@Column(nullable = false)
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-	@Column(nullable = false)
 	private String nome;
 	@Column(nullable = false)
 	private String cognome;
-	@ManyToOne
-	private TipologiaEsame specializzazione;
-	@OneToMany
+	@Column(nullable = false)
+	private String specializzazione;
+	@OneToMany(mappedBy="medico")
 	private List<Esame> esami;
 	
 	public Medico() {
 		
 	}
 
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	public Long getId() {
+//		return id;
+//	}
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 	public String getNome() {
 		return nome;
 	}
@@ -50,10 +56,10 @@ public class Medico {
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
-	public TipologiaEsame getSpecializzazione() {
+	public String getSpecializzazione() {
 		return specializzazione;
 	}
-	public void setSpecializzazione(TipologiaEsame specializzazione) {
+	public void setSpecializzazione(String specializzazione) {
 		this.specializzazione = specializzazione;
 	}
 	public List<Esame> getEsami() {

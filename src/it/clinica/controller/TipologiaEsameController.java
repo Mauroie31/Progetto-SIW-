@@ -39,8 +39,6 @@ public class TipologiaEsameController {
 	@PostConstruct
 	public void init(){
 		this.tipologieEsami = this.tipologiaEsameFacade.findAllTipologieEsami();
-		this.prerequisiti = this.prerequisitoFacade.findAllPrerequisiti();
-		this.setRisultati(this.risultatoFacade.findAllRisultati());
 	}
 
 	//CASO d'USO UC1
@@ -83,6 +81,10 @@ public class TipologiaEsameController {
 
 	public String richiediDettagliTipologia(TipologiaEsame tipologia) {
 		return tipologia.getDescrizione();
+	}
+	
+	public List<Prerequisito> getPrerequisitiDellaTipologiaEsame(Long id_tipologiaEsame) {
+		return this.prerequisitoFacade.findPrerequisitiTipologiaEsame(id_tipologiaEsame);
 	}
 
 	//END caso d'uso UC1

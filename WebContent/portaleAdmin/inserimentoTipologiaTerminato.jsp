@@ -48,7 +48,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand page-scroll" href="./../index.jsp"  style="color: #EE4B28">Home</a>
+					<a class="navbar-brand page-scroll" href="./portaleAdmin.jsp"  style="color: #EE4B28">Home</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -57,7 +57,6 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="./inserisciTipologiaEsame.jsp">Inserisci
 								tipologia esame</a></li>
-						<li><a class="navbar-brand page-scroll" href="./portaleAdmin.jsp">Portale amministratore</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->

@@ -1,27 +1,49 @@
 package it.clinica.controller;
 
-import java.util.Map;
+
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
+import it.clinica.facade.*;
+import it.clinica.model.*;
 
-import it.clinica.facade.MedicoFacade;
-import it.clinica.model.Esame;
-import it.clinica.model.TipologiaEsame;
 
 @ManagedBean(name="medicoController")
+@SessionScoped
 public class MedicoController {
+	
 	@EJB(name="medicoFacade")
 	private MedicoFacade medicoFacade;
-	private Long id;
+	
+	@EJB(name="esameFacade")
+	private EsameFacade esameFacade;
+	
+	//non servono al fine del caso d'uso 5
 	private String nome;
 	private String cognome;
 	private TipologiaEsame specializzazione;
-	private Map<Long, Esame> esami;
+	
+	private List<Esame> esami;
+
+	private Medico medico;
 	
 	public MedicoController() {
 		
+	}
+	
+	public String cercaMedico(){
+		this.medico =this.medicoFacade.findMedicoByNome(this.nome);
+		System.out.println(this.medico.getNome());
+		System.out.println(this.medico.getEsami());
+		this.setEsami(this.medico.getEsami());
+		return "/portaleAdmin/mostraEsamiMedico.jsp";
+	}
+	
+	public List<Esame> getTuttigliEsamiDelMedico(){
+		return this.medico.getEsami();
 	}
 	
 	
@@ -32,12 +54,6 @@ public class MedicoController {
 	}
 	public void setMedicoFacade(MedicoFacade medicoFacade) {
 		this.medicoFacade = medicoFacade;
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
 	}
 	public String getNome() {
 		return nome;
@@ -57,14 +73,26 @@ public class MedicoController {
 	public void setSpecializzazione(TipologiaEsame specializzazione) {
 		this.specializzazione = specializzazione;
 	}
-	public Map<Long, Esame> getEsami() {
-		return esami;
+	public void setMedico(Medico medico){
+		this.medico=medico;
 	}
-	public void setEsami(Map<Long, Esame> esami) {
+	public Medico getMedico(){
+		return this.medico;
+	}
+
+	public List<Esame> getEsami() {
+		return this.esami;
+	}
+
+	public void setEsami(List<Esame> esami) {
 		this.esami = esami;
 	}
-	
-	
 
+	public EsameFacade getEsameFacade() {
+		return this.esameFacade;
+	}
 
+	public void setEsameFacade(EsameFacade esameFacade) {
+		this.esameFacade = esameFacade;
+	}
 }

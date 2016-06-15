@@ -8,7 +8,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Prerequisito")
-@NamedQuery(name = "findAllPrerequisiti", query = "SELECT p FROM Prerequisito p order by p.nome")
+@NamedQueries({
+	@NamedQuery(name = "findAllPrerequisiti", query = "SELECT p FROM Prerequisito p order by p.nome"),
+
+	@NamedQuery(name = "findPrerequisitiByTipologiaEsame", query = "SELECT p.tipologiaesame FROM Prerequisito p")
+})
 public class Prerequisito {
 
 	@Id

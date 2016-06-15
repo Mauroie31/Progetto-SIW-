@@ -12,8 +12,7 @@
 <body>
 	<f:view>
 		<h:form>
-	Inserisci ID Paziente:
-	<h:inputText value="#{esameController.id_utente}"/>
+	
 	<div>Secgli una tipologia</div>
 		
 		<c:forEach var="tipologiaEsame" items="#{tipologiaEsameController.tipologieEsami}">

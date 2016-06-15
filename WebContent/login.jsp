@@ -76,18 +76,18 @@
 
 						<p style="color: #000000">
 							Email:
-							<h:inputText value="#{utenteController.email}" />
+							<h:inputText value="#{loginController.email}" />
 						</p>
 
 						<p style="color: #000000">
 							Password:
-							<h:inputSecret value="#{utenteController.password}" />
+							<h:inputSecret value="#{loginController.password}" />
 						</p>
 
 						<h:commandButton styleClass="btn btn-primary" value="Accedi" style="width:150px;height:80px; padding-right: 10px"
-							action="#{utenteController.login()}" />
+							action="#{loginController.login()}" />
 						<h:commandButton styleClass="btn btn-warning" value="Registrati" style="width:150px;height:80px"
-							action="#{utenteController.goToPaginaRegistrazione()}" />
+							action="#{loginController.goToPaginaRegistrazione()}" />
 
 					</div>
 				</div>

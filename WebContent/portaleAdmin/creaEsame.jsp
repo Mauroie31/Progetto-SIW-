@@ -11,20 +11,28 @@
 <head>
 <title>Inserimento esame</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Inizia Nuovo Esame</title>
+<title>Inizia La compilazione di una nuovo prenotazione Esame</title>
 </head>
 <body>
 	<f:view>
 
-	<h:form>
-		<h1> Inizia complilazione esame</h1>
-		inserisci La data della visita (formato **-**-****)
-		<h:inputText value="#{esameController.dataVisita}">
-		<f:convertDateTime pattern="dd-MM-yyyy"/>
-		</h:inputText>
-		<h:commandButton value="Inserisci" action="#{esameController.creaEsame()}" />
-	
-	</h:form>
+		<h:form>
+			<h1>Inizia complilazione esame</h1>
+		
+		<div>Inserisci La data della visita (formato **-**-****)</div>
+		<div><h:inputText value="#{esameController.dataVisita}">
+				<f:convertDateTime pattern="dd-MM-yyyy" />
+			</h:inputText></div>
+		
+		<div>Inserisci ID Paziente:</div>
+		<div><h:inputText value="#{esameController.id_utente}"/></div>
+		
+		<div>Inserisci ID Medico:</div>
+		<div><h:inputText value="#{esameController.nome_medico}"/></div>
+		
+		<div><h:commandButton value="Inserisci"	action="#{esameController.creaEsame()}"/></div>
+
+		</h:form>
 	</f:view>
 </body>
 </html>

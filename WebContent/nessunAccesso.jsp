@@ -12,10 +12,10 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Clinica ACME</title>
+<title>Nessun accesso</title>
 
 <!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="./../css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
 
 <!-- Custom Fonts -->
 <link
@@ -24,18 +24,17 @@
 <link
 	href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
 	rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="./../font-awesome/css/font-awesome.min.css"
+<link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css"
 	type="text/css">
 
 <!-- Plugin CSS -->
-<link rel="stylesheet" href="./../css/magnific-popup.css"
+<link rel="stylesheet" href="./css/magnific-popup.css"
 	type="text/css">
 
 <!-- Custom CSS -->
-<link rel="stylesheet" href="./../css/creative.css" type="text/css">
+<link rel="stylesheet" href="./css/creative.css" type="text/css">
 
 </head>
-
 
 <body>
 	<f:view>
@@ -49,7 +48,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand page-scroll" href="./portaleAdmin.jsp"
+					<a class="navbar-brand page-scroll" href="./index.jsp"
 						style="color: #EE4B28">Home</a>
 				</div>
 
@@ -57,8 +56,8 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="./inserisciTipologiaEsame.jsp">Inserisci
-								tipologia esame</a></li>
+						<li class="active"><a class="navbar-brand page-scroll"
+							href="./login.jsp">Accedi</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -66,34 +65,16 @@
 			<!-- /.container-fluid -->
 		</nav>
 
-
-
-
-		<header style="background-image: url('../img/header.jpg');">
+		<header
+			style="background-image: -webkit-radial-gradient(center, circle farthest-corner, #FFFFFF 0%, #2F4C5E 100%);">
 			<h:form>
-				<div class="header-content">
+				<div align="center" class="header-content">
 					<div class="header-content-inner">
-
-
-
-						<h1 style="color: #EE4B28;">
-							<strong
-								style="font-size: 120px; text-shadow: 0pt 0pt 5px #ffffff, 0pt 0pt 10px #ffffff, 0pt 0pt 15px #ffffff, 0pt 0pt 20px #ffffff, 0pt 0pt 35px #ffffff, 0pt 0pt 40px #ffffff, 0pt 0pt 50px #ffffff, 0pt 0pt 75px #ffffff;">Clinica
-								ACME</strong>
-						</h1>
+						<h1 style="color: #EE4B28; font-size: 40px;">Devi effettuare l'accesso!</h1>
 						<hr>
-						<p>
-							<strong
-								style="color: #000000; text-shadow: 0pt 0pt 5px #ffffff, 0pt 0pt 10px #ffffff, 0pt 0pt 15px #ffffff, 0pt 0pt 20px #ffffff, 0pt 0pt 35px #ffffff, 0pt 0pt 40px #ffffff, 0pt 0pt 50px #ffffff, 0pt 0pt 75px #ffffff;">
-								Benvenuto ${utenteController.session.getUtente().getNome()}!<br>
-								Hai effettuato l'accesso come amministratore.
-							</strong>
-						</p>
 
-						<p>
-							<h:commandButton styleClass="btn btn-danger btn-lg"
-								value="Logout" action="#{utenteController.session.logout()}" />
-						</p>
+						<strong style="color: black; font-size: 20px;"> Clicca in alto a destra per effettuare il login.
+						</strong>
 					</div>
 				</div>
 			</h:form>

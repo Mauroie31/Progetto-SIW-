@@ -41,11 +41,6 @@ public class UtenteFacade {
 				.setParameter("email_utente", email).getSingleResult();
 	}
 	
-	public boolean esiste(String email) {
-		return this.em.createNamedQuery("findUtenteByEmail", Utente.class)
-				.setParameter("email_utente", email).getSingleResult() != null;
-	}
-	
 	public Utente findUtenteById(Long id) {
 		return this.em.createNamedQuery("findUtenteById", Utente.class)
 				.setParameter("id_utente", id).getSingleResult();

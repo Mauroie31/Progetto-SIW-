@@ -49,7 +49,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand page-scroll" href="./../index.jsp"  style="color: #EE4B28">Home</a>
+					<a class="navbar-brand page-scroll" href="./portaleAdmin.jsp"  style="color: #EE4B28">Home</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,7 +58,6 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class="active"><a href="./inserisciTipologiaEsame.jsp">Inserisci
 								tipologia esame</a></li>
-						<li><a class="navbar-brand page-scroll" href="./portaleAdmin.jsp">Portale amministratore</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -77,11 +76,11 @@
 						<hr>
 						<p>
 							<c:forEach var="prerequisito"
-								items="#{tipologiaEsameController.getTuttiIPrerequisiti()}">
+								items="#{utenteController.getTuttiIPrerequisiti()}">
 								<br>
 								<strong style="color: black;">
 									${prerequisito.descrizione} <h:commandButton value="Aggiungi"
-										action="#{tipologiaEsameController.addPrerequisiti(prerequisito)}" />
+										action="#{utenteController.addPrerequisiti(prerequisito)}" />
 								</strong>
 							</c:forEach>
 						</p>
@@ -92,18 +91,18 @@
 						<hr>
 						<p>
 							<c:forEach var="risultato"
-								items="#{tipologiaEsameController.getTuttiIRisultati()}">
+								items="#{utenteController.getTuttiIRisultati()}">
 								<br>
 								<strong style="color: black;"> ${risultato.nome} <h:commandButton
 										value="Aggiungi"
-										action="#{tipologiaEsameController.addRisultati(risultato)}" /></strong>
+										action="#{utenteController.addRisultati(risultato)}" /></strong>
 							</c:forEach>
 						</p>
 
 						<p>
 							<strong style="color: black;"><h:commandButton
 									value="Conferma"
-									action="#{tipologiaEsameController.tipologiaInserita()}" /></strong>
+									action="#{utenteController.tipologiaInserita()}" /></strong>
 						</p>
 					</div>
 				</div>

@@ -49,7 +49,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand page-scroll" href="./../index.jsp"  style="color: #EE4B28">Home</a>
+					<a class="navbar-brand page-scroll" href="./portaleAdmin.jsp"  style="color: #EE4B28">Home</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,7 +58,6 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class="active"><a href="./inserisciTipologiaEsame.jsp">Inserisci
 								tipologia esame</a></li>
-						<li><a class="navbar-brand page-scroll" href="./portaleAdmin.jsp">Portale amministratore</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
@@ -78,19 +77,19 @@
 						<p>
 							<strong style="color: #000000">Nome</strong><br>
 							<h:inputText style="color: black;"
-								value="#{tipologiaEsameController.nome}" />
+								value="#{utenteController.nomeTipologia}" />
 							<br> <br> <strong style="color: #000000">Descrizione</strong><br>
 							<h:inputText style="color: black;"
-								value="#{tipologiaEsameController.descrizione}" />
+								value="#{utenteController.descrizioneTipologia}" />
 							<br> <br> <strong style="color: #000000">Costo</strong><br>
 							<h:inputText style="color: black;" 
-								value="#{tipologiaEsameController.costo}" />
+								value="#{utenteController.costoTipologia}" />
 						</p>
 
 						<p>
 							<h:commandButton styleClass="btn btn-success btn-lg"
 								value="Inserisci"
-								action="#{tipologiaEsameController.creaTipologiaEsame()}" />
+								action="#{utenteController.creaTipologiaEsame()}" />
 						</p>
 					</div>
 				</div>
